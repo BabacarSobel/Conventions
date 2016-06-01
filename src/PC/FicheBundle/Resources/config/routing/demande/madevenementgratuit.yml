@@ -1,0 +1,40 @@
+
+madevenementgratuit_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:export" }
+    
+madevenementgratuit_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:pdf" }
+    
+     
+madevenementgratuit_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:addFichierToRequest" }
+    
+madevenementgratuit_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:addAvenantToRequest" } 
+    
+madevenementgratuit_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:request" }
+    
+madevenementgratuit_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:showRequest" }
+    
+madevenementgratuit_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:createRequest" }
+    methods:  POST
+    
+madevenementgratuit_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:sendFicheMessage" }
+
+
+madevenementgratuit_add_local:
+    path : /{id}/addLocal
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:addLocal"}
+    methods : [POST,GET]

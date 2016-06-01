@@ -1,0 +1,65 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <h1>Avenant list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numerofiche</th>
+                <th>Datecontratinitial</th>
+                <th>Typepartenaire</th>
+                <th>Dateeffetci</th>
+                <th>Datefinci</th>
+                <th>Objet</th>
+                <th>Motif</th>
+                <th>Numeroparagraphemodifie</th>
+                <th>Numeroarticlemodifie</th>
+                <th>Nouveautexte</th>
+                <th>Numeroarticleduree</th>
+                <th>Nbmoisprorogation</th>
+                <th>Dateexpiration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('avenant_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.numeroFiche }}</td>
+                <td>{% if entity.dateContratInitial %}{{ entity.dateContratInitial|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.typePartenaire }}</td>
+                <td>{% if entity.dateEffetCI %}{{ entity.dateEffetCI|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateFinCI %}{{ entity.dateFinCI|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.objet }}</td>
+                <td>{{ entity.motif }}</td>
+                <td>{{ entity.numeroParagrapheModifie }}</td>
+                <td>{{ entity.numeroArticleModifie }}</td>
+                <td>{{ entity.nouveauTexte }}</td>
+                <td>{{ entity.numeroArticleDuree }}</td>
+                <td>{{ entity.nbMoisProrogation }}</td>
+                <td>{% if entity.dateExpiration %}{{ entity.dateExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('avenant_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('avenant_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('avenant_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

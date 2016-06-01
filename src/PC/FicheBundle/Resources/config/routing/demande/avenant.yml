@@ -1,0 +1,4 @@
+avenant_showrequest:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Avenant:showrequest" }
+    

@@ -1,0 +1,38 @@
+
+chartepartenariat_download:
+    pattern:  /download/{filename}
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:download" }
+
+    
+chartepartenariat_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:pdf" }
+    
+chartepartenariat_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:request" }
+    
+    
+chartepartenariat_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:addFichierToRequest" }
+    
+    
+    
+chartepartenariat_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:addAvenantToRequest" }
+    
+    
+chartepartenariat_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:showrequest" }
+
+chartepartenariat_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:createRequest" }
+    methods:  POST
+    
+chartepartenariat_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:sendFicheMessage" }

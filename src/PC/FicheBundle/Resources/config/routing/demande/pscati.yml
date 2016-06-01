@@ -1,0 +1,42 @@
+
+pscati_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:PSCati:export" }    
+
+pscati_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:PSCati:pdf" }
+    
+pscati_new_fichier:
+    path:     /{id}/new_fichier
+    defaults: { _controller: "PCFicheBundle:PSCati:addFichier" }
+    
+pscati_new_avenant:
+    path:     /{id}/new_avenant
+    defaults: { _controller: "PCFicheBundle:PSCati:addAvenant" }
+    
+    
+pscati_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:PSCati:addFichierToRequest" }
+    
+pscati_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:PSCati:addAvenantToRequest" }
+    
+pscati_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:PSCati:request" }
+    
+pscati_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:PSCati:showrequest" }
+
+pscati_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:PSCati:createRequest" }
+    methods:  POST
+    
+pscati_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:PSCati:sendFicheMessage" } 

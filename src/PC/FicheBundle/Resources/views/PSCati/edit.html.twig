@@ -1,0 +1,488 @@
+{% extends 'PCFicheBundle::editLayout.html.twig' %}
+
+{% block barre %}
+    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('pscati_pdf', { 'id': entity.id }) }}">générer une convention <span class="sr-only">(current)</span></a></li>
+    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('pscati_show', { 'id': entity.id }) }}"> Retour à la vue</a> </li>
+    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('pscati_delete', { 'id': entity.id }) }}"> Supprimer</a></a></li>
+    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('fiche') }}"> Retour à la liste</a></a></li>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_errors(edit_form) }}
+        <div class ="pc_info_group">
+            <div class="form-group">
+                {{ form_label(edit_form.intitule, "Intitulé", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.intitule) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.intitule, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.objet, "Objet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.objet) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.objet, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.etatConvention, "Etat de la convention", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.etatConvention) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.etatConvention, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.etatDemande, "Etat de la demande", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.etatDemande) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.etatDemande, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+        </div>
+        <div class ="pc_info_group">
+            <div class="form-group">
+                {{ form_label(edit_form.cocontractant, "Co-contractant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.cocontractant) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.cocontractant, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.formeJuridiqueCocontractant, "Forme juridique du co-contractant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.formeJuridiqueCocontractant) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.formeJuridiqueCocontractant, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.adresseSiege, "Adresse siege", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.adresseSiege) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.adresseSiege, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.numeroSiret, "Numéro Siret", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.numeroSiret) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.numeroSiret, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.codeApe, "Code APE", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.codeApe) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.codeApe, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.titreRepresentant, "Titre représentant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.titreRepresentant) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.titreRepresentant, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.nomRepresentant, "Nom représentant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.nomRepresentant) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.nomRepresentant, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.prenomRepresentant, "Prenom représentant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.prenomRepresentant) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.prenomRepresentant, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.fonctionRepresentant, "Fonction représentant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.fonctionRepresentant) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.fonctionRepresentant, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.demandeurPolytech, "Demandeur Polytech", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.demandeurPolytech) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.demandeurPolytech, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.dateEffet, "Date d'effet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.dateEffet) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.dateEffet, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.dateEcheance, "Date d'echeance", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.dateEcheance) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.dateEcheance, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.reconductionTacite, "Reconduction tacite", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.reconductionTacite) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.reconductionTacite, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.validationJuridique, "Validation juridique", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.validationJuridique) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.validationJuridique, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.dateValidationJuridique, "Date de validation juridique", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.dateValidationJuridique) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.dateValidationJuridique, {'attr': {'class': ''}})}}
+                </div>
+            </div>    
+            <div class="form-group">
+                {{ form_label(edit_form.validationDirection, "Validation de la direction", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.validationDirection) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.validationDirection, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.dateValidationDirection, "Date de validation de la direction", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.dateValidationDirection) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.dateValidationDirection, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.signaturePolytech, "Signature Polytech", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.signaturePolytech) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.signaturePolytech, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.dateSignaturePolytech, "Date signature Polytech", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.dateSignaturePolytech) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.dateSignaturePolytech, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.actionDemandee, "Action demandée", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.actionDemandee) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.actionDemandee, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.suiviActionTexte, "Suivi d'action", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.suiviActionTexte) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.suiviActionTexte, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.suiviActionDate, "Date de Suivi d'action", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.suiviActionDate) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.suiviActionDate, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.observations, "Observations", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.observations) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.observations, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.fluxFinancier, "Flux financier", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.fluxFinancier) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.fluxFinancier, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.reservationFonds, "Réservation de fonds", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(edit_form.reservationFonds) }}
+                <div class="col-sm-4">
+                {{ form_widget(edit_form.reservationFonds, {'attr': {'class': ''}})}}
+                </div>
+            </div>
+        </div>   
+        <div class ="pc_info_group">
+               <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.domaineFormation, "Domaine de formation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.domaineFormation) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.domaineFormation, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.domaineSpecialiteSociete, "Domaine de spécialité de la société", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.domaineSpecialiteSociete) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.domaineSpecialiteSociete, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.departementPolytech, "Département Polytech", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.departementPolytech) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.departementPolytech, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.responsableDepartement, "Résponsable du département", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.responsableDepartement) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.responsableDepartement, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.titreProjet, "Titre du projet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.titreProjet) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.titreProjet, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.anneeProjetPIFE, "Année du projet PIFE", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.anneeProjetPIFE) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.anneeProjetPIFE, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.titreEncadrant, "titre de l'encadrant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.titreEncadrant) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.titreEncadrant, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.nomEncadrant, "Nom de de l'encadrant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.nomEncadrant) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.nomEncadrant, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.prenomEncadrant, "Prénom de de l'encadrant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.prenomEncadrant) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.prenomEncadrant, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.titreReferent, "Titre du référent", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.titreReferent) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.titreReferent, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.nomReferent, "Nom du référent", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.nomReferent) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.nomReferent, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.prenomReferent, "Prénom du référent", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.prenomReferent) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.prenomReferent, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.montantTVA, "Montant TVA", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.montantTVA) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.montantTVA, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.montantTTC, "Montant TTC", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.montantTTC) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.montantTTC, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.premiereEcheance, "Première écheance", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.premiereEcheance) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.premiereEcheance, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.solde, "Solde", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.solde) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.solde, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.adresseEnvoiFacture, "Adresse d'envoi de la facture", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.adresseEnvoiFacture) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.adresseEnvoiFacture, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.annexeTechnique, "Annexe technique", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.annexeTechnique) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.annexeTechnique, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.annexeFinanciere, "Annexe financière", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.annexeFinanciere) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.annexeFinanciere, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.titreEtudiant, "Titre étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.titreEtudiant) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.titreEtudiant, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.nomEtudiant, "Nom de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.nomEtudiant) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.nomEtudiant, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.prenomEtudiant, "Prénom de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.prenomEtudiant) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.prenomEtudiant, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.adresseEtudiant, "Adresse de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.adresseEtudiant) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.adresseEtudiant, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.dateNaissanceEtudiant, "Date de naissance de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.dateNaissanceEtudiant) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.dateNaissanceEtudiant, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.emailEtudiant, "Email de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.emailEtudiant) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.emailEtudiant, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {# G�n�ration du label. #}
+                                {{ form_label(edit_form.numeroConventionPIFE, "Numéro de convention PIFE", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                {# Affichage des erreurs pour ce champ pr�cis. #}
+                                {{ form_errors(edit_form.numeroConventionPIFE) }}
+                                <div class="col-sm-4">
+                                    {# G�n�ration de l'input. #}
+                                    {{ form_widget(edit_form.numeroConventionPIFE, {'attr': {'class': ''}}) }}
+                                </div>
+                            </div>
+            {{ form_rest(edit_form) }}
+
+            {# Fermeture de la balise <form> du formulaire HTML #}
+
+            {{ form_end(edit_form) }}
+        </div>    
+    </div>
+{% endblock %}

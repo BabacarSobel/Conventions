@@ -1,0 +1,146 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <div class="container-fluid">
+        <div class="row">
+            <div id="bouton" class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a class="pc_sidebar_element" href="{{ path('avenant_edit', { 'id': entity.id }) }}">Editer</a></li>
+                    <li><a class="pc_sidebar_element" data-placement="top" data-toggle="modal" data-target='#delete'>Supprimer</a></li>
+                    <li><a id="" name="" class="pc_sidebar_element" href="{{ cheminRetour }}"> Retour à la fiche</a></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9  col-md-10  main">
+                <div class ="pc_info_group form-horizontal">
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Id</label>
+                        <div class='col-sm-4'>
+                            <input disabled="disabled" class="form-control" value='{{ entity.id }}'/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Numéro de la fiche</label>
+                        <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.numeroFiche }}'/></div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Date de signature du contrat initial</label>
+                        <div class='col-sm-4'>
+                            {%if entity.dateContratInitial is null%}
+                                <input disabled="disabled" class="form-control" value='{{ entity.dateContratInitial }}'/>
+                            {%else%}
+                                <input disabled="disabled" class="form-control" value='{{ entity.dateContratInitial|date('d/m/Y')}}'/>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Type de partenaire</label>
+                        <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.typePartenaire }}'/></div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Date d'effet du contrat initial</label>
+                        <div class='col-sm-4'>
+                            {%if entity.dateEffetCI is null%}
+                                <input disabled="disabled" class="form-control" value='{{ entity.dateEffetCI }}'/>
+                            {%else%}
+                                <input disabled="disabled" class="form-control" value='{{ entity.dateEffetCI|date('d/m/Y')}}'/>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Date d'écheance du contrat initial</label>
+                        <div class='col-sm-4'>
+                            {%if entity.dateFinCI is null%}
+                                <input disabled="disabled" class="form-control" value='{{ entity.dateFinCI }}'/>
+                            {%else%}
+                                <input disabled="disabled" class="form-control" value='{{ entity.dateFinCI|date('d/m/Y')}}'/>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Objet</label>
+                        <div class='col-sm-4'><input disabled="disabled" id='objet' class="form-control" value='{{ entity.objet }}'/></div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Motif</label>
+                        <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.motif }}'/></div>
+                    </div>
+                    <div id='modifier' class='hidden'>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Numéro de paragraphe modifié</label>
+                        <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.numeroParagrapheModifie }}'/></div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Numéro de l'article modifié</label>
+                        <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.numeroArticleModifie }}'/></div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Nouveau texte</label>
+                        <div class='col-sm-4'><textarea  disabled="disabled" class="form-control">{{ entity.nouveauTexte }}</textarea></div>
+                    </div>
+                    </div>
+                    <div id='proroger' class='hidden'>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Numéro de l'article Durée</label>
+                        <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.numeroArticleDuree }}'/></div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Nombre de mois de prorogation</label>
+                        <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.nbMoisProrogation }}'/></div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Date d'expiration</label>
+                        <div class='col-sm-4'>
+                            {%if entity.dateExpiration is null%}
+                                <input disabled="disabled" class="form-control" value='{{ entity.dateExpiration }}'/>
+                            {%else%}
+                                <input disabled="disabled" class="form-control" value='{{ entity.dateExpiration|date('d/m/Y')}}'/>
+                            {%endif%}
+                        </div>
+                    </div>
+                    </div>
+                    
+            </div> 
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" style="top:25%;outline: none;" id="delete" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Suppression</h4>
+                </div>
+                <div class="modal-body">
+                    {{form(delete_form)}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script  type="text/javascript">
+
+$(document).ready(function() {
+    var objet = $('#objet').val();
+   if (objet === 'modifier'){
+        $('#modifier').removeClass('hidden');
+        $('#modifier').show();
+        $('#proroger').hide();
+        $('#proroger').addClass('hidden');
+    }
+    if (objet === 'proroger'){
+        $('#proroger').removeClass('hidden');
+        $('#proroger').show();
+        $('#modifier').hide();
+        $('#modifier').addClass('hidden');
+    }
+    if (objet === 'proroger et modifier'){
+        $('#modifier').removeClass('hidden');
+        $('#modifier').show();
+        $('#proroger').removeClass('hidden');
+        $('#proroger').show();
+    };
+});
+    
+</script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}   
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 page-header">
+                <h3>Choisissez un sous-modèle de fiche à créer.</h3>
+            </div>
+        </div>
+        <div class="row">
+            {% for sousType in sousTypes%}
+            <div class="col-md-3 imagecarre2">
+                        <a  data-placement="top" data-toggle="tooltip" title="{{sousType.description}}" role="button" href="{{ path([sousType.route ,'_new']|join, { 'id': sousType.id }) }}">{{sousType.nom}}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

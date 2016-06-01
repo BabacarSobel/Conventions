@@ -1,0 +1,30 @@
+soustype:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:SousType:index" }
+
+soustype_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:SousType:show" }
+
+soustype_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:SousType:new" }
+
+soustype_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:SousType:create" }
+    methods:  POST
+
+soustype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PCFicheBundle:SousType:edit" }
+
+soustype_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:SousType:update" }
+    methods:  [POST, PUT]
+
+soustype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:SousType:delete" }
+    methods:  [POST, DELETE]

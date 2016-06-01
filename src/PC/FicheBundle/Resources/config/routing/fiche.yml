@@ -1,0 +1,118 @@
+pc_fiche_fichemessage:
+    resource: "@PCFicheBundle/Resources/config/routing/fichemessage.yml"
+    prefix:   /fichemessage
+
+pc_fiche_departement:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/departement.yml"
+    prefix:   /departement
+
+pc_fiche_soustype:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/soustype.yml"
+    prefix:   /soustype
+
+pc_fiche_type:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/type.yml"
+    prefix:   /type
+
+pc_fiche_autre:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/autre.yml"
+    prefix:   /autre
+
+pc_fiche_fichier:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/fichier.yml"
+    prefix:   /fichier
+
+pc_fiche_avenant:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/avenant.yml"
+    prefix:   /avenant
+
+pc_fiche_template:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/template.yml"
+    prefix:   /template
+
+
+pc_fiche_alerte:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/alerte.yml"
+    prefix:   /alerte
+
+
+pc_fiche_pscati:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/pscati.yml"
+    prefix:   /pscati
+
+pc_fiche_pifelaboratoire:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/pifelaboratoire.yml"
+    prefix:   /pifelaboratoire
+
+pc_fiche_pifeclassique:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/pifeclassique.yml"
+    prefix:   /pifeclassique
+
+pc_fiche_madsalles:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/madsalles.yml"
+    prefix:   /madsalles
+
+pc_fiche_madevenementgratuit:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/madevenementgratuit.yml"
+    prefix:   /madevenementgratuit
+
+pc_fiche_export:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/export.yml"
+    prefix:   /export
+
+pc_fiche_chartepartenariat:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/chartepartenariat.yml"
+    prefix:   /chartepartenariat
+
+fiche:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Fiche:index" }
+
+fiche_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Fiche:show" }
+
+fiche_pdf:
+    path:     /pdf
+    defaults: { _controller: "PCFicheBundle:Fiche:pdf" }
+    
+fiche_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:Fiche:export" }
+    
+fiche_export_all:
+    path:     /exportAll
+    defaults: { _controller: "PCFicheBundle:Fiche:exportAll" }    
+
+    
+fiche_download:
+    pattern:  /download/{filename}
+    defaults: { _controller: "PCFicheBundle:Fiche:download" }
+    
+fiche_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:Fiche:new" }
+
+fiche_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:Fiche:create" }
+    methods:  POST
+
+fiche_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PCFicheBundle:Fiche:edit" }
+
+fiche_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Fiche:update" }
+    methods:  [POST, PUT]
+
+fiche_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Fiche:delete" }
+    methods:  [POST, DELETE]
+
+fiche_choosesubype:
+    path:     /{id}/choose
+    defaults: { _controller: "PCFicheBundle:Fiche:chooseSubType" }
+    

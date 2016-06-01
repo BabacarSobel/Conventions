@@ -1,0 +1,97 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div id="menu" class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    {% block barre %}
+                    {% endblock %}
+                </ul>
+            </div>
+            <div class="col-sm-9  col-md-10  main">
+                <h3>Edition de la fiche {{ entity.type.nom }}- {{ entity.sousType.nom }}- {{ entity.id }}</h3>
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                         <ul class="nav nav-tabs ">
+                            {% block tabs %}
+                            <li class="active"><a href="#tab_default_1" data-toggle="tab">Informations </a>
+                            </li>
+                            <li><a href="#tab_default_2" data-toggle="tab">Commentaires </a>
+                            </li>
+                            <li><a href="#tab_default_3" data-toggle="tab">Avenants</a>
+                            </li>
+                            <li>
+                            <a href="#tab_default_4" data-toggle="tab">Alertes </a>
+                            </li>
+                            <li>
+                            <a href="#tab_default_5" data-toggle="tab">Documents </a>
+                            </li>
+                            {% endblock %}
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_default_1">
+                                {% block content %}
+                                {% endblock %}
+                            </div>
+                            <div class="tab-pane" id="tab_default_2">
+                            </div>
+                            <div class="tab-pane" id="tab_default_3">
+                            </div>
+                            <div class="tab-pane" id="tab_default_4">
+                            </div>
+                            <div class="tab-pane" id="tab_default_5">
+                            </div>
+                            {% block more_content %}
+                            {% endblock %}        
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+    </div>
+    
+
+
+    <div class="modal fade" style="top:25%;outline: none;" id="delete" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Suppression</h4>
+                </div>
+                <div class="modal-body">
+                    {{form(delete_form)}}
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    
+    <script  type="text/javascript">
+    function determiner(){
+        var x = document.getElementById("pc_fichebundle_avenant_objet").selectedIndex;
+        var y = document.getElementById("pc_fichebundle_avenant_objet").options;
+        var choix = y[x].value;
+        alert(y[x].value);
+        if (choix === 'modifier'){
+            $('#modifier').removeClass('hidden');
+            $('#modifier').show();
+            $('#proroger').hide();
+            $('#proroger').addClass('hidden');
+        }
+        if (choix === 'proroger'){
+            $('#proroger').removeClass('hidden');
+            $('#proroger').show();
+            $('#modifier').hide();
+            $('#modifier').addClass('hidden');
+        }
+        if (choix === 'proroger et modifier'){
+            $('#modifier').removeClass('hidden');
+            $('#modifier').show();
+            $('#proroger').removeClass('hidden');
+            $('#proroger').show();
+        }
+    }
+</script>
+{% endblock %}

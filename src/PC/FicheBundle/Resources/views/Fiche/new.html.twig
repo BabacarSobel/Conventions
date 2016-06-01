@@ -1,0 +1,18 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}   
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 page-header">
+                <h3>Choisissez un modèle de fiche à créer.<h3>
+            </div>
+        </div>
+        <div class="row">
+            {% for type in types%}
+            <div class="col-md-3 imagecarre2">
+                        <a  data-placement="top" data-toggle="tooltip" title="{{type.description}}" role="button" href="{{ path('fiche_choosesubype',{'id': type.id }) }}">{{type.nom}}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

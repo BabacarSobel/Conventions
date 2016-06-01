@@ -1,0 +1,34 @@
+autre_download:
+    pattern:  /download/{filename}
+    defaults: { _controller: "PCFicheBundle:Autre:download" }
+    
+    
+autre_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:Autre:addFichierToRequest" }   
+    
+autre_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:Autre:addAvenantToRequest" }
+    
+autre_create:
+    path:     /{id}/create
+    defaults: { _controller: "PCFicheBundle:Autre:create" }
+    methods:  POST
+
+autre_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:Autre:showrequest" }
+    
+autre_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:Autre:request" }
+    
+autre_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:Autre:createRequest" }
+    methods:  POST
+    
+autre_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:Autre:sendFicheMessage" }

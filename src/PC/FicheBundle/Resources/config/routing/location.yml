@@ -1,0 +1,30 @@
+location:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Location:index" }
+
+location_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Location:show" }
+
+location_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:Location:new" }
+
+location_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:Location:create" }
+    methods:  POST
+
+location_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PCFicheBundle:Location:edit" }
+
+location_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Location:update" }
+    methods:  [POST, PUT]
+
+location_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Location:delete" }
+    methods:  [POST, DELETE]

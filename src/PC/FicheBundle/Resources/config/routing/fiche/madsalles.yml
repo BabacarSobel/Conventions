@@ -1,0 +1,90 @@
+madsalles:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:MADSalles:index" }
+
+madsalles_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:MADSalles:show" }
+    
+madsalles_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:MADSalles:export" }
+    
+madsalles_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:MADSalles:pdf" }
+    
+madsalles_new_fichier:
+    path:     /{id}/new_fichier
+    defaults: { _controller: "PCFicheBundle:MADSalles:addFichier" }
+    
+madsalles_new_avenant:
+    path:     /{id}/new_avenant
+    defaults: { _controller: "PCFicheBundle:MADSalles:addAvenant" }
+    
+    
+madsalles_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:MADSalles:addFichierToRequest" }
+    
+madsalles_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:MADSalles:addAvenantToRequest" }
+    
+
+madsalles_new_alert:
+    path:     /{id}/new_alert
+    defaults: { _controller: "PCFicheBundle:MADSalles:addAlert" }
+
+madsalles_new:
+    path:     /{id}/new
+    defaults: { _controller: "PCFicheBundle:MADSalles:new" }
+    
+madsalles_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:MADSalles:request" }
+    
+madsalles_create:
+    path:     /{id}/create
+    defaults: { _controller: "PCFicheBundle:MADSalles:create" }
+    methods:  POST
+
+madsalles_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "PCFicheBundle:MADSalles:edit" }
+
+madsalles_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:MADSalles:update" }
+    methods:  [POST, PUT]
+
+madsalles_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:MADSalles:delete" }
+    methods:  [POST, DELETE]
+    
+madsalles_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:MADSalles:showrequest" }
+
+madsalles_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:MADSalles:createRequest" }
+    methods:  POST
+    
+madsalles_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:MADSalles:sendFicheMessage" }
+    
+madsalles_action:
+    path:     /{id}/new_action
+    defaults: { _controller: "PCFicheBundle:MADSalles:createAction" }
+    
+madsalles_add_local:
+    path : /{id}/addLocal
+    defaults: { _controller: "PCFicheBundle:MADSalles:addLocal"}
+    methods : [POST,GET]
+    
+madsalles_word:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:MADSalles:word" }

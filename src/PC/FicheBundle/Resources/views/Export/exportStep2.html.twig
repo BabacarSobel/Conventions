@@ -1,0 +1,22 @@
+{% extends "PCFicheBundle::exportLayout.html.twig" %}
+
+{% block title %}{{ parent() }} - Export manager{% endblock %}
+
+{% block export %}            
+            <div class="row">
+                <div class="col-lg-12 page-header">
+                    <h3>Quel sous type de fiche souhaitez-vous exporter ?<h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 imagecarre2">
+                    <a  role="button" href="{{path("export_chooseColumns",{id: 0 , parentId: type.id})}}">TOUTES</a>
+                </div>
+                {% for sousType in sousTypes %}
+                <div class="col-md-3 imagecarre2">
+                            <a  role="button" href="{{path('export_chooseColumns',{id: sousType.id , parentId: type.id})}}">{{sousType.nom}}</a>
+                </div>
+                {% endfor %}
+            </div>
+
+{% endblock %}

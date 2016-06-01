@@ -1,0 +1,142 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Fiche</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Ficheavenant</th>
+                <td>{{ entity.ficheAvenant }}</td>
+            </tr>
+            <tr>
+                <th>Fichetype</th>
+                <td>{{ entity.ficheType }}</td>
+            </tr>
+            <tr>
+                <th>Ficheintitule</th>
+                <td>{{ entity.ficheIntitule }}</td>
+            </tr>
+            <tr>
+                <th>Ficheobjet</th>
+                <td>{{ entity.ficheObjet }}</td>
+            </tr>
+            <tr>
+                <th>Ficheetat</th>
+                <td>{{ entity.ficheEtat }}</td>
+            </tr>
+            <tr>
+                <th>Fichecocontractant</th>
+                <td>{{ entity.ficheCocontractant }}</td>
+            </tr>
+            <tr>
+                <th>Ficheformejuridiquecocontractant</th>
+                <td>{{ entity.ficheFormeJuridiqueCocontractant }}</td>
+            </tr>
+            <tr>
+                <th>Ficheadressesiege</th>
+                <td>{{ entity.ficheAdresseSiege }}</td>
+            </tr>
+            <tr>
+                <th>Fichenumerosiret</th>
+                <td>{{ entity.ficheNumeroSiret }}</td>
+            </tr>
+            <tr>
+                <th>Fichecodeape</th>
+                <td>{{ entity.ficheCodeApe }}</td>
+            </tr>
+            <tr>
+                <th>Fichetitrerepresentant</th>
+                <td>{{ entity.ficheTitreRepresentant }}</td>
+            </tr>
+            <tr>
+                <th>Fichenomrepresentant</th>
+                <td>{{ entity.ficheNomRepresentant }}</td>
+            </tr>
+            <tr>
+                <th>Ficheprenomrepresentant</th>
+                <td>{{ entity.fichePrenomRepresentant }}</td>
+            </tr>
+            <tr>
+                <th>Fichefonctionrepresentant</th>
+                <td>{{ entity.ficheFonctionRepresentant }}</td>
+            </tr>
+            <tr>
+                <th>Fichedemandeurpolytech</th>
+                <td>{{ entity.ficheDemandeurPolytech }}</td>
+            </tr>
+            <tr>
+                <th>Fichedateeffet</th>
+                <td>{{ entity.ficheDateEffet|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fichedatefin</th>
+                <td>{{ entity.ficheDateFin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fichetacitereconduction</th>
+                <td>{{ entity.ficheTaciteReconduction }}</td>
+            </tr>
+            <tr>
+                <th>Fichevalidationjuridique</th>
+                <td>{{ entity.ficheValidationJuridique|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fichevalidationdirection</th>
+                <td>{{ entity.ficheValidationDirection|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fichesignaturepolytech</th>
+                <td>{{ entity.ficheSignaturePolytech }}</td>
+            </tr>
+            <tr>
+                <th>Fichedatesignaturepolytech</th>
+                <td>{{ entity.ficheDateSignaturePolytech|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ficheactiondemandee</th>
+                <td>{{ entity.ficheActionDemandee }}</td>
+            </tr>
+            <tr>
+                <th>Fichesuiviactiontexte</th>
+                <td>{{ entity.ficheSuiviActionTexte }}</td>
+            </tr>
+            <tr>
+                <th>Fichesuiviactiondate</th>
+                <td>{{ entity.ficheSuiviActionDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ficheobservations</th>
+                <td>{{ entity.ficheObservations }}</td>
+            </tr>
+            <tr>
+                <th>Fichefluxfinancier</th>
+                <td>{{ entity.ficheFluxFinancier }}</td>
+            </tr>
+            <tr>
+                <th>Ficheresafonds</th>
+                <td>{{ entity.ficheResaFonds }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('fiche') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fiche_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    
+    
+{% endblock %}

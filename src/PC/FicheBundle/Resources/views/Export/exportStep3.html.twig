@@ -1,0 +1,26 @@
+
+{% extends "PCFicheBundle::exportLayout.html.twig" %}
+
+
+{% block export %}
+            {% if estVide == false %}
+                <div class='panel panel-info'>
+                    <div class='panel-heading'>Information</div>
+                    <div class='panel-body'>choisir les colonnes que vous souhaitez garder. Par défaut, toutes les colonnes sont choisies. </div>
+                </div>
+                <div class="row">
+                   {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                    {{ form_errors(form) }}
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+
+                </div>
+            {% else %}
+                <div class='panel panel-info'>
+                    <div class='panel-heading'>Information</div>
+                    <div class='panel-body'>Il y a 0 enregistrements dans ce type de fiches. </div>
+                </div>
+            {% endif %}
+
+
+{% endblock %}

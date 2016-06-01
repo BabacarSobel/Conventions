@@ -1,0 +1,109 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{# ce block est utilisé quand l'utilisateur est connecté #}
+{% block body %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Bienvenue !
+                    </h1>
+                </div>
+            </div>
+            
+            <div class="row">
+                {% if 'ROLE_ADMIN' in app.user.roles %}
+
+                <div id='fiches' class="col-md-3 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                    <a href="{{path("fiche")}}">
+                        LES FICHES
+                    </a>
+                </div>
+                {% endif %}   
+                <div id='demandes' class="col-md-3 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()' >
+                    <a href="{{path("demande")}}">
+                        LES DEMANDES
+                    </a>
+                </div>
+                {% if 'ROLE_ADMIN' in app.user.roles %}
+                <div id='templates' class="col-md-3 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                    <a href="#">
+                        LES TEMPLATES
+                    </a>
+                </div>
+                <div id='administration' class="col-md-3 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                    <a href="./admin">
+                        ADMINISTRATION
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="row">
+
+                <div id='info' class="col-md-3  hidden">
+                        <p class='panel-body pc_panel_blue_275' id='info_message'>
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            .position{
+
+            }
+
+        </script>
+
+        <script type='text/javascript'>
+            function displayInfo(id){
+                if(id.id == 'fiches'){
+                    $('#info').removeClass('hidden');
+                    
+                    document.getElementById('info_message').innerHTML  =  "Contient la liste de toutes les fiches avec toutes les informations. Dans ce repertoire on peut avoir une vue complète sur toutes les fiches.";
+                    $('#info').show();
+                }
+                if(id.id == 'demandes'){
+                    
+                    $("#info").removeClass('hidden');
+                    document.getElementById('info_message').innerHTML = 'Contient la liste de toutes les demandes que vous avez réalisées avec toutes les informations. Dans ce repertoire on peut avoir une vue complète sur toutes les fiches.';
+                    $("#info").show();
+                }
+                if(id.id == 'templates'){
+                    $("#info").show();
+                    $('#info').removeClass('hidden');
+                    document.getElementById('info_message').innerHTML ='En cours de réalisation.';
+                    $("#info").show();
+
+                }
+                if(id.id == 'administration'){
+                    $("#info").removeClass('hidden');;
+                   document.getElementById('info_message').innerHTML = 'Contient l\'interface d\'administration du site.';
+                   $("#info").show();
+                }
+                
+            }
+
+            function hideInfo(id){
+                $('#info').addClass('hidden');
+                $('#info').hide();
+            }
+
+        </script>
+{% endblock %}
+
+{# ce block est utilisé quand l'utilisateur n'est pas connecté #}
+{% block body2 %}
+        <div class="container">
+            <div class="jumbotron">
+                <h1 style="color: #004874;">POLYTECH conventions</h1><br>
+                <h1><small>Bienvenue !</small></h1><br>
+                <div class="row col-md-6">
+                    <a class="btn pc_skyblue_btn" href="{{path("fos_user_security_login")}}">se connecter</a>
+                    <a class="btn pc_skyblue_btn" href="{{path("fos_user_registration_register")}}">s'inscrire</a>
+                </div>
+            </div>
+        </div>              
+{% endblock %}
+

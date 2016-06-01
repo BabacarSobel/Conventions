@@ -1,0 +1,8 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+    <p> un pdf a été créé.</p>
+    <p>Voulez-vous le télécharger <a href="{{path("fiche_download",, { 'filename': filename })}}">ici</a></p>
+  
+{% endblock %}
+

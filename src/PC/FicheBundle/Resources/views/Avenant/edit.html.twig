@@ -1,0 +1,132 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <div class="container container-fluid">
+    <div class="row">
+        <div id="bouton" class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a id="" name="" class="pc_sidebar_element" href="{{ path('chartepartenariat_pdf', { 'id': entity.id }) }}">générer avenant<span class="sr-only">(current)</span></a></li>
+                <li><a class="pc_sidebar_element" href="{{ path('avenant_show', { 'id': entity.id }) }}">Retour à la vue</a></li>
+                <li>{{ form(delete_form) }}</li>
+                <li><a id="" name="" class="pc_sidebar_element" href="{{ path('fiche') }}"> Retour à la fiche</a></a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9  col-md-10  main">
+            {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
+            {# Les erreurs g�n�rales du formulaire. #}
+            {{ form_errors(edit_form) }}
+            <div class ="pc_info_group">
+                <div class="form-group">
+                    {{ form_label(edit_form.typePartenaire, "Intitulé", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.typePartenaire) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.typePartenaire, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.objet, "Objet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.objet) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.objet, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.motif, "Motif", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.motif) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.motif, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                <div id='modifier' class='hidden'>
+                <div class="form-group">
+                    {{ form_label(edit_form.numeroParagrapheModifie, "Numéro de paragraphe modifié", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.numeroParagrapheModifie) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.numeroParagrapheModifie, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.numeroArticleModifie, "Numéro de l'article modifié", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.numeroArticleModifie) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.numeroArticleModifie, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.intituleArticleModifie, "Intitulé de l'article modifié", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.intituleArticleModifie) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.intituleArticleModifie, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.nouveauTexte, "Nouveau texte", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.nouveauTexte) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.nouveauTexte, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                </div>
+                <div id='proroger' class='hidden'>
+                <div class="form-group">
+                    {{ form_label(edit_form.numeroArticleDuree, "Numéro de l'article Durée", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.numeroArticleDuree) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.numeroArticleDuree, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.intituleArticleDuree, "Intitulé de l'article Durée", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.intituleArticleDuree) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.intituleArticleDuree, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.nbMoisProrogation, "Nombre de mois de prorogation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.nbMoisProrogation) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.nbMoisProrogation, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.dateExpiration, "Date d'expiration", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_errors(edit_form.dateExpiration) }}
+                    <div class="col-sm-4">
+                    {{ form_widget(edit_form.dateExpiration, {'attr': {'class': ''}})}}
+                    </div>
+                </div>
+                </div>
+                                   {{ form_rest(edit_form) }}
+
+                {# Fermeture de la balise <form> du formulaire HTML #}
+
+                {{ form_end(edit_form) }}
+            </div>
+<script  type="text/javascript">
+
+$(document).ready(function() {
+    var objet = $('#pc_fichebundle_avenant_objet').val();
+   if (objet === 'modifier'){
+        $('#modifier').removeClass('hidden');
+        $('#modifier').show();
+        $('#proroger').hide();
+        $('#proroger').addClass('hidden');
+    }
+    if (objet === 'proroger'){
+        $('#proroger').removeClass('hidden');
+        $('#proroger').show();
+        $('#modifier').hide();
+        $('#modifier').addClass('hidden');
+    }
+    if (objet === 'proroger et modifier'){
+        $('#modifier').removeClass('hidden');
+        $('#modifier').show();
+        $('#proroger').removeClass('hidden');
+        $('#proroger').show();
+    };
+});
+    
+</script>
+
+{% endblock %}

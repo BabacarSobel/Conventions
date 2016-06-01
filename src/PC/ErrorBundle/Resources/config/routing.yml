@@ -1,0 +1,11 @@
+error_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ErrorBundle:Default:index }
+
+error_403:
+    path:     /403
+    defaults: { _controller: ErrorBundle:Default:error403 }
+
+error_404:
+    path:     /404
+    defaults: { _controller: ErrorBundle:Default:error404 }
