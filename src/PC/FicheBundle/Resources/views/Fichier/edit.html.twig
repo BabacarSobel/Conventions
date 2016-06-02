@@ -1,14 +1,14 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block body -%}
-    <h1>Fichier edit</h1>
+    <h3>Veillez choisir le fichier de remplacement.</h3>
 
     {{ form(edit_form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('fichier') }}">
-            Back to the list
+            Retour à la liste des fichiers
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>

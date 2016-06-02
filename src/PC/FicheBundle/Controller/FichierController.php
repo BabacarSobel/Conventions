@@ -67,7 +67,7 @@ class FichierController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -147,7 +147,7 @@ class FichierController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Modifier'));
 
         return $form;
     }
@@ -171,7 +171,9 @@ class FichierController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Fichier modifié avec succès');
             return $this->redirect($this->generateUrl('fichier_edit', array('id' => $id)));
         }
 
@@ -200,6 +202,9 @@ class FichierController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Fichier supprimé avec succès');
         }
 
         return $this->redirect($this->generateUrl('pc_home'));

@@ -4,3 +4,4 @@
 /files/
 /app/config/parameters.yml
 /app/config/security.yml
+/app/cache/
