@@ -1,36 +1,20 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block body -%}
-    <h1>Fichier</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ entity.nom }}</td>
-            </tr>
-            <tr>
-                <th>Datedecreation</th>
-                <td>{{ entity.dateDeCreation|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('fichier') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('fichier_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    
+    <div class="row">
+        <div id="bouton" class="col-sm-12 col-md-2 col-lg-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="{{ path('fiche_download', { 'filename': entity.nom }) }}">Télécharger</a></li>
+                <li><a href="{{ path('pc_home') }}">Retour</a></li>
+                <li><a href="{{ path('fichier_edit', { 'id': entity.id }) }}">Remplacer fichier</a>  </li>
+                <li>{{ form(delete_form) }}</li>
+            </ul>
+            
+        </div>
+        <div class="col-sm-12 col-md-10 col-lg-10">
+            <h3>Fichier {{ entity.nom }}<small> du {{ entity.dateDeCreation|date('Y-m-d H:i') }}</small></h3>
+            <p>{{ entity.nom }}</p>
+        </div>
+    </div>
 {% endblock %}

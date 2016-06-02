@@ -10,29 +10,28 @@
                     <h1 class="page-header">Bienvenue !
                     </h1>
                 </div>
-            </div>
-            
-            <div class="row">
+            </div>          
+            <div class="row col-lg-8 col-md-8">
                 {% if 'ROLE_ADMIN' in app.user.roles %}
 
-                <div id='fiches' class="col-md-3 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                <div id='fiches' class="col-sm-12 col-md-6 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
                     <a href="{{path("fiche")}}">
                         LES FICHES
                     </a>
                 </div>
                 {% endif %}   
-                <div id='demandes' class="col-md-3 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()' >
+                <div id='demandes' class="col-sm-12 col-md-6 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()' >
                     <a href="{{path("demande")}}">
                         LES DEMANDES
                     </a>
                 </div>
                 {% if 'ROLE_ADMIN' in app.user.roles %}
-                <div id='templates' class="col-md-3 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                <div id='templates' class="col-sm-12 col-md-6 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
                     <a href="#">
                         LES TEMPLATES
                     </a>
                 </div>
-                <div id='administration' class="col-md-3 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                <div id='administration' class="col-sm-12 col-md-6 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
                     <a href="./admin">
                         ADMINISTRATION
                     </a>

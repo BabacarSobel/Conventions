@@ -192,11 +192,8 @@ class FichierController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-			echo 'ici';
-			
             $entity = $em->getRepository('PCFicheBundle:Fichier')->find($id);
 			echo $entity->getNom();
-			die();
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Fichier entity.');
             }
@@ -205,7 +202,7 @@ class FichierController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('fichier'));
+        return $this->redirect($this->generateUrl('pc_home'));
     }
 
     /**
@@ -220,7 +217,7 @@ class FichierController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('fichier_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()
         ;
     }
