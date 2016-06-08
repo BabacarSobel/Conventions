@@ -83,6 +83,8 @@ vich_uploader:
             
             
 genemu_form:
+    tinymce:
+        theme:   modern
     file:
         swf: /uploadify/uploadify.swf      
     date: ~
@@ -94,6 +96,7 @@ genemu_form:
             width: element
             allowClear: false
             minimumInputLength: 0
+    
             
 # fos user : sécurité des utilisateurs    
 fos_user:

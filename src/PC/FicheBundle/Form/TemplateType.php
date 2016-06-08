@@ -15,7 +15,7 @@ class TemplateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
+            ->add('nom','genemu_tinymce')
         ;
     }
     

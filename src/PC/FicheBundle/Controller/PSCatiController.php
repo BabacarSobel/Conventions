@@ -670,6 +670,8 @@ class PSCatiController extends Controller
         $entity = $em->getRepository('PCFicheBundle:PSCati')->find($id);
         $avenants = $em->getRepository('PCFicheBundle:Avenant')->findBy(array('psCati' => $id));
         $fichiers = $em->getRepository('PCFicheBundle:Fichier')->findBy(array('psCati' => $id));
+        $actions = $em->getRepository('PCFicheBundle:Action')->findBy(array('psCati' => $id));
+        $messages = $em->getRepository('PCFicheBundle:FicheMessage')->findBy(array('psCati' => $id));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find PSCati entity.');
@@ -679,9 +681,10 @@ class PSCatiController extends Controller
         $avenantForm = $this->addAvenantForm($avenant,$id);
         $fichier = new Fichier();
         $fichierForm = $this->addFichierForm($fichier,$id);
-        $messages = $em->getRepository('PCFicheBundle:FicheMessage')->findBy(array('psCati' => $id));
         $message = new FicheMessage();
         $messageForm = $this->sendFicheMessageForm($message,$id);
+        $action = new \PC\FicheBundle\Entity\Action();
+        $actionForm = $this->createActionForm($action,$id);
 
         return $this->render('PCFicheBundle:PSCati:showrequest.html.twig', array(
             'entity'      => $entity,
@@ -690,7 +693,9 @@ class PSCatiController extends Controller
             'avenant_form' => $avenantForm->createView(),
             'fichier_form' => $fichierForm->createView(),
             'messages' => $messages,
-            'messageForm' => $messageForm->createView()
+            'messageForm' => $messageForm->createView(),
+            'actions' => $actions,
+            'actionForm' => $actionForm->createView()
         ));
     }
 

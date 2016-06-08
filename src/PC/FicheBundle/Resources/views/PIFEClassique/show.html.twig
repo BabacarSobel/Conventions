@@ -3,6 +3,7 @@
 {% block barre -%}
         <li><a id="" name="" class="pc_sidebar_element" href="{{ path('pifeclassique_pdf', { 'id': entity.id }) }}">Générer une convention PDF <span class="fa fa-download"></span></a></li>
         <li><a id="" name="" class="pc_sidebar_element" href="{{ path('pifeclassique_word', { 'id': entity.id }) }}">Générer une convention Word <span class="fa fa-download"></span></a></li>
+        <li><a id="" name="" class="pc_sidebar_element" href="{{ path('pifeclassique_editconvention', { 'id': entity.id }) }}"> Editer la convention</a> </li>
         <li><a id="" name="" class="pc_sidebar_element" href="{{ path('pifeclassique_edit', { 'id': entity.id }) }}"> Editer</a> </li>
         <li><a class="pc_sidebar_element" data-placement="top" data-toggle="modal" data-target='#delete'>Supprimer</a></li>
         <li><a id="" name="" class="pc_sidebar_element" href="{{ path('fiche') }}"> Retour à la liste</a></a></li>

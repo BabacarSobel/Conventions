@@ -149,6 +149,19 @@
     </div>
     
     {% block modals %}
+        <div class="modal fade" style="top:25%;outline: none;" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog" style="width:50%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Suppression fiche</h4>
+                </div>
+                <div class="modal-body">
+                       {{form(delete_form)}}
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" style="top:25%;outline: none;" id="new_avenant" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
         <div class="modal-dialog" style="width:50%;">
             <div class="modal-content">

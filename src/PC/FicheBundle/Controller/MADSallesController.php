@@ -761,6 +761,8 @@ class MADSallesController extends DefaultController
         $avenants = $em->getRepository('PCFicheBundle:Avenant')->findBy(array('madSalles' => $id));
         $fichiers = $em->getRepository('PCFicheBundle:Fichier')->findBy(array('madSalles' => $id));
         $locaux = $em->getRepository('PCFicheBundle:Location')->findBy(array('madSalles' => $id));
+        $actions = $em->getRepository('PCFicheBundle:Action')->findBy(array('madSalles' => $id));
+        $messages = $em->getRepository('PCFicheBundle:FicheMessage')->findBy(array('madSalles' => $id));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find MADSalles entity.');
@@ -770,11 +772,10 @@ class MADSallesController extends DefaultController
         $avenantForm = $this->addAvenantToRequestForm($avenant,$id);
         $fichier = new Fichier();
         $fichierForm = $this->addFichierToRequestForm($fichier,$id);
-        
-        $messages = $em->getRepository('PCFicheBundle:FicheMessage')->findBy(array('madSalles' => $id));
         $message = new FicheMessage();
         $messageForm = $this->sendFicheMessageForm($message,$id);
-        
+        $action = new \PC\FicheBundle\Entity\Action();
+        $actionForm = $this->createActionForm($action,$id);
         $locauxDisponibles = $this->addLocalForm($id);
 
         return $this->render('PCFicheBundle:MADSalles:showrequest.html.twig', array(
@@ -786,6 +787,8 @@ class MADSallesController extends DefaultController
             'fichier_form' => $fichierForm->createView(),
             'messages' => $messages,
             'messageForm' => $messageForm->createView(),
+            'actions' => $actions,
+            'actionForm' => $actionForm->createView(),
             'locauxDisponibles' => $locauxDisponibles->createView(),
         ));
     }

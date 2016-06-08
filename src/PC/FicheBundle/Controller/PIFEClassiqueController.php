@@ -17,6 +17,8 @@ use PC\FicheBundle\Form\AvenantType;
 use PC\FicheBundle\Form\FicheMessageType;
 use PC\FicheBundle\Entity\FicheMessage;
 use PC\FicheBundle\Form\ActionType;
+use PC\FicheBundle\Form\EditConventionType;
+
 /**
  * PIFEClassique controller.
  *
@@ -666,6 +668,8 @@ class PIFEClassiqueController extends DefaultController
         $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
         $avenants = $em->getRepository('PCFicheBundle:Avenant')->findBy(array('pifeClassique' => $id));
         $fichiers = $em->getRepository('PCFicheBundle:Fichier')->findBy(array('pifeClassique' => $id));
+        $messages = $em->getRepository('PCFicheBundle:FicheMessage')->findBy(array('pifeClassique' => $id));
+        $actions = $em->getRepository('PCFicheBundle:Action')->findBy(array('pifeClassique' => $id));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find PIFEClassique entity.');
@@ -675,9 +679,10 @@ class PIFEClassiqueController extends DefaultController
         $avenantForm = $this->addAvenantToRequestForm($avenant,$id);
         $fichier = new Fichier();
         $fichierForm = $this->addFichierToRequestForm($fichier,$id);
-        $messages = $em->getRepository('PCFicheBundle:FicheMessage')->findBy(array('pifeClassique' => $id));
         $message = new FicheMessage();
         $messageForm = $this->sendFicheMessageForm($message,$id);
+        $action = new \PC\FicheBundle\Entity\Action();
+        $actionForm = $this->createActionForm($action,$id);   
 
         return $this->render('PCFicheBundle:PIFEClassique:showrequest.html.twig', array(
             'entity'      => $entity,
@@ -686,7 +691,9 @@ class PIFEClassiqueController extends DefaultController
             'avenant_form' => $avenantForm->createView(),
             'fichier_form' => $fichierForm->createView(),
             'messages' => $messages,
-            'messageForm' => $messageForm->createView()
+            'messageForm' => $messageForm->createView(),
+            'actions' => $actions,
+            'actionForm' => $actionForm->createView()
         ));
     }
 
@@ -801,5 +808,40 @@ class PIFEClassiqueController extends DefaultController
             ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()
         ;
+    }
+    
+    public function editConventionAction(Request $request,$id){
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+        $form = $this->createEditConventionForm($entity,$id);
+        
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find PIFEClassique entity.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
+        }
+        
+        return $this->render('PCFicheBundle:PIFEClassique:editconvention.html.twig', array(
+            'entity'      => $entity,
+            'form'   => $form->createView(),
+        ));
+        
+    }
+    
+    private function createEditConventionForm(PIFEClassique $entity,$id){
+        $form = $this->createForm(new EditConventionType(), null, array(
+        'action' => $this->generateUrl('pifeclassique_editconvention',array("id" => $id)),
+        'method' => 'POST',
+        ));
+        $form->add('submit', 'submit', array('label' => 'Modifier'));
+        return $form;
     }
 }

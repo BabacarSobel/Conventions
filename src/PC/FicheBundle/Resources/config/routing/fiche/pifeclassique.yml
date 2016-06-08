@@ -53,6 +53,10 @@ pifeclassique_create:
     defaults: { _controller: "PCFicheBundle:PIFEClassique:create" }
     methods:  POST
 
+pifeclassique_editconvention:
+    path:     /editionconvention/{id}
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:editConvention" }
+    
 pifeclassique_edit:
     path:     /edit/{id}
     defaults: { _controller: "PCFicheBundle:PIFEClassique:edit" }
