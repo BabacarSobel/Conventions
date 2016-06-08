@@ -22,35 +22,35 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2f6cd2bbff423c880db44e19c756db1fcbe693c1b363c3637754b182a298166d = $this->env->getExtension("native_profiler");
-        $__internal_2f6cd2bbff423c880db44e19c756db1fcbe693c1b363c3637754b182a298166d->enter($__internal_2f6cd2bbff423c880db44e19c756db1fcbe693c1b363c3637754b182a298166d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PCFicheBundle:Fiche:index.html.twig"));
+        $__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633 = $this->env->getExtension("native_profiler");
+        $__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633->enter($__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PCFicheBundle:Fiche:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_2f6cd2bbff423c880db44e19c756db1fcbe693c1b363c3637754b182a298166d->leave($__internal_2f6cd2bbff423c880db44e19c756db1fcbe693c1b363c3637754b182a298166d_prof);
+        $__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633->leave($__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_a435f030c646b805fa314324cc9ae3ea9a45dfb989b31c9d28aa501fc479ec80 = $this->env->getExtension("native_profiler");
-        $__internal_a435f030c646b805fa314324cc9ae3ea9a45dfb989b31c9d28aa501fc479ec80->enter($__internal_a435f030c646b805fa314324cc9ae3ea9a45dfb989b31c9d28aa501fc479ec80_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0 = $this->env->getExtension("native_profiler");
+        $__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0->enter($__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         $this->displayParentBlock("title", $context, $blocks);
         echo "- liste des fiches
 ";
         
-        $__internal_a435f030c646b805fa314324cc9ae3ea9a45dfb989b31c9d28aa501fc479ec80->leave($__internal_a435f030c646b805fa314324cc9ae3ea9a45dfb989b31c9d28aa501fc479ec80_prof);
+        $__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0->leave($__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_4567ed5ae08f334cfc13bd770a906bafec8d3735c7109be05bc117ebc66202b5 = $this->env->getExtension("native_profiler");
-        $__internal_4567ed5ae08f334cfc13bd770a906bafec8d3735c7109be05bc117ebc66202b5->enter($__internal_4567ed5ae08f334cfc13bd770a906bafec8d3735c7109be05bc117ebc66202b5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4 = $this->env->getExtension("native_profiler");
+        $__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4->enter($__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         echo "        
     <div class=\"container container-fluid\">
@@ -65,6 +65,7 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
         // line 13
         echo $this->env->getExtension('routing')->getPath("export");
         echo "'>Exporter <span class=\"fa fa-file\"></span></a>
+                <a data-toggle=\"modal\" data-target=\"#autres2\" title=\"Voir la liste des avenants, fichiers, etc...\" class='btn pc_skyblue_btn' style=\"font-size: 150%; margin-bottom: 2%;\">Autres listes </a>
             </div>
         </div>
         <div class=\"row\">
@@ -93,61 +94,61 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
                         </thead>
                         <tbody>
                             ";
-        // line 41
+        // line 42
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["entitiesNonAssignees"]) ? $context["entitiesNonAssignees"] : $this->getContext($context, "entitiesNonAssignees")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 42
+            // line 43
             echo "                                <tr>
                                     <td>";
-            // line 43
+            // line 44
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateCreation", array()), "Ymd"), "html", null, true);
             echo "</td>
                                     <td><a href=\"";
-            // line 44
+            // line 45
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\"> ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "id", array()), "html", null, true);
             echo "</a></td>
                                     <td><a href=\"";
-            // line 45
+            // line 46
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["entity"], "type", array()), "nom", array()), "html", null, true);
             echo "</a></td>
                                     <td><a href=\"";
-            // line 46
+            // line 47
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["entity"], "sousType", array()), "nom", array()), "html", null, true);
             echo "</a></td>
                                     <td><a href=\"";
-            // line 47
+            // line 48
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "intitule", array()), "html", null, true);
             echo "</a></td>
                                     <td>";
-            // line 48
+            // line 49
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "etatConvention", array()), "html", null, true);
             echo "</td>
                                     <td>";
-            // line 49
+            // line 50
             if ($this->getAttribute($context["entity"], "dateEffet", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateEffet", array()), "d/m/Y"), "html", null, true);
             }
             echo "</td>
                                     <td>";
-            // line 50
+            // line 51
             if ($this->getAttribute($context["entity"], "dateEcheance", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateEcheance", array()), "d/m/Y"), "html", null, true);
             }
             echo "</td>
                                     <td>
                                         ";
-            // line 52
+            // line 53
             if (($this->getAttribute($context["entity"], "nombreNouveauxAvenants", array()) > 0)) {
-                // line 53
+                // line 54
                 echo "                                            <a  data-placement=\"top\" data-toggle=\"tooltip\" title=\"Avenants\" class=\"btn pc_skyblue_btn btn-xs\" href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
                 echo "\" ><span class=\"label label-primary\">";
@@ -155,10 +156,10 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
                 echo "</span></a>
                                         ";
             }
-            // line 55
+            // line 56
             echo "                                    </td> 
                                     <td><a data-placement=\"top\" data-toggle=\"tooltip\" title=\"Editer\" class=\"btn pc_skyblue_btn btn-xs\" href=\"";
-            // line 56
+            // line 57
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_edit")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" ><span class=\"fa fa-edit\"></span></a></td>
                                 </tr>
@@ -167,7 +168,7 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 59
+        // line 60
         echo "                        </tbody>
                     </table>
                 </div>
@@ -189,65 +190,65 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
                         </thead>
                         <tbody>
                             ";
-        // line 79
+        // line 80
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["entitiesEnCours"]) ? $context["entitiesEnCours"] : $this->getContext($context, "entitiesEnCours")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 80
+            // line 81
             echo "                                <tr>
                                     <td>";
-            // line 81
+            // line 82
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateCreation", array()), "Ymd"), "html", null, true);
             echo "</td>
                                     <td><a href=\"";
-            // line 82
+            // line 83
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "id", array()), "html", null, true);
             echo "</a></td>
                                     <td><a href=\"";
-            // line 83
+            // line 84
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["entity"], "type", array()), "nom", array()), "html", null, true);
             echo "</a></td>
                                     <td><a href=\"";
-            // line 84
+            // line 85
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["entity"], "sousType", array()), "nom", array()), "html", null, true);
             echo "</a></td>
                                     <td><a href=\"";
-            // line 85
+            // line 86
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "intitule", array()), "html", null, true);
             echo "</a></td>
                                     <td>";
-            // line 86
+            // line 87
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "etatConvention", array()), "html", null, true);
             echo "</td>
                                     <td>";
-            // line 87
+            // line 88
             if ($this->getAttribute($context["entity"], "dateEffet", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateEffet", array()), "d/m/Y"), "html", null, true);
             }
             echo "</td>
                                     <td>";
-            // line 88
+            // line 89
             if ($this->getAttribute($context["entity"], "dateEcheance", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateEcheance", array()), "d/m/Y"), "html", null, true);
             }
             echo "</td>
                                     <td><a data-placement=\"top\" data-toggle=\"tooltip\" title=\"Editer\" class=\"btn pc_skyblue_btn btn-xs\" href=\"";
-            // line 89
+            // line 90
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_edit")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" ><span class=\"fa fa-edit\"></span></a></td>
                                     <td>
                                         ";
-            // line 91
+            // line 92
             if (($this->getAttribute($context["entity"], "nombreNouveauxAvenants", array()) > 0)) {
-                // line 92
+                // line 93
                 echo "                                            <a  data-placement=\"top\" data-toggle=\"tooltip\" title=\"Avenants\" class=\"btn pc_skyblue_btn btn-xs\" href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
                 echo "\" ><span class=\"label label-primary\">";
@@ -255,7 +256,7 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
                 echo "</span></a>
                                         ";
             }
-            // line 94
+            // line 95
             echo "                                    </td>
                                 </tr>
                             ";
@@ -263,7 +264,7 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 97
+        // line 98
         echo "                        </tbody>
                     </table>
                 </div>
@@ -285,61 +286,61 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
                         </thead>
                         <tbody>
                             ";
-        // line 117
+        // line 118
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["entitiesEnVigueur"]) ? $context["entitiesEnVigueur"] : $this->getContext($context, "entitiesEnVigueur")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 118
+            // line 119
             echo "                                <tr>
                                     <td>";
-            // line 119
+            // line 120
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateCreation", array()), "Ymd"), "html", null, true);
             echo "</td>
                                     <td><a href=\"";
-            // line 120
+            // line 121
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "id", array()), "html", null, true);
             echo "</a></td>
                                     <td><a href=\"";
-            // line 121
+            // line 122
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["entity"], "type", array()), "nom", array()), "html", null, true);
             echo "</a></td>
                                     <td><a href=\"";
-            // line 122
+            // line 123
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["entity"], "sousType", array()), "nom", array()), "html", null, true);
             echo "</a></td>
                                     <td><a href=\"";
-            // line 123
+            // line 124
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" >";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "intitule", array()), "html", null, true);
             echo "</a></td>
                                     <td>";
-            // line 124
+            // line 125
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "etatConvention", array()), "html", null, true);
             echo "</td>
                                     <td>";
-            // line 125
+            // line 126
             if ($this->getAttribute($context["entity"], "dateEffet", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateEffet", array()), "d/m/Y"), "html", null, true);
             }
             echo "</td>
                                     <td>";
-            // line 126
+            // line 127
             if ($this->getAttribute($context["entity"], "dateEcheance", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateEcheance", array()), "d/m/Y"), "html", null, true);
             }
             echo "</td>
                                     <td>
                                         ";
-            // line 128
+            // line 129
             if (($this->getAttribute($context["entity"], "nombreNouveauxAvenants", array()) > 0)) {
-                // line 129
+                // line 130
                 echo "                                        <a  data-placement=\"top\" data-toggle=\"tooltip\" title=\"Avenants\" class=\"btn pc_skyblue_btn btn-xs\" href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_show")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
                 echo "\" ><span class=\"label label-primary\">";
@@ -347,10 +348,10 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
                 echo "</span></a>
                                         ";
             }
-            // line 131
+            // line 132
             echo "                                    </td>
                                     <td><a data-placement=\"top\" data-toggle=\"tooltip\" title=\"Editer\" class=\"btn pc_skyblue_btn btn-xs\" href=\"";
-            // line 132
+            // line 133
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath(twig_join_filter(array(0 => $this->getAttribute($context["entity"], "route", array()), 1 => "_edit")), array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\" ><span class=\"fa fa-edit\"></span></a></td>
                                 </tr>
@@ -359,13 +360,40 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 135
+        // line 136
         echo "                        </tbody>
                     </table>
                 </div>
             </div>            
         </div>
     </div>
+    
+    <div class=\"modal\" style=\"top:25%\" id=\"autres2\"  aria-hidden=\"true\">
+        <div class=\"modal-dialog\">
+            <div class=\"modal-content\">
+                <div class=\"modal-header\">
+                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button>
+                    <h4 class=\"modal-title custom_align\" id=\"Heading\">Autres listes</h4>
+                </div>
+                <div class=\"modal-body\">
+                    <ul>
+                        <li><a href=\"";
+        // line 152
+        echo $this->env->getExtension('routing')->getPath("avenant");
+        echo "\">Les avenants</a></li>
+                        <li><a href=\"";
+        // line 153
+        echo $this->env->getExtension('routing')->getPath("fichier");
+        echo "\">Les fichiers</a></li>
+                        <li><a href=\"";
+        // line 154
+        echo $this->env->getExtension('routing')->getPath("alerte");
+        echo "\" >Les alertes</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> 
                     
     <script>
         \$(document).ready( function () {
@@ -376,7 +404,7 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
     </script>
 ";
         
-        $__internal_4567ed5ae08f334cfc13bd770a906bafec8d3735c7109be05bc117ebc66202b5->leave($__internal_4567ed5ae08f334cfc13bd770a906bafec8d3735c7109be05bc117ebc66202b5_prof);
+        $__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4->leave($__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4_prof);
 
     }
 
@@ -392,7 +420,7 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
 
     public function getDebugInfo()
     {
-        return array (  363 => 135,  354 => 132,  351 => 131,  343 => 129,  341 => 128,  334 => 126,  328 => 125,  324 => 124,  318 => 123,  312 => 122,  306 => 121,  300 => 120,  296 => 119,  293 => 118,  289 => 117,  267 => 97,  259 => 94,  251 => 92,  249 => 91,  244 => 89,  238 => 88,  232 => 87,  228 => 86,  222 => 85,  216 => 84,  210 => 83,  204 => 82,  200 => 81,  197 => 80,  193 => 79,  171 => 59,  162 => 56,  159 => 55,  151 => 53,  149 => 52,  142 => 50,  136 => 49,  132 => 48,  126 => 47,  120 => 46,  114 => 45,  108 => 44,  104 => 43,  101 => 42,  97 => 41,  66 => 13,  62 => 12,  50 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  390 => 154,  386 => 153,  382 => 152,  364 => 136,  355 => 133,  352 => 132,  344 => 130,  342 => 129,  335 => 127,  329 => 126,  325 => 125,  319 => 124,  313 => 123,  307 => 122,  301 => 121,  297 => 120,  294 => 119,  290 => 118,  268 => 98,  260 => 95,  252 => 93,  250 => 92,  245 => 90,  239 => 89,  233 => 88,  229 => 87,  223 => 86,  217 => 85,  211 => 84,  205 => 83,  201 => 82,  198 => 81,  194 => 80,  172 => 60,  163 => 57,  160 => 56,  152 => 54,  150 => 53,  143 => 51,  137 => 50,  133 => 49,  127 => 48,  121 => 47,  115 => 46,  109 => 45,  105 => 44,  102 => 43,  98 => 42,  66 => 13,  62 => 12,  50 => 7,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends '::layout.html.twig' %}*/
@@ -408,6 +436,7 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
 /*                 <h1>Liste des fiches.</h1>*/
 /*                 <a data-placement="top" data-toggle="tooltip" title="Créer une nouvelle fiche" class="btn pc_skyblue_btn" style="font-size: 150%; margin-bottom: 2%;" href="{{ path('fiche_new') }}">Créer <span class="fa fa-plus"></span></a>*/
 /*                 <a data-placement="top" data-toggle="tooltip" title="Exporter les fiches en csv ou en pdf" class='btn pc_skyblue_btn' style="font-size: 150%; margin-bottom: 2%;" href='{{path('export')}}'>Exporter <span class="fa fa-file"></span></a>*/
+/*                 <a data-toggle="modal" data-target="#autres2" title="Voir la liste des avenants, fichiers, etc..." class='btn pc_skyblue_btn' style="font-size: 150%; margin-bottom: 2%;">Autres listes </a>*/
 /*             </div>*/
 /*         </div>*/
 /*         <div class="row">*/
@@ -535,6 +564,24 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
 /*             </div>            */
 /*         </div>*/
 /*     </div>*/
+/*     */
+/*     <div class="modal" style="top:25%" id="autres2"  aria-hidden="true">*/
+/*         <div class="modal-dialog">*/
+/*             <div class="modal-content">*/
+/*                 <div class="modal-header">*/
+/*                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>*/
+/*                     <h4 class="modal-title custom_align" id="Heading">Autres listes</h4>*/
+/*                 </div>*/
+/*                 <div class="modal-body">*/
+/*                     <ul>*/
+/*                         <li><a href="{{ path('avenant') }}">Les avenants</a></li>*/
+/*                         <li><a href="{{ path('fichier') }}">Les fichiers</a></li>*/
+/*                         <li><a href="{{ path('alerte') }}" >Les alertes</a></li>*/
+/*                     </ul>*/
+/*                 </div>*/
+/*             </div>*/
+/*         </div>*/
+/*     </div> */
 /*                     */
 /*     <script>*/
 /*         $(document).ready( function () {*/

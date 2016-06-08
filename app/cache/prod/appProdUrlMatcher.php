@@ -964,9 +964,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                         }
                         not_pifeclassique_create:
 
-                        // pifeclassique_edit
-                        if (0 === strpos($pathinfo, '/fiche/pifeclassique/edit') && preg_match('#^/fiche/pifeclassique/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::editAction',));
+                        if (0 === strpos($pathinfo, '/fiche/pifeclassique/edit')) {
+                            // pifeclassique_editconvention
+                            if (0 === strpos($pathinfo, '/fiche/pifeclassique/editionconvention') && preg_match('#^/fiche/pifeclassique/editionconvention/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_editconvention')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::editConventionAction',));
+                            }
+
+                            // pifeclassique_edit
+                            if (preg_match('#^/fiche/pifeclassique/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::editAction',));
+                            }
+
                         }
 
                         // pifeclassique_update
@@ -2073,17 +2081,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     return $this->redirect($pathinfo.'/', 'user');
                 }
 
-                return array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::indexAction',  '_route' => 'user',);
+                return array (  '_controller' => 'PCUserBundle:User:index',  '_route' => 'user',);
             }
 
             // user_show
             if (preg_match('#^/user/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_show')), array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::showAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_show')), array (  '_controller' => 'PCUserBundle:User:show',));
             }
 
             // user_new
             if ($pathinfo === '/user/new') {
-                return array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::newAction',  '_route' => 'user_new',);
+                return array (  '_controller' => 'PCUserBundle:User:new',  '_route' => 'user_new',);
             }
 
             // user_create
@@ -2093,13 +2101,13 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     goto not_user_create;
                 }
 
-                return array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::createAction',  '_route' => 'user_create',);
+                return array (  '_controller' => 'PCUserBundle:User:create',  '_route' => 'user_create',);
             }
             not_user_create:
 
             // user_edit
             if (preg_match('#^/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_edit')), array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::editAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_edit')), array (  '_controller' => 'PCUserBundle:User:edit',));
             }
 
             // user_update
@@ -2109,7 +2117,7 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     goto not_user_update;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_update')), array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::updateAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_update')), array (  '_controller' => 'PCUserBundle:User:update',));
             }
             not_user_update:
 
@@ -2120,7 +2128,7 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     goto not_user_delete;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_delete')), array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::deleteAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_delete')), array (  '_controller' => 'PCUserBundle:User:delete',));
             }
             not_user_delete:
 

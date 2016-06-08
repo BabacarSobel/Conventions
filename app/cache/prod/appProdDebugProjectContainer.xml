@@ -662,7 +662,7 @@
       <parameter key="code">null</parameter>
     </parameter>
     <parameter key="genemu.form.tinymce.configs" type="collection">
-      <parameter key="theme">advanced</parameter>
+      <parameter key="theme">modern</parameter>
     </parameter>
     <parameter key="genemu.form.color.options" type="collection"/>
     <parameter key="genemu.form.date.options" type="collection"/>
@@ -2545,7 +2545,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5750238ebac6d9.47951230</argument>
+            <argument>57582a00540178.73807918</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2566,7 +2566,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5750238ebac6d9.47951230</argument>
+            <argument>57582a00540178.73807918</argument>
           </service>
         </argument>
       </argument>
@@ -3022,7 +3022,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5750238ebac6d9.47951230</argument>
+            <argument>57582a00540178.73807918</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3218,7 +3218,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5750238ebac6d9.47951230</argument>
+            <argument>57582a00540178.73807918</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4245,7 +4245,7 @@
     <service id="genemu.form.core.type.tinymce" class="Genemu\Bundle\FormBundle\Form\Core\Type\TinymceType">
       <tag name="form.type" alias="genemu_tinymce"/>
       <argument type="collection">
-        <argument key="theme">advanced</argument>
+        <argument key="theme">modern</argument>
       </argument>
     </service>
     <service id="genemu.form.model.type.ajaxmodel" class="Genemu\Bundle\FormBundle\Form\Model\Type\AjaxModelType">
