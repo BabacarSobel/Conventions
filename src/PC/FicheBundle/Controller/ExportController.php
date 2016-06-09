@@ -18,7 +18,7 @@ use Knp\Snappy\Pdf;
     Le problème devrait être résolue en creant des clés liées au type.
 
 */
-class ExportController extends Controller
+class ExportController extends DefaultController
 {
     
 

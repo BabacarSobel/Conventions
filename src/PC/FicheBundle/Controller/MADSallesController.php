@@ -43,8 +43,17 @@ class MADSallesController extends DefaultController
         $entity = $em->getRepository('PCFicheBundle:MADSalles')->find($id);
         $locations = $em->getRepository('PCFicheBundle:Location')->findByMadSalles($id);
         $snappy = new Pdf($this->get('kernel')->getRootDir()."/../wkhtmltox/bin/wkhtmltopdf");
-        $name =  'mads-'.$id.Date("YmdHis"); 
-        $snappy->generateFromHtml($this->renderView('PCFicheBundle:Template:mads.html.twig',array('entity'=>$entity, 'locations' => $locations)), $this->get('kernel')->getRootDir().'/../files/'.$name.'.pdf');
+        $name =  'mads-'.$id.Date("YmdHis");
+        $type = $em->getRepository('PCFicheBundle:SousType')->findBy(array('nom' => 'SALLE GRATUITE'));
+        $template = $em->getRepository('PCFicheBundle:Template')->findBy(array('type'=> $type[0]->getId()));
+        // on cree le contenu
+        $twig = clone $this->get('twig');
+        $twig->setLoader(new \Twig_Loader_String());
+        $content = $twig->render(
+          $template[0]->getTemplate(),
+          array('entity'=>$entity, 'locations' => $locations)
+        );
+        $snappy->generateFromHtml($content, $this->get('kernel')->getRootDir().'/../files/'.$name.'.pdf');
             return $this->render('PCFicheBundle:Fiche:pdf.html.twig'
                     ,array('pdf' => $snappy,
                         'filename' => $name.'.pdf')

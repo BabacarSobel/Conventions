@@ -12,7 +12,7 @@ use PC\FicheBundle\Form\LocationType;
  * Location controller.
  *
  */
-class LocationController extends Controller
+class LocationController extends DefaultController
 {
 
     /**

@@ -12,7 +12,7 @@ use PC\FicheBundle\Form\DepartementType;
  * Departement controller.
  *
  */
-class DepartementController extends Controller
+class DepartementController extends DefaultController
 {
 
     /**

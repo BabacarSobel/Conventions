@@ -13,7 +13,7 @@ use PC\FicheBundle\Form\EditAvenantType;
  * Avenant controller.
  *
  */
-class AvenantController extends Controller
+class AvenantController extends DefaultController
 {
 
     /**

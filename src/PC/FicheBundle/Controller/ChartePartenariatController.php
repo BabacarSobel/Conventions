@@ -23,7 +23,7 @@ use PC\FicheBundle\Form\ActionType;
  * ChartePartenariat controller.
  *
  */
-class ChartePartenariatController extends Controller
+class ChartePartenariatController extends DefaultController
 {
 
     /**
@@ -48,8 +48,17 @@ class ChartePartenariatController extends Controller
         $entity = $em->getRepository('PCFicheBundle:ChartePartenariat')->find($id);
         $snappy = new Pdf($this->get('kernel')->getRootDir()."/../wkhtmltox/bin/wkhtmltopdf");
         $name = 'chartepartenariat-'.$id.Date("YmdHis");
+        $type = $em->getRepository('PCFicheBundle:SousType')->findBy(array('nom' => 'CHARTE CLUB DES PARTENAIRES'));
+        $template = $em->getRepository('PCFicheBundle:Template')->findBy(array('type'=> $type[0]->getId()));
+        // on cree le contenu
+        $twig = clone $this->get('twig');
+        $twig->setLoader(new \Twig_Loader_String());
+        $content = $twig->render(
+          $template[0]->getTemplate(),
+          array('entity'=>$entity)
+        );
             
-        $snappy->generateFromHtml($this->renderView('PCFicheBundle:Template:cp.html.twig',array('entity'=>$entity)), $this->get('kernel')->getRootDir().'/../files/'.$name.'pdf');
+        $snappy->generateFromHtml($content, $this->get('kernel')->getRootDir().'/../files/'.$name.'pdf');
         return $this->render('PCFicheBundle:Fiche:pdf.html.twig'
                     ,array('pdf' => $snappy,
                         'filename' => $name.'.pdf')

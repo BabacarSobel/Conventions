@@ -47,16 +47,19 @@ class AutreController extends DefaultController
     public function pdfAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('PCFicheBundle:Autre')->find($id);
-        
-        // on utlise wkhtmltopdf pour créer un pdf vierge
-        $snappy = new Pdf("C:\wamp\www\\gestionconvention\wkhtmltopdf\bin\wkhtmltopdf");
-        $name = 'autre-'.$id.Date("YmdHis");
-        
-        // on remplit le pdf à partir d'une page html donnée en paramètre
-        $snappy->generateFromHtml($this->renderView('PCFicheBundle:Template:cp.html.twig',array('entity'=>$entity)), $this->get('kernel')->getRootDir().'/files/'.$name.'pdf');
-        
+        $sousType  = $entity->getSousType();
+        $template = $em->getRepository('PCFicheBundle:Template')->findBy(array('type'=> $sousType->getId()));
+        // on cree le contenu
+        $twig = clone $this->get('twig');
+        $twig->setLoader(new \Twig_Loader_String());
+        $content = $twig->render(
+          $template[0]->getTemplate(),
+          array('entity'=>$entity)
+        );
+        $snappy = new Pdf($this->get('kernel')->getRootDir()."/../wkhtmltox/bin/wkhtmltopdf");
+        $name =  'pc-'.$id.Date("YmdHis");  
+        $snappy->generateFromHtml($content, $this->get('kernel')->getRootDir().'/../files/'.$name.'.pdf');
         return $this->render('PCFicheBundle:Fiche:pdf.html.twig'
                     ,array('pdf' => $snappy,
                         'filename' => $name.'.pdf')

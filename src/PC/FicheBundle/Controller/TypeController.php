@@ -12,7 +12,7 @@ use PC\FicheBundle\Form\TypeType;
  * Type controller.
  *
  */
-class TypeController extends Controller
+class TypeController extends DefaultController
 {
 
     /**

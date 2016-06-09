@@ -12,7 +12,7 @@ use PC\FicheBundle\Form\LocalType;
  * Local controller.
  *
  */
-class LocalController extends Controller
+class LocalController extends DefaultController
 {
 
     /**

@@ -27,7 +27,7 @@
                 </div>
                 {% if 'ROLE_ADMIN' in app.user.roles %}
                 <div id='templates' class="col-sm-12 col-md-6 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
-                    <a href="#">
+                    <a href="{{path("template")}}">
                         LES TEMPLATES
                     </a>
                 </div>
@@ -72,7 +72,7 @@
                 if(id.id == 'templates'){
                     $("#info").show();
                     $('#info').removeClass('hidden');
-                    document.getElementById('info_message').innerHTML ='En cours de réalisation.';
+                    document.getElementById('info_message').innerHTML ='Définir les templates de convention pour la génération automatique.';
                     $("#info").show();
 
                 }

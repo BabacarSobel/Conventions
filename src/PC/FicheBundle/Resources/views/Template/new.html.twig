@@ -1,13 +1,33 @@
 {% extends '::layout.html.twig' %}
 
 {% block body -%}
-    <h1>Template creation</h1>
+    <h2>Création d'une template <a  data-target="#information" data-toggle="modal" class='glyphicon glyphicon-info-sign'></a></h2>
+    <br>
     {{ form(form) }}
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('template') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <br>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('template') }}">
+                Retour à la liste
+            </a>
+        </li>
+    </ul>
+    
+    <div class="modal fade" style="top:25%;outline: none;" id="information" aria-labelledby="information" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Information</h4>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li> Donner un nom à votre template</li>
+                        <li> Créer un contenu avec le bon mapping</li>
+                        <li> Choisir le sous-type</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div> 
 {% endblock %}

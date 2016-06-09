@@ -22,7 +22,7 @@ use PC\FicheBundle\Form\ActionType;
  * PIFELaboratoire controller.
  *
  */
-class PIFELaboratoireController extends Controller
+class PIFELaboratoireController extends DefaultController
 {
 
     /**
@@ -46,8 +46,17 @@ class PIFELaboratoireController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('PCFicheBundle:PIFELaboratoire')->find($id);
         $snappy = new Pdf($this->get('kernel')->getRootDir()."/../wkhtmltox/bin/wkhtmltopdf");
-        $name ='pl-'.$id.Date("YmdHis");    
-        $snappy->generateFromHtml($this->renderView('PCFicheBundle:Template:pl.html.twig',array('entity'=>$entity)), $this->get('kernel')->getRootDir().'/../files/'.$name.'.pdf');
+        $name ='pl-'.$id.Date("YmdHis");
+        $type = $em->getRepository('PCFicheBundle:SousType')->findBy(array('nom' => 'PROPOSITION LABO UM'));
+        $template = $em->getRepository('PCFicheBundle:Template')->findBy(array('type'=> $type[0]->getId()));
+        // on cree le contenu
+        $twig = clone $this->get('twig');
+        $twig->setLoader(new \Twig_Loader_String());
+        $content = $twig->render(
+          $template[0]->getTemplate(),
+          array('entity'=>$entity)
+        );
+        $snappy->generateFromHtml($content, $this->get('kernel')->getRootDir().'/../files/'.$name.'.pdf');
             return $this->render('PCFicheBundle:Fiche:pdf.html.twig'
                     ,array('pdf' => $snappy,
                         'filename' => $name.'.pdf')

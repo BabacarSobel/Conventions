@@ -12,7 +12,7 @@ use PC\FicheBundle\Form\ActionType;
  * Action controller.
  *
  */
-class ActionController extends Controller
+class ActionController extends DefaultController
 {
 
     /**

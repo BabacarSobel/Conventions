@@ -12,7 +12,7 @@ use PC\FicheBundle\Form\SousTypeType;
  * SousType controller.
  *
  */
-class SousTypeController extends Controller
+class SousTypeController extends DefaultController
 {
 
     /**

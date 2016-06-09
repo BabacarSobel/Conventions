@@ -88,6 +88,11 @@ class SousType
      * @ORM\OneToMany(targetEntity="Autre", mappedBy="ficheSousType", cascade={"remove", "persist"})
      */
     protected $autres;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="template", mappedBy="type", cascade={"remove", "persist"})
+     */
+    protected $templates;
 
     
     /**
@@ -470,5 +475,39 @@ class SousType
     public function getAutres()
     {
         return $this->autres;
+    }
+
+    /**
+     * Add template
+     *
+     * @param \PC\FicheBundle\Entity\template $template
+     *
+     * @return SousType
+     */
+    public function addTemplate(\PC\FicheBundle\Entity\template $template)
+    {
+        $this->templates[] = $template;
+
+        return $this;
+    }
+
+    /**
+     * Remove template
+     *
+     * @param \PC\FicheBundle\Entity\template $template
+     */
+    public function removeTemplate(\PC\FicheBundle\Entity\template $template)
+    {
+        $this->templates->removeElement($template);
+    }
+
+    /**
+     * Get templates
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTemplates()
+    {
+        return $this->templates;
     }
 }

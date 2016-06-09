@@ -64,10 +64,10 @@ class SousType extends \PC\FicheBundle\Entity\SousType implements \Doctrine\ORM\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'id', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'nom', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'route', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'db', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'description', 'type', 'chartePartenariats', 'madEvenementGratuits', 'madSalles', 'pifeClassiques', 'pifeLaboratoires', 'psCatis', 'autres'];
+            return ['__isInitialized__', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'id', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'nom', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'route', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'db', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'description', 'type', 'chartePartenariats', 'madEvenementGratuits', 'madSalles', 'pifeClassiques', 'pifeLaboratoires', 'psCatis', 'autres', 'templates'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'id', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'nom', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'route', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'db', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'description', 'type', 'chartePartenariats', 'madEvenementGratuits', 'madSalles', 'pifeClassiques', 'pifeLaboratoires', 'psCatis', 'autres'];
+        return ['__isInitialized__', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'id', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'nom', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'route', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'db', '' . "\0" . 'PC\\FicheBundle\\Entity\\SousType' . "\0" . 'description', 'type', 'chartePartenariats', 'madEvenementGratuits', 'madSalles', 'pifeClassiques', 'pifeLaboratoires', 'psCatis', 'autres', 'templates'];
     }
 
     /**
@@ -527,6 +527,39 @@ class SousType extends \PC\FicheBundle\Entity\SousType implements \Doctrine\ORM\
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAutres', []);
 
         return parent::getAutres();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addTemplate(\PC\FicheBundle\Entity\Template $template)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTemplate', [$template]);
+
+        return parent::addTemplate($template);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeTemplate(\PC\FicheBundle\Entity\Template $template)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTemplate', [$template]);
+
+        return parent::removeTemplate($template);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTemplates()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTemplates', []);
+
+        return parent::getTemplates();
     }
 
 }

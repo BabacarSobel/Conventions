@@ -12,7 +12,7 @@ use PC\FicheBundle\Form\TemplateType;
  * Template controller.
  *
  */
-class TemplateController extends Controller
+class TemplateController extends DefaultController
 {
 
     /**
@@ -78,7 +78,7 @@ class TemplateController extends Controller
      */
     private function createCreateForm(Template $entity)
     {
-        $form = $this->createForm(new TemplateType(), $entity, array(
+        $form = $this->createForm(new TemplateType($this->getDoctrine()->getManager()), $entity, array(
             'action' => $this->generateUrl('template_create'),
             'method' => 'POST',
         ));
@@ -158,7 +158,7 @@ class TemplateController extends Controller
     */
     private function createEditForm(Template $entity)
     {
-        $form = $this->createForm(new TemplateType(), $entity, array(
+        $form = $this->createForm(new TemplateType($this->getDoctrine()->getManager()), $entity, array(
             'action' => $this->generateUrl('template_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

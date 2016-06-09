@@ -48,7 +48,16 @@ class MADEvenementGratuitController extends DefaultController
         $snappy = new Pdf($this->get('kernel')->getRootDir()."/../wkhtmltox/bin/wkhtmltopdf");
         $entity = $em->getRepository('PCFicheBundle:MADEvenementGratuit')->find($id);
         $name = 'madeg-'.$id.Date("YmdHis");
-        $snappy->generateFromHtml($this->renderView('PCFicheBundle:Template:madeg.html.twig',array('entity'=>$entity)), $this->get('kernel')->getRootDir().'/../files/'.$name.'.pdf');
+        $type = $em->getRepository('PCFicheBundle:SousType')->findBy(array('nom' => 'EVENEMENT GRATUIT'));
+        $template = $em->getRepository('PCFicheBundle:Template')->findBy(array('type'=> $type[0]->getId()));
+        // on cree le contenu
+        $twig = clone $this->get('twig');
+        $twig->setLoader(new \Twig_Loader_String());
+        $content = $twig->render(
+          $template[0]->getTemplate(),
+          array('entity'=>$entity)
+        );
+        $snappy->generateFromHtml($content, $this->get('kernel')->getRootDir().'/../files/'.$name.'.pdf');
             return $this->render('PCFicheBundle:Fiche:pdf.html.twig'
                     ,array('pdf' => $snappy,
                         'filename' => $name.'.pdf')

@@ -12,7 +12,7 @@ use PC\FicheBundle\Form\FichierType;
  * Fichier controller.
  *
  */
-class FichierController extends Controller
+class FichierController extends DefaultController
 {
 
     /**

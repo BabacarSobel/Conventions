@@ -1,32 +1,39 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block body -%}
-    <h1>Template</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ entity.nom }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('template') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('template_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="menu" class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('template_edit', { 'id': entity.id }) }}"> Editer</a> </li>
+                    <li><a class="pc_sidebar_element" data-placement="top" data-toggle="modal" data-target='#delete'>Supprimer</a></li>
+                    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('template') }}"> Retour à la liste</a></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9  col-md-10  main">
+                <h2>Template {{ entity.id }}</h2>
+                <div class="form-group">
+                    <label class='col-sm-3 pc_label control-label'>Nom</label>
+                    <input value="{{ entity.nom }}" disabled="disabled"/>
+                </div>
+                <div class="form-group">
+                    <p class="alert-warning"> Attention il faut cliquer sur le bouton éditer pour modifier le template. </p>
+                    <textarea style="height:500px;" disabled="disabled">{{ entity.template }}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" style="top:25%;outline: none;" id="delete" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Suppression</h4>
+                </div>
+                <div class="modal-body">
+                    {{form(delete_form)}}
+                </div>
+            </div>
+        </div>
+    </div> 
 {% endblock %}
