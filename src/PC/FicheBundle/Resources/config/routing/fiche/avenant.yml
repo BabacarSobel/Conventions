@@ -11,10 +11,6 @@ avenant_pdf:
     defaults: { _controller: "PCFicheBundle:Avenant:pdf" }
     methods : GET
     
-avenant_new:
-    path:     /new
-    defaults: { _controller: "PCFicheBundle:Avenant:new" }
-
 avenant_create:
     path:     /create
     defaults: { _controller: "PCFicheBundle:Avenant:create" }

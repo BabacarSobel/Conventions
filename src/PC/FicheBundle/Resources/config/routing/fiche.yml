@@ -1,7 +1,3 @@
-pc_fiche_fichemessage:
-    resource: "@PCFicheBundle/Resources/config/routing/fichemessage.yml"
-    prefix:   /fichemessage
-
 pc_fiche_departement:
     resource: "@PCFicheBundle/Resources/config/routing/fiche/departement.yml"
     prefix:   /departement

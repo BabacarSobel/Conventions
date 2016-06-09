@@ -1,36 +1,49 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block body -%}
-    <h1>Departement</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="bouton" class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a class="pc_sidebar_element" href="{{ path('departement_edit', { 'id': entity.id }) }}">Editer</a></li>
+                    <li><a class="pc_sidebar_element" data-placement="top" data-toggle="modal" data-target='#delete'>Supprimer</a></li>
+                    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('departement') }} }}"> Retour à la liste</a></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9  col-md-10  main">
+                <div class ="pc_info_group form-horizontal">
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Id</label>
+                        <div class='col-sm-4'>
+                            <input disabled="disabled" class="form-control" value='{{ entity.id }}'/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Nom</label>
+                        <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.departmentName }}'/></div>
+                    </div>
+                    <div class="form-group">
+                        <label class='col-sm-3 pc_label control-label'>Responsable</label>
+                        <div class='col-sm-4'>
+                                <input disabled="disabled" class="form-control" value='{{ entity.departmentLeader }}'/>
+                        </div>
+                    </div>
+                 </div>
+            </div> 
+        </div>
+    </div>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Departmentname</th>
-                <td>{{ entity.departmentName }}</td>
-            </tr>
-            <tr>
-                <th>Departmentleader</th>
-                <td>{{ entity.departmentLeader }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('departement') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('departement_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="modal fade" style="top:25%;outline: none;" id="delete" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Suppression</h4>
+                </div>
+                <div class="modal-body">
+                    {{form(delete_form)}}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

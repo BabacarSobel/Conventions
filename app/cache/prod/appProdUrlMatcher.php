@@ -63,66 +63,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array (  '_controller' => 'PC\\FicheBundle\\Controller\\HomeController::backwardAction',  '_route' => 'pc_precedent',);
         }
 
-        if (0 === strpos($pathinfo, '/action')) {
-            // action
-            if (rtrim($pathinfo, '/') === '/action') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'action');
-                }
-
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::indexAction',  '_route' => 'action',);
-            }
-
-            // action_show
-            if (preg_match('#^/action/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'action_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::showAction',));
-            }
-
-            // action_new
-            if ($pathinfo === '/action/new') {
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::newAction',  '_route' => 'action_new',);
-            }
-
-            // action_create
-            if ($pathinfo === '/action/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_action_create;
-                }
-
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::createAction',  '_route' => 'action_create',);
-            }
-            not_action_create:
-
-            // action_edit
-            if (preg_match('#^/action/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'action_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::editAction',));
-            }
-
-            // action_update
-            if (preg_match('#^/action/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_action_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'action_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::updateAction',));
-            }
-            not_action_update:
-
-            // action_delete
-            if (preg_match('#^/action/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_action_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'action_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::deleteAction',));
-            }
-            not_action_delete:
-
-        }
-
         if (0 === strpos($pathinfo, '/loca')) {
             if (0 === strpos($pathinfo, '/location')) {
                 // location
@@ -580,11 +520,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'avenant_pdf')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\AvenantController::pdfAction',));
                 }
                 not_avenant_pdf:
-
-                // avenant_new
-                if ($pathinfo === '/fiche/avenant/new') {
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\AvenantController::newAction',  '_route' => 'avenant_new',);
-                }
 
                 // avenant_create
                 if ($pathinfo === '/fiche/avenant/create') {
@@ -1397,66 +1332,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         }
 
         if (0 === strpos($pathinfo, '/demande')) {
-            if (0 === strpos($pathinfo, '/demande/fichemessage')) {
-                // fichemessage
-                if (rtrim($pathinfo, '/') === '/demande/fichemessage') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'fichemessage');
-                    }
-
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::indexAction',  '_route' => 'fichemessage',);
-                }
-
-                // fichemessage_show
-                if (preg_match('#^/demande/fichemessage/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fichemessage_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::showAction',));
-                }
-
-                // fichemessage_new
-                if ($pathinfo === '/demande/fichemessage/new') {
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::newAction',  '_route' => 'fichemessage_new',);
-                }
-
-                // fichemessage_create
-                if ($pathinfo === '/demande/fichemessage/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_fichemessage_create;
-                    }
-
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::createAction',  '_route' => 'fichemessage_create',);
-                }
-                not_fichemessage_create:
-
-                // fichemessage_edit
-                if (preg_match('#^/demande/fichemessage/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fichemessage_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::editAction',));
-                }
-
-                // fichemessage_update
-                if (preg_match('#^/demande/fichemessage/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_fichemessage_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fichemessage_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::updateAction',));
-                }
-                not_fichemessage_update:
-
-                // fichemessage_delete
-                if (preg_match('#^/demande/fichemessage/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_fichemessage_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fichemessage_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::deleteAction',));
-                }
-                not_fichemessage_delete:
-
-            }
-
             if (0 === strpos($pathinfo, '/demande/a')) {
                 if (0 === strpos($pathinfo, '/demande/autre')) {
                     // autre_download

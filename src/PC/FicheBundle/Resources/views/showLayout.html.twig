@@ -98,9 +98,8 @@
                                     <tbody>
                                     {% for alerte in alertes %}
                                         <tr>
-                                            <td><input type="checkbox" class="checkthis" /></td>
-                                            <td><a href="{{ path('fiche_show', { 'id': alerte.id }) }}">{{ alerte.id }}</a></td>
-                                            <td><a href="{{ path('fiche_show', { 'id': alerte.id }) }}">{{ alerte.intitule }}</a></td>
+                                            <td><a href="{{ path('alerte_show', { 'id': alerte.id }) }}">{{ alerte.id }}</a></td>
+                                            <td><a href="{{ path('alerte_show', { 'id': alerte.id }) }}">{{ alerte.intitule }}</a></td>
                                             <td>{{ alerte.objet }}</td>
                                             <td>{% if alerte.dateAlerte %}{{ alerte.dateAlerte|date('d-m-Y H:i') }}{% endif %}</td>
                                             <td>

@@ -22,35 +22,35 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633 = $this->env->getExtension("native_profiler");
-        $__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633->enter($__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PCFicheBundle:Fiche:index.html.twig"));
+        $__internal_f0418bfb2a5a376f8a4d0247c31bf06597b71e52ea79165ee522e0ade4c6d6e3 = $this->env->getExtension("native_profiler");
+        $__internal_f0418bfb2a5a376f8a4d0247c31bf06597b71e52ea79165ee522e0ade4c6d6e3->enter($__internal_f0418bfb2a5a376f8a4d0247c31bf06597b71e52ea79165ee522e0ade4c6d6e3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PCFicheBundle:Fiche:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633->leave($__internal_a0561129d157a598bb974a990431e0ca0d7ca14f3179dae51749074fa66e1633_prof);
+        $__internal_f0418bfb2a5a376f8a4d0247c31bf06597b71e52ea79165ee522e0ade4c6d6e3->leave($__internal_f0418bfb2a5a376f8a4d0247c31bf06597b71e52ea79165ee522e0ade4c6d6e3_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0 = $this->env->getExtension("native_profiler");
-        $__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0->enter($__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_92b66b1e4930ba943fcd73e3cb038ada4056563a6cbade5eb5d582be9a896872 = $this->env->getExtension("native_profiler");
+        $__internal_92b66b1e4930ba943fcd73e3cb038ada4056563a6cbade5eb5d582be9a896872->enter($__internal_92b66b1e4930ba943fcd73e3cb038ada4056563a6cbade5eb5d582be9a896872_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         $this->displayParentBlock("title", $context, $blocks);
         echo "- liste des fiches
 ";
         
-        $__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0->leave($__internal_0bda3bb8a18607b33a0ee4015e7d013768d56adf160edc13f06949b9221e0ef0_prof);
+        $__internal_92b66b1e4930ba943fcd73e3cb038ada4056563a6cbade5eb5d582be9a896872->leave($__internal_92b66b1e4930ba943fcd73e3cb038ada4056563a6cbade5eb5d582be9a896872_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4 = $this->env->getExtension("native_profiler");
-        $__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4->enter($__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_78e301574692299444a9c49f98939cf85713d0d8bc40a74f019560a35e9d7503 = $this->env->getExtension("native_profiler");
+        $__internal_78e301574692299444a9c49f98939cf85713d0d8bc40a74f019560a35e9d7503->enter($__internal_78e301574692299444a9c49f98939cf85713d0d8bc40a74f019560a35e9d7503_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         echo "        
     <div class=\"container container-fluid\">
@@ -387,8 +387,12 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
         echo "\">Les fichiers</a></li>
                         <li><a href=\"";
         // line 154
-        echo $this->env->getExtension('routing')->getPath("alerte");
-        echo "\" >Les alertes</a></li>
+        echo $this->env->getExtension('routing')->getPath("departement");
+        echo "\" >Les departements</a></li>
+                        <li><a href=\"";
+        // line 155
+        echo $this->env->getExtension('routing')->getPath("local");
+        echo "\" >Les locaux</a></li>
                     </ul>
                 </div>
             </div>
@@ -404,7 +408,7 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
     </script>
 ";
         
-        $__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4->leave($__internal_bbc77c05a200164ab377b884cb2bd95e54cb2c889c19bc551fb89fede8be38a4_prof);
+        $__internal_78e301574692299444a9c49f98939cf85713d0d8bc40a74f019560a35e9d7503->leave($__internal_78e301574692299444a9c49f98939cf85713d0d8bc40a74f019560a35e9d7503_prof);
 
     }
 
@@ -420,7 +424,7 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
 
     public function getDebugInfo()
     {
-        return array (  390 => 154,  386 => 153,  382 => 152,  364 => 136,  355 => 133,  352 => 132,  344 => 130,  342 => 129,  335 => 127,  329 => 126,  325 => 125,  319 => 124,  313 => 123,  307 => 122,  301 => 121,  297 => 120,  294 => 119,  290 => 118,  268 => 98,  260 => 95,  252 => 93,  250 => 92,  245 => 90,  239 => 89,  233 => 88,  229 => 87,  223 => 86,  217 => 85,  211 => 84,  205 => 83,  201 => 82,  198 => 81,  194 => 80,  172 => 60,  163 => 57,  160 => 56,  152 => 54,  150 => 53,  143 => 51,  137 => 50,  133 => 49,  127 => 48,  121 => 47,  115 => 46,  109 => 45,  105 => 44,  102 => 43,  98 => 42,  66 => 13,  62 => 12,  50 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  394 => 155,  390 => 154,  386 => 153,  382 => 152,  364 => 136,  355 => 133,  352 => 132,  344 => 130,  342 => 129,  335 => 127,  329 => 126,  325 => 125,  319 => 124,  313 => 123,  307 => 122,  301 => 121,  297 => 120,  294 => 119,  290 => 118,  268 => 98,  260 => 95,  252 => 93,  250 => 92,  245 => 90,  239 => 89,  233 => 88,  229 => 87,  223 => 86,  217 => 85,  211 => 84,  205 => 83,  201 => 82,  198 => 81,  194 => 80,  172 => 60,  163 => 57,  160 => 56,  152 => 54,  150 => 53,  143 => 51,  137 => 50,  133 => 49,  127 => 48,  121 => 47,  115 => 46,  109 => 45,  105 => 44,  102 => 43,  98 => 42,  66 => 13,  62 => 12,  50 => 7,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends '::layout.html.twig' %}*/
@@ -576,7 +580,8 @@ class __TwigTemplate_d71fac08bc7bc4c1a1949c1d9953e9125a6c4cb9d534d6e97098968c1f6
 /*                     <ul>*/
 /*                         <li><a href="{{ path('avenant') }}">Les avenants</a></li>*/
 /*                         <li><a href="{{ path('fichier') }}">Les fichiers</a></li>*/
-/*                         <li><a href="{{ path('alerte') }}" >Les alertes</a></li>*/
+/*                         <li><a href="{{ path('departement') }}" >Les departements</a></li>*/
+/*                         <li><a href="{{ path('local') }}" >Les locaux</a></li>*/
 /*                     </ul>*/
 /*                 </div>*/
 /*             </div>*/

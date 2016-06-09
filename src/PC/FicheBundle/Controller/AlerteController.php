@@ -13,7 +13,7 @@ use PC\FicheBundle\Form\AlerteType;
  *
  */
 
-class AlerteController extends DefaultController
+class AlerteController extends Controller
 {
 
     /**

@@ -160,20 +160,23 @@ class MADSallesController extends DefaultController
                         $donnees[$key]['DD'] = $value;
                     }elseif($pos === 'DE'){
                         $donnees[$key]['DE'] = $value; 
+                    }elseif($pos === 'NBDJ'){
+                        $donnees[$key]['NBDJ'] = $value; 
                     }
                 } 
             }
             $flash = $request->getSession()->getFlashBag();
             
             foreach ($donnees as $key => $donnee){
-                if (isset($donnees[$key]['DD']) && isset($donnee['DE']) && isset($donnee['HE']) && isset($donnee['HD'])){
+                if (isset($donnees[$key]['DD']) && isset($donnee['DE'])){
                     $local = $em->getRepository('PCFicheBundle:Local')->findByNom($key);
 
                     $location = new Location();
                     $location->setDateDebut($donnees[$key]['DD']);
                     $location->setDateEcheance($donnee['DE']);
-                    $location->setHoraireDebut($donnee['HD']);
-                    $location->setHoraireEcheance($donnee['HE']);
+                    $location->setNombreDemiJournees($donnee['NBDJ']);
+//                    $location->setHoraireDebut($donnee['HD']);
+//                    $location->setHoraireEcheance($donnee['HE']);
                     $location->setMADSalles($entity);
                     $location->setLocal($local[0]);
                     $em->persist($location);
@@ -203,10 +206,11 @@ class MADSallesController extends DefaultController
         $locauxDisponibles = $em->getRepository('PCFicheBundle:Local')->findByDisponible(true);
         foreach ($locauxDisponibles as $cle => $local) {
              $builder->add($local->getNom(),'checkbox', array('label'=> '','required' => false, 'attr' => array('class' => 'row align-right col-xs-5')));
-            $builder->add($local->getNom().'HD','time',array('label'=> 'horaire de début','required' => false, 'attr' => array('class' => 'align-left col-xs-5')));
-            $builder->add($local->getNom().'HE','time',array('label'=> 'horaire d\'écheance','required' => false, 'attr' => array('class' => 'align-left col-xs-5')));
+//            $builder->add($local->getNom().'HD','time',array('label'=> 'horaire de début','required' => false, 'attr' => array('class' => 'align-left col-xs-5')));
+//            $builder->add($local->getNom().'HE','time',array('label'=> 'horaire d\'écheance','required' => false, 'attr' => array('class' => 'align-left col-xs-5')));
             $builder->add($local->getNom().'DD','date',array('years'=> range(date('Y') - 10, date('Y') + 25),'label'=> 'date début','required' => false, 'attr' => array('class' => 'align-left col-xs-5')));
-            $builder->add($local->getNom().'DE','date',array('years'=> range(date('Y') - 10, date('Y') + 25),'label'=> 'date d\'écheance','required' => false, 'attr' => array('class' => 'align-left col-xs-5','style' => ' border-bottom : 2px solid')));
+            $builder->add($local->getNom().'DE','date',array('years'=> range(date('Y') - 10, date('Y') + 25),'label'=> 'date d\'écheance','required' => false, 'attr' => array('class' => 'align-left col-xs-5')));
+            $builder->add($local->getNom().'NBDJ','number',array('label'=> 'nombre de demi-journées','required' => false, 'attr' => array('class' => '','style' => ' border-bottom : 2px solid')));
         };
         
         $builder->add('valider','submit', array('attr' => array('class' => 'btn pc_skyblue_btn')));

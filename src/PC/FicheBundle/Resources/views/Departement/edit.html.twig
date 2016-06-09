@@ -1,16 +1,55 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
+
+
 
 {% block body -%}
-    <h1>Departement edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('departement') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="container container-fluid">
+        <div class="row">
+            <div id="bouton" class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a class="pc_sidebar_element" href="{{ path('departement_show', { 'id': entity.id }) }}">Retour à la vue</a></li>
+                    <li><a class="pc_sidebar_element" data-placement="top" data-toggle="modal" data-target='#delete'>Supprimer</a></li>
+                    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('departement') }}"> Retour à la fiche</a></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9  col-md-10  main">
+                <h2>Edition département {{entity.departmentName }} </h2>
+                {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
+                {{ form_errors(edit_form) }}
+                <div class ="pc_info_group">
+                    <div class="form-group">
+                        {{ form_label(edit_form.departmentName, "Nom", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(edit_form.departmentName) }}
+                        <div class="col-sm-4">
+                        {{ form_widget(edit_form.departmentName, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.departmentLeader, "Responsable", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(edit_form.departmentLeader) }}
+                        <div class="col-sm-4">
+                        {{ form_widget(edit_form.departmentLeader, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    {{ form_rest(edit_form) }}
+                    {# Fermeture de la balise <form> du formulaire HTML #}
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+                
+    <div class="modal fade" style="top:25%;outline: none;" id="delete" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Suppression</h4>
+                </div>
+                <div class="modal-body">
+                    {{form(delete_form)}}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

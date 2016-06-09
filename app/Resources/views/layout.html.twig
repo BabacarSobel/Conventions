@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}PolyConventions{% endblock %}</title>
+        <title>{% block title %}Conventions{% endblock %}</title>
+        <link rel="icon"  href="{{asset("assets/images/favicon.ico")}}">
         {% block stylesheets %}   
             <link rel="stylesheet" href="{{asset("assets/css/bootstrap.min.css")}}">
             <link href="{{asset("assets/css/font-awesome.min.css")}}" rel="stylesheet">
@@ -27,8 +28,8 @@
             <script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js"></script>
             <script>
                 tinymce.init({ 
-                    selector:'textarea',
-                    min_height :200
+                    selector:'textarea.tini',
+                    min_height :200,
                 });
             </script>
 

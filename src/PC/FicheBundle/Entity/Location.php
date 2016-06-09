@@ -36,16 +36,23 @@ class Location
     private $dateEcheance;
     
     /**
+     * @var int
+     *
+     * @ORM\Column(name="$nombreDemiJournees", type="integer")
+     */
+    private $nombreDemiJournees;
+    
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="horaireDebut", type="date")
+     * @ORM\Column(name="horaireDebut", type="date",nullable=true)
      */
     private $horaireDebut;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="horaireEcheance", type="date")
+     * @ORM\Column(name="horaireEcheance", type="date",nullable=true)
      */
     private $horaireEcheance;
     
@@ -241,5 +248,29 @@ class Location
     public function getHoraireEcheance()
     {
         return $this->horaireEcheance;
+    }
+
+    /**
+     * Set nombreDemiJournees
+     *
+     * @param integer $nombreDemiJournees
+     *
+     * @return Location
+     */
+    public function setNombreDemiJournees($nombreDemiJournees)
+    {
+        $this->nombreDemiJournees = $nombreDemiJournees;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreDemiJournees
+     *
+     * @return integer
+     */
+    public function getNombreDemiJournees()
+    {
+        return $this->nombreDemiJournees;
     }
 }

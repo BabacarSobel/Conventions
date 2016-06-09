@@ -1,7 +1,3 @@
-pc_fiche_action:
-    resource: "@PCFicheBundle/Resources/config/routing/action.yml"
-    prefix:   /action
-
 pc_fiche_location:
     resource: "@PCFicheBundle/Resources/config/routing/location.yml"
     prefix:   /location
@@ -9,10 +5,6 @@ pc_fiche_location:
 pc_fiche_local:
     resource: "@PCFicheBundle/Resources/config/routing/local.yml"
     prefix:   /local
-
-pc_fiche_fichemessage:
-    resource: "@PCFicheBundle/Resources/config/routing/fichemessage.yml"
-    prefix:   /fichemessage
 
 pc_fiche_fiche:
     resource: "@PCFicheBundle/Resources/config/routing/fiche.yml"
