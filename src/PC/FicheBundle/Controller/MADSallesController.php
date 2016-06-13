@@ -216,6 +216,10 @@ class MADSallesController extends DefaultController
         $builder->add('valider','submit', array('attr' => array('class' => 'btn pc_skyblue_btn')));
 
         $form = $builder->getForm();
+        $view = $form->createView();
+        var_dump($view->children);
+        die();
+        
         return $form;
     }
     

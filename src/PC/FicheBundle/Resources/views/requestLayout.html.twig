@@ -1,5 +1,10 @@
 {% extends "::layout.html.twig" %}
+{% block title %}{{ parent() }} - Faire une demande{% endblock %}
+{% block stylesheets %}{{parent()}}{% endblock %}
 
+{% block javascripts %}{{parent()}}{% endblock %}
+
+{# ce block est utilisé quand l'utilisateur est connecté #}
 {% block title %}
 {{ parent() }}
 {% endblock %}

@@ -1,5 +1,10 @@
 {% extends '::layout.html.twig' %}
+{% block title %}{{ parent() }} - Demande{% endblock %}
+{% block stylesheets %}{{parent()}}{% endblock %}
 
+{% block javascripts %}{{parent()}}{% endblock %}
+
+{# ce block est utilisé quand l'utilisateur est connecté #}
 {% block body -%}
     <div class="container container-fluid">
         <div class="row">
