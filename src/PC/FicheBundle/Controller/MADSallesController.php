@@ -53,6 +53,7 @@ class MADSallesController extends DefaultController
           $template[0]->getTemplate(),
           array('entity'=>$entity, 'locations' => $locations)
         );
+        
         $snappy->generateFromHtml($content, $this->get('kernel')->getRootDir().'/../files/'.$name.'.pdf');
             return $this->render('PCFicheBundle:Fiche:pdf.html.twig'
                     ,array('pdf' => $snappy,
@@ -141,14 +142,18 @@ class MADSallesController extends DefaultController
             $data = $form->getData();
             $choix = array();
             $donnees = array();
+//            var_dump($data);die();
             foreach ($data as $key => $value){
+
                 if (is_bool($value)){
-                    if ($value = 1){ 
+                    if ($value = TRUE){ 
                         $choix[] = $key;
                         $donnees[$key]['cle'] = $key;
                     } 
-                }
-                elseif (is_object($value) && get_class($value) == 'DateTime'){
+                }elseif (is_int($value)){
+                    $key = substr($key, 0,-4);
+                    $donnees[$key]['NBDJ'] = $value; 
+                }elseif (is_object($value) && get_class($value) == 'DateTime'){
                     $pos = substr($key,-2);
                     $key = substr($key, 0,-2);
                     
@@ -160,11 +165,10 @@ class MADSallesController extends DefaultController
                         $donnees[$key]['DD'] = $value;
                     }elseif($pos === 'DE'){
                         $donnees[$key]['DE'] = $value; 
-                    }elseif($pos === 'NBDJ'){
-                        $donnees[$key]['NBDJ'] = $value; 
                     }
                 } 
             }
+            
             $flash = $request->getSession()->getFlashBag();
             
             foreach ($donnees as $key => $donnee){
@@ -184,7 +188,7 @@ class MADSallesController extends DefaultController
                     $local[0]->setDisponible(false);
                     $em->persist($local[0]);
                     $em->flush();
-                    $flash->add('success', "Le local ".$key.' vous a été allouée. ');
+                    $flash->add('success', "Le local ".$key." vous a été allouée. ");
                 }
             }
                
@@ -217,8 +221,6 @@ class MADSallesController extends DefaultController
 
         $form = $builder->getForm();
         $view = $form->createView();
-        var_dump($view->children);
-        die();
         
         return $form;
     }

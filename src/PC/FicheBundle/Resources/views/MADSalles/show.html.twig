@@ -255,12 +255,14 @@
                     {{ form_start(locauxDisponibles, {'attr': {'class': 'form-horizontal'}}) }}
                     {{ form_errors(locauxDisponibles) }}
                     {% for var in locauxDisponibles.children %}
-                        <div class="form-group">
-                            {{ form_label(var, var.vars.form['name'], {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            <div class="col-sm-4">
-                            {{ form_widget(var, {'attr': {'class': ''}})}}
+                        {% if var.vars['id'] != 'form__token' %}
+                            <div class="form-group">
+                                {{ form_label(var.vars['form'], var.vars['label'], {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                <div class="col-sm-8">
+                                {{ form_widget(var.vars['form'], {'attr': {'class': ''}})}}
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                     {% endfor %}
                     {{ form_rest(locauxDisponibles) }}
                     {{ form_end(locauxDisponibles) }}

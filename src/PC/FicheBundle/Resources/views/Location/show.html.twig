@@ -1,36 +1,15 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block body -%}
-    <h1>Location</h1>
+    <p>Le local {{ entity.local.nom }} (id:{{ entity.id }}) est alloué du {{ entity.dateDebut|date('d-m-Y à H:i:s') }} au {{ entity.dateEcheance|date('d-m-Y à H:i:s') }}. 
+    </p>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Datedebut</th>
-                <td>{{ entity.dateDebut|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Dateecheance</th>
-                <td>{{ entity.dateEcheance|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('location') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('location_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('location_edit', { 'id': entity.id }) }}">
+                Editer
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

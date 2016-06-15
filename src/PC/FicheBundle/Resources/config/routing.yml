@@ -1,3 +1,7 @@
+pc_fiche_mapping:
+    resource: "@PCFicheBundle/Resources/config/routing/mapping.yml"
+    prefix:   /mapping
+
 pc_fiche_location:
     resource: "@PCFicheBundle/Resources/config/routing/location.yml"
     prefix:   /location

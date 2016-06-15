@@ -50,42 +50,42 @@ class SousType
     private $description;
     
     /**
-    * @ORM\ManyToOne(targetEntity="Type", inversedBy="soustypes", cascade={"remove"})
+    * @ORM\ManyToOne(targetEntity="Type", inversedBy="soustypes")
     */
     protected $type;
     
         /**
-     * @ORM\OneToMany(targetEntity="ChartePartenariat", mappedBy="ficheSousType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="ChartePartenariat", mappedBy="sousType", cascade={"remove", "persist"})
      */
     protected $chartePartenariats;
     
         /**
-     * @ORM\OneToMany(targetEntity="MADEvenementGratuit", mappedBy="ficheSousType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="MADEvenementGratuit", mappedBy="sousType", cascade={"remove", "persist"})
      */
     protected $madEvenementGratuits;
     
         /**
-     * @ORM\OneToMany(targetEntity="MADSalles", mappedBy="ficheSousType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="MADSalles", mappedBy="sousType", cascade={"remove", "persist"})
      */
     protected $madSalles;
     
         /**
-     * @ORM\OneToMany(targetEntity="PIFEClassique", mappedBy="ficheSousType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="PIFEClassique", mappedBy="sousType", cascade={"remove", "persist"})
      */
     protected $pifeClassiques;
     
         /**
-     * @ORM\OneToMany(targetEntity="PIFELaboratoire", mappedBy="ficheSousType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="PIFELaboratoire", mappedBy="sousType", cascade={"remove", "persist"})
      */
     protected $pifeLaboratoires;
     
         /**
-     * @ORM\OneToMany(targetEntity="PSCati", mappedBy="ficheSousType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="PSCati", mappedBy="sousType", cascade={"remove", "persist"})
      */
     protected $psCatis;
     
     /**
-     * @ORM\OneToMany(targetEntity="Autre", mappedBy="ficheSousType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="Autre", mappedBy="sousType", cascade={"remove", "persist"})
      */
     protected $autres;
     
@@ -93,6 +93,26 @@ class SousType
      * @ORM\OneToMany(targetEntity="template", mappedBy="type", cascade={"remove", "persist"})
      */
     protected $templates;
+    
+//    /**
+//     * @ORM\OneToMany(targetEntity="mapping", mappedBy="typeprincipal", cascade={"remove", "persist"})
+//     */
+//    protected $mappings;
+//    
+//    /**
+//     * @ORM\OneToMany(targetEntity="mapping", mappedBy="typesecondaire1", cascade={"remove", "persist"})
+//     */
+//    protected $mappings1;
+//    
+//    /**
+//     * @ORM\OneToMany(targetEntity="mapping", mappedBy="typesecondaire2", cascade={"remove", "persist"})
+//     */
+//    protected $mappings2;
+//    
+//    /**
+//     * @ORM\OneToMany(targetEntity="mapping", mappedBy="typesecondaire3", cascade={"remove", "persist"})
+//     */
+//    protected $mappings3;
 
     
     /**

@@ -15,8 +15,25 @@ class LocationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateDebut')
-            ->add('dateEcheance')
+            ->add('dateDebut','genemu_jquerydate', [
+                                                'widget' => 'single_text',
+                                                'format' => 'dd-MM-yyyy',
+                                                'attr' => [
+                                                    'class' => 'input-inline datepicker',
+                                                    'data-provide' => 'datepicker',
+                                                    'data-date-format' => 'dd-mm-yyyy'
+                                                ],'required' => false
+                                            ])
+            ->add('dateEcheance','genemu_jquerydate', [
+                                                'widget' => 'single_text',
+                                                'format' => 'dd-MM-yyyy',
+                                                'attr' => [
+                                                    'class' => 'input-inline datepicker',
+                                                    'data-provide' => 'datepicker',
+                                                    'data-date-format' => 'dd-mm-yyyy'
+                                                ],'required' => false
+                                            ])
+            ->add('nombreDemiJournees')
         ;
     }
     

@@ -5,37 +5,37 @@ namespace PC\FicheBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use PC\FicheBundle\Entity\Location;
-use PC\FicheBundle\Form\LocationType;
+use PC\FicheBundle\Entity\Mapping;
+use PC\FicheBundle\Form\MappingType;
 
 /**
- * Location controller.
+ * Mapping controller.
  *
  */
-class LocationController extends DefaultController
+class MappingController extends Controller
 {
 
     /**
-     * Lists all Location entities.
+     * Lists all Mapping entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('PCFicheBundle:Location')->findAll();
+        $entities = $em->getRepository('PCFicheBundle:Mapping')->findAll();
 
-        return $this->render('PCFicheBundle:Location:index.html.twig', array(
+        return $this->render('PCFicheBundle:Mapping:index.html.twig', array(
             'entities' => $entities,
         ));
     }
     /**
-     * Creates a new Location entity.
+     * Creates a new Mapping entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Location();
+        $entity = new Mapping();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,89 +44,89 @@ class LocationController extends DefaultController
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('location_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('mapping_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('PCFicheBundle:Location:new.html.twig', array(
+        return $this->render('PCFicheBundle:Mapping:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Location entity.
+     * Creates a form to create a Mapping entity.
      *
-     * @param Location $entity The entity
+     * @param Mapping $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Location $entity)
+    private function createCreateForm(Mapping $entity)
     {
-        $form = $this->createForm(new LocationType(), $entity, array(
-            'action' => $this->generateUrl('location_create'),
+        $form = $this->createForm(new MappingType(), $entity, array(
+            'action' => $this->generateUrl('mapping_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Créer'));
+        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
     /**
-     * Displays a form to create a new Location entity.
+     * Displays a form to create a new Mapping entity.
      *
      */
     public function newAction()
     {
-        $entity = new Location();
+        $entity = new Mapping();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('PCFicheBundle:Location:new.html.twig', array(
+        return $this->render('PCFicheBundle:Mapping:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Location entity.
+     * Finds and displays a Mapping entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PCFicheBundle:Location')->find($id);
+        $entity = $em->getRepository('PCFicheBundle:Mapping')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Location entity.');
+            throw $this->createNotFoundException('Unable to find Mapping entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('PCFicheBundle:Location:show.html.twig', array(
+        return $this->render('PCFicheBundle:Mapping:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Location entity.
+     * Displays a form to edit an existing Mapping entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PCFicheBundle:Location')->find($id);
+        $entity = $em->getRepository('PCFicheBundle:Mapping')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Location entity.');
+            throw $this->createNotFoundException('Unable to find Mapping entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('PCFicheBundle:Location:edit.html.twig', array(
+        return $this->render('PCFicheBundle:Mapping:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -134,35 +134,35 @@ class LocationController extends DefaultController
     }
 
     /**
-    * Creates a form to edit a Location entity.
+    * Creates a form to edit a Mapping entity.
     *
-    * @param Location $entity The entity
+    * @param Mapping $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Location $entity)
+    private function createEditForm(Mapping $entity)
     {
-        $form = $this->createForm(new LocationType(), $entity, array(
-            'action' => $this->generateUrl('location_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new MappingType(), $entity, array(
+            'action' => $this->generateUrl('mapping_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Mettre à jour'));
+        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
     /**
-     * Edits an existing Location entity.
+     * Edits an existing Mapping entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PCFicheBundle:Location')->find($id);
+        $entity = $em->getRepository('PCFicheBundle:Mapping')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Location entity.');
+            throw $this->createNotFoundException('Unable to find Mapping entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -172,17 +172,17 @@ class LocationController extends DefaultController
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('location_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('mapping_edit', array('id' => $id)));
         }
 
-        return $this->render('PCFicheBundle:Location:edit.html.twig', array(
+        return $this->render('PCFicheBundle:Mapping:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Location entity.
+     * Deletes a Mapping entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -192,21 +192,21 @@ class LocationController extends DefaultController
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('PCFicheBundle:Location')->find($id);
+            $entity = $em->getRepository('PCFicheBundle:Mapping')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Location entity.');
+                throw $this->createNotFoundException('Unable to find Mapping entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('location'));
+        return $this->redirect($this->generateUrl('mapping'));
     }
 
     /**
-     * Creates a form to delete a Location entity by id.
+     * Creates a form to delete a Mapping entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -215,9 +215,9 @@ class LocationController extends DefaultController
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('location_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('mapping_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Supprimer'))
+            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

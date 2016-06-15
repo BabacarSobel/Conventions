@@ -1,33 +1,32 @@
 body {
-	font-family: EurostileTMed;
-	font-size: 16px;
+    font-family: EurostileTMed, Arial,sans-serif;
+    font-size: 16px;
 }
 
 
 
 .menu {
-	background-color: #004874;
-	font-size: .875em;
-	position: fixed;
-	z-index: 2000;
-	border: 0px none;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-        margin-bottom : 100px;
-	border-radius: 0px;
-	box-shadow: 0px 1px 2px #272727;
-        max-height: 120px;
+    background-color: #004874;
+    font-size: .875em;
+    position: fixed;
+    z-index: 2000;
+    border: 0px none;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    margin-bottom : 100px;
+    border-radius: 0px;
+    box-shadow: 0px 1px 2px #272727;
+    max-height: 120px;
 }
 
 img {
-	max-width: 100%;
-	height: auto;
-        width: auto;
+    max-width: 100%;
+    height: auto;
+    width: auto;
 }
 
 .top_menu{
-
     border-bottom: 70px solid #009FDE;
     border-left: 50px solid transparent;
     height: 0; 
@@ -109,10 +108,6 @@ pc_modal_header{
     padding: 20px;
     border-radius: 4px 4px 0px 0px;
     box-shadow: 1px 1px 1px #FFF inset;
-}
-
-.pc_sidebar{
-    
 }
 
 .pc_sidebar_element{

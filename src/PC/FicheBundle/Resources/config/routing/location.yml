@@ -6,10 +6,6 @@ location_show:
     path:     /{id}/show
     defaults: { _controller: "PCFicheBundle:Location:show" }
 
-location_new:
-    path:     /new
-    defaults: { _controller: "PCFicheBundle:Location:new" }
-
 location_create:
     path:     /create
     defaults: { _controller: "PCFicheBundle:Location:create" }

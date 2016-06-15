@@ -36,7 +36,7 @@ class Template
     private $template;
     
     /**
-    * @ORM\ManyToOne(targetEntity="SousType", inversedBy="templates", cascade={"remove"})
+    * @ORM\ManyToOne(targetEntity="SousType", inversedBy="templates")
     */
     protected $type;
 

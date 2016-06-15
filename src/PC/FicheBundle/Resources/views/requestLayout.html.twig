@@ -5,10 +5,6 @@
 {% block javascripts %}{{parent()}}{% endblock %}
 
 {# ce block est utilisé quand l'utilisateur est connecté #}
-{% block title %}
-{{ parent() }}
-{% endblock %}
-
 {% block body %}
     {% if form is not null%}
     <div class="container">

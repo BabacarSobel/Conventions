@@ -49,37 +49,37 @@ class Type
     protected $soustypes;
     
     /**
-     * @ORM\OneToMany(targetEntity="ChartePartenariat", mappedBy="ficheType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="ChartePartenariat", mappedBy="type", cascade={"remove", "persist"})
      */
     protected $chartePartenariats;
     
         /**
-     * @ORM\OneToMany(targetEntity="MADEvenementGratuit", mappedBy="ficheType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="MADEvenementGratuit", mappedBy="type", cascade={"remove", "persist"})
      */
     protected $madEvenementGratuits;
     
         /**
-     * @ORM\OneToMany(targetEntity="MADSalles", mappedBy="ficheType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="MADSalles", mappedBy="type", cascade={"remove", "persist"})
      */
     protected $madSalles;
     
         /**
-     * @ORM\OneToMany(targetEntity="PIFEClassique", mappedBy="ficheType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="PIFEClassique", mappedBy="type", cascade={"remove", "persist"})
      */
     protected $pifeClassiques;
     
         /**
-     * @ORM\OneToMany(targetEntity="PIFELaboratoire", mappedBy="ficheType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="PIFELaboratoire", mappedBy="type", cascade={"remove", "persist"})
      */
     protected $pifeLaboratoires;
     
     /**
-     * @ORM\OneToMany(targetEntity="PSCati", mappedBy="ficheType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="PSCati", mappedBy="type", cascade={"remove", "persist"})
      */
     protected $psCatis;
     
     /**
-     * @ORM\OneToMany(targetEntity="Autre", mappedBy="ficheType", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="Autre", mappedBy="type", cascade={"remove", "persist"})
      */
     protected $autres;
 

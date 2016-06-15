@@ -3,10 +3,9 @@
 namespace PC\FicheBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use PC\FicheBundle\Entity\Template;
 use PC\FicheBundle\Form\TemplateType;
+use PC\FicheBundle\Form\EditTemplateType;
 
 /**
  * Template controller.
@@ -30,21 +29,6 @@ class TemplateController extends DefaultController
         ));
     }
     
-        /**
-     * Lists all Template entities.
-     *
-     */
-    public function pscatiAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('PCFicheBundle:PSCATI')->find($id);
-
-        return $this->render('PCFicheBundle:Template:pscati.html.twig', array(
-            'entity' => $entity,
-        ));
-    }
-    
     /**
      * Creates a new Template entity.
      *
@@ -53,9 +37,17 @@ class TemplateController extends DefaultController
     {
         $entity = new Template();
         $form = $this->createCreateForm($entity);
+        if (isset($request->request->get('pc_fichebundle_template')['type'])){
+            $em = $this->getDoctrine()->getManager();
+            $typeId = $request->request->get('pc_fichebundle_template')['type'];
+            $type = $em->getRepository('PCFicheBundle:SousType')->find($typeId);
+            $params = $request->request->get('pc_fichebundle_template');
+            $params['type'] = null;
+            $request->request->set('pc_fichebundle_template',$params);
+        }
         $form->handleRequest($request);
-
         if ($form->isValid()) {
+            $entity->setType($type);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -158,12 +150,12 @@ class TemplateController extends DefaultController
     */
     private function createEditForm(Template $entity)
     {
-        $form = $this->createForm(new TemplateType($this->getDoctrine()->getManager()), $entity, array(
+        $form = $this->createForm(new EditTemplateType($this->getDoctrine()->getManager()), $entity, array(
             'action' => $this->generateUrl('template_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Modifier'));
 
         return $form;
     }
@@ -233,7 +225,7 @@ class TemplateController extends DefaultController
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('template_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()
         ;
     }

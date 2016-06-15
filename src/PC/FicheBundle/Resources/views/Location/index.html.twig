@@ -1,14 +1,15 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block body -%}
-    <h1>Location list</h1>
-
-    <table class="records_list">
+    <h1>Liste des locations</h1><small><a href="{{ path('local') }}">Voir la liste des locaux</a></small>
+    <hr>
+    <table id="location_liste" class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Datedebut</th>
-                <th>Dateecheance</th>
+                <th>Local</th>
+                <th>Date de debut</th>
+                <th>Date d'écheance</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,15 +17,16 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('location_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.local.nom }}</td>
                 <td>{% if entity.dateDebut %}{{ entity.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.dateEcheance %}{{ entity.dateEcheance|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('location_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('location_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
                     <li>
-                        <a href="{{ path('location_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('location_edit', { 'id': entity.id }) }}">Modifier</a>
                     </li>
                 </ul>
                 </td>
@@ -32,12 +34,9 @@
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('location_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+    <script>
+        $(document).ready( function () {
+            $('#location_liste').DataTable();
+        } );
+    </script>
     {% endblock %}

@@ -111,100 +111,100 @@
 	</div>
     </div>
     {% block modals %}       
-        <div class="modal fade" style="top:25%;outline: none;" id="new_avenant" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-            <div class="modal-dialog" style="width:50%;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                        <h4 class="modal-title custom_align" id="Heading">Ajouter un avenant</h4>
+    <div class="modal fade" style="top:25%;outline: none;" id="new_avenant" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog" style="width:50%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Création avenant</h4>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(avenant_form, {'attr': {'class': 'form-horizontal'}}) }}
+                    {{ form_errors(avenant_form) }}
+                    <div class="form-group">
+                        {{ form_label(avenant_form.typePartenaire, "Type de partenaire", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.typePartenaire) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.typePartenaire, {'attr': {'class': ''}})}}
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        {{ form_start(avenant_form, {'attr': {'class': 'form-horizontal'}}) }}
-                        {{ form_errors(avenant_form) }}
-                        <div class="form-group">
-                            {{ form_label(avenant_form.typePartenaire, "Type de partenaire", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.typePartenaire) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.typePartenaire, {'attr': {'class': ''}})}}
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            {{ form_label(avenant_form.motif, "Motif de l'avenant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.motif) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.motif, {'attr': {'class': ''}})}}
-                            </div>
+                    <div class="form-group">
+                        {{ form_label(avenant_form.motif, "Motif de l'avenant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.motif) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.motif, {'attr': {'class': ''}})}}
                         </div>
-
-                        <div class="form-group">
-                            {{ form_label(avenant_form.objet, "Objet de l'avenant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.objet) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.objet, {'attr': {'class': 'determinant'}})}}
-                                <button type="button" class="btn pc_btn" onclick="determiner()">Confirmer objet</button>
-                            </div>
-                        </div>
-
-                        <div id="modifier" class="hidden">
-                        <div class="form-group">
-                            {{ form_label(avenant_form.numeroParagrapheModifie, "Numéro du paragraphe modifié", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.numeroParagrapheModifie) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.numeroParagrapheModifie, {'attr': {'class': ''}})}}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {{ form_label(avenant_form.numeroArticleModifie, "Numéro de l'article modifié", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.numeroArticleModifie) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.numeroArticleModifie, {'attr': {'class': ''}})}}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {{ form_label(avenant_form.intituleArticleModifie, "Intitulé de l'article modifié", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.intituleArticleModifie) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.intituleArticleModifie, {'attr': {'class': ''}})}}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {{ form_label(avenant_form.nouveauTexte, "Nouveau texte", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.nouveauTexte) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.nouveauTexte, {'attr': {'class': ''}})}}
-                            </div>
-                        </div>
-                        </div>
-                        <div id="proroger" class="hidden">
-                        <div class="form-group">
-                            {{ form_label(avenant_form.numeroArticleDuree, "Numéro de l'article Durée", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.numeroArticleDuree) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.numeroArticleDuree, {'attr': {'class': ''}})}}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {{ form_label(avenant_form.intituleArticleDuree, "Intitulé de l'article Durée", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.intituleArticleDuree) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.intituleArticleDuree, {'attr': {'class': ''}})}}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {{ form_label(avenant_form.nbMoisProrogation, "Nombre de mois de prorogation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                            {{ form_errors(avenant_form.nbMoisProrogation) }}
-                            <div class="col-sm-4">
-                                {{ form_widget(avenant_form.nbMoisProrogation, {'attr': {'class': ''}})}}
-                            </div>
-                        </div>
-                        </div>
-                        {{ form_rest(avenant_form) }}
-                        {{ form_end(avenant_form) }}
                     </div>
+                        
+                    <div class="form-group">
+                        {{ form_label(avenant_form.objet, "Objet de l'avenant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.objet) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.objet, {'attr': {'class': 'determinant'}})}}
+                            <button type="button" class="btn pc_btn" onclick="determiner()">Confirmer objet</button>
+                        </div>
+                    </div>
+                    
+                    <div id="modifier" class="hidden">
+                    <div class="form-group">
+                        {{ form_label(avenant_form.numeroParagrapheModifie, "Numéro du paragraphe modifié", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.numeroParagrapheModifie) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.numeroParagrapheModifie, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(avenant_form.numeroArticleModifie, "Numéro de l'article modifié", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.numeroArticleModifie) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.numeroArticleModifie, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(avenant_form.intituleArticleModifie, "Intitulé de l'article modifié", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.intituleArticleModifie) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.intituleArticleModifie, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(avenant_form.nouveauTexte, "Nouveau texte", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.nouveauTexte) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.nouveauTexte, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    </div>
+                    <div id="proroger" class="hidden">
+                    <div class="form-group">
+                        {{ form_label(avenant_form.numeroArticleDuree, "Numéro de l'article Durée", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.numeroArticleDuree) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.numeroArticleDuree, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(avenant_form.intituleArticleDuree, "Intitulé de l'article Durée", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.intituleArticleDuree) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.intituleArticleDuree, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(avenant_form.nbMoisProrogation, "Nombre de mois de prorogation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(avenant_form.nbMoisProrogation) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(avenant_form.nbMoisProrogation, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    </div>
+                    {{ form_rest(avenant_form) }}
+                    {{ form_end(avenant_form) }}
                 </div>
             </div>
         </div>
+    </div>
 
         <div class="modal fade" style="top:25%;outline: none;" id="new_fichier" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
             <div class="modal-dialog">
@@ -224,30 +224,30 @@
         </div>
     {% endblock%}
     
-    <script  type="text/javascript">
-        function determiner(){
-            var x = document.getElementById("pc_fichebundle_avenant_objet").selectedIndex;
-            var y = document.getElementById("pc_fichebundle_avenant_objet").options;
-            var choix = y[x].value;
-            alert(y[x].value);
-            if (choix === 'Modification'){
-                $('#modifier').removeClass('hidden');
-                $('#modifier').show();
-                $('#proroger').hide();
-                $('#proroger').addClass('hidden');
-            }
-            if (choix === 'Prorogation'){
-                $('#proroger').removeClass('hidden');
-                $('#proroger').show();
-                $('#modifier').hide();
-                $('#modifier').addClass('hidden');
-            }
-            if (choix === 'ProrogationModification'){
-                $('#modifier').removeClass('hidden');
-                $('#modifier').show();
-                $('#proroger').removeClass('hidden');
-                $('#proroger').show();
-            }
+<script  type="text/javascript">
+    function determiner(){
+        var x = document.getElementById("pc_fichebundle_avenant_objet").selectedIndex;
+        var y = document.getElementById("pc_fichebundle_avenant_objet").options;
+        var choix = y[x].value;
+        alert(y[x].value);
+        if (choix === 'modifier'){
+            $('#modifier').removeClass('hidden');
+            $('#modifier').show();
+            $('#proroger').hide();
+            $('#proroger').addClass('hidden');
         }
-    </script>
+        if (choix === 'proroger'){
+            $('#proroger').removeClass('hidden');
+            $('#proroger').show();
+            $('#modifier').hide();
+            $('#modifier').addClass('hidden');
+        }
+        if (choix === 'proroger et modifier'){
+            $('#modifier').removeClass('hidden');
+            $('#modifier').show();
+            $('#proroger').removeClass('hidden');
+            $('#proroger').show();
+        }
+    }
+</script>
 {% endblock %}
