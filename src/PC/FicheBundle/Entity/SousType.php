@@ -90,7 +90,7 @@ class SousType
     protected $autres;
     
     /**
-     * @ORM\OneToMany(targetEntity="template", mappedBy="type", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="Template", mappedBy="type", cascade={"remove", "persist"})
      */
     protected $templates;
     

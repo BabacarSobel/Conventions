@@ -1,7 +1,7 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container">
     <p> un pdf a été créé.</p>
     <p>Voulez-vous le télécharger <a href="{{path("fiche_download", { 'filename': filename })}}">ici</a></p>
     </div>

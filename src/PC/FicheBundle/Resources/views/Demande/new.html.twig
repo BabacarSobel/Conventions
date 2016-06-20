@@ -2,13 +2,13 @@
 
 {% block body -%}
         <div class="container">
-            <div class="row">
-                <h3>Choisissez un modèle de convention.</h3><br>
+            <div class="page-header">
+                <h3>Choisissez un modèle de convention.</h3>
             </div>
             <div class="row">
                 {% for entity in entities%}
-                <div class="col-md-3 imagecarre2">
-                    <a  data-placement="top" data-toggle="tooltip" title="{{entity.description}}" role="button" href="{{ path('demande_choosesubype',{'id': entity.id }) }}">{{entity.nom}}</a>
+                <div class="col-md-3">
+                    <a  data-placement="top" data-toggle="tooltip" title="{{entity.description}}" class="btn btn-primary pc_btn_carre" href="{{ path('demande_choosesubype',{'id': entity.id }) }}">{{entity.nom}}</a>
                 </div>
                 {% endfor %}
             </div>

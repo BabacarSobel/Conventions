@@ -6,44 +6,41 @@
 {% block body %}
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Bienvenue !
-                    </h1>
-                </div>
+                    <h1 class="page-header">Bienvenue !</h1>
             </div>          
-            <div class="row col-lg-8 col-md-8">
-                {% if 'ROLE_ADMIN' in app.user.roles %}
-
-                <div id='fiches' class="col-sm-12 col-md-6 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
-                    <a href="{{path("fiche")}}">
-                        LES FICHES
-                    </a>
-                </div>
-                {% endif %}   
-                <div id='demandes' class="col-sm-12 col-md-6 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()' >
-                    <a href="{{path("demande")}}">
-                        LES DEMANDES
-                    </a>
-                </div>
-                {% if 'ROLE_ADMIN' in app.user.roles %}
-                <div id='templates' class="col-sm-12 col-md-6 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
-                    <a href="{{path("template")}}">
-                        LES TEMPLATES
-                    </a>
-                </div>
-                <div id='administration' class="col-sm-12 col-md-6 imagecarre" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
-                    <a href="./admin">
-                        ADMINISTRATION
-                    </a>
-                </div>
-                {% endif %}
-            </div>
-
             <div class="row">
-
-                <div id='info' class="col-md-3  hidden">
-                        <p class='panel-body pc_panel_blue_275' id='info_message'>
-                        </p>
+                <div class="col-lg-8 col-md-6 col-sm-6">
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                        <div id='fiches' class="col-sm-6 col-md-6" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                            <a class="btn btn-primary pc_btn_carre btn-block" href="{{path("fiche")}}">
+                                LES FICHES
+                            </a>
+                        </div>
+                    {% endif %}   
+                    <div id='demandes' class="col-sm-6 col-md-6" onmouseover='displayInfo(this)' onmouseout='hideInfo()' >
+                        <a class="btn btn-primary pc_btn_carre btn-block" href="{{path("demande")}}">
+                            LES DEMANDES
+                        </a>
+                    </div>
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                        <div id='templates' class="col-sm-6 col-md-6" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                            <a class="btn btn-primary pc_btn_carre btn-block" href="{{path("template")}}">
+                                LES TEMPLATES
+                            </a>
+                        </div>
+                        <div id='administration' class="col-sm-6 col-md-6" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                            <a class="btn btn-primary pc_btn_carre btn-block" href="./admin">
+                                ADMINISTRATION
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+                <div id='info' class="col-lg-4 col-md-6 col-sm-6  hidden">
+                        {# les informations sur chaque menu ici #}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Information</div>
+                            <div class="panel-body" id='info_message'></div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -77,7 +74,7 @@
                 
             }
 
-            function hideInfo(id){
+            function hideInfo(){
                 $('#info').addClass('hidden');
                 $('#info').hide();
             }

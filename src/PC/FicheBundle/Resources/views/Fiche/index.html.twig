@@ -7,12 +7,32 @@
 {% block body %}        
     <div class="container container-fluid">
         <div class="row">
-            <div class="col-lg-12 page-header">
-                <h1>Liste des fiches.</h1>
-                <a data-placement="top" data-toggle="tooltip" title="Créer une nouvelle fiche" class="btn pc_skyblue_btn" style="font-size: 150%; margin-bottom: 2%;" href="{{ path('fiche_new') }}">Créer <span class="fa fa-plus"></span></a>
-                <a data-placement="top" data-toggle="tooltip" title="Exporter les fiches en csv ou en pdf" class='btn pc_skyblue_btn' style="font-size: 150%; margin-bottom: 2%;" href='{{path('export')}}'>Exporter <span class="fa fa-file"></span></a>
-                <a data-toggle="modal" data-target="#autres2" title="Voir la liste des avenants, fichiers, etc..." class='btn pc_skyblue_btn' style="font-size: 150%; margin-bottom: 2%;">Autres listes </a>
+            <div class="page-header">
+                <h1>Liste des fiches.</h1>   
             </div>
+        </div>
+        <div class="row">
+            <nav class="navbar navbar-default">
+                <ul class="nav navbar-nav">
+                    <li><a data-placement="top" data-toggle="tooltip" title="Créer une nouvelle fiche" href="{{ path('fiche_new') }}">Créer <span class="fa fa-plus"></span></a></li>
+                    <li><a data-placement="top" data-toggle="tooltip" title="Exporter les fiches en csv ou en pdf" href='{{path('export')}}'>Exporter <span class="fa fa-file"></span></a> </li>
+                    <li class="dropdown"><a class="dropdown-toggle" title="Voir la liste des avenants, fichiers, etc..." data-toggle="dropdown" href="#">Autres listes <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('avenant') }}">Les avenants</a></li>
+                            <li><a href="{{ path('fichier') }}">Les fichiers</a></li>
+                            <li><a href="{{ path('departement') }}" >Les departements</a></li>
+                            <li><a href="{{ path('local') }}" >Les locaux</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Notifications<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a data-placement='top' data-toggle='modal' data-target='#alertes1'>Les alertes</a></li>
+                            <li><a data-placement='top' data-toggle='modal' data-target='#messages'>Les messages</a></li>
+                            <li><a data-placement='top' data-toggle='modal' data-target='#expirations'>Les expirations</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div class="row">
             <ul class="nav nav-pills" style='margin: 2%'>
@@ -138,26 +158,122 @@
                 </div>
             </div>            
         </div>
-    </div>
-    
-    <div class="modal" style="top:25%" id="autres2"  aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                    <h4 class="modal-title custom_align" id="Heading">Autres listes</h4>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        <li><a href="{{ path('avenant') }}">Les avenants</a></li>
-                        <li><a href="{{ path('fichier') }}">Les fichiers</a></li>
-                        <li><a href="{{ path('departement') }}" >Les departements</a></li>
-                        <li><a href="{{ path('local') }}" >Les locaux</a></li>
-                    </ul>
+    </div>                
+       
+    <!-- les modals pour l'affichage des alertes-->
+    {% if alertesA is defined%}
+        <div class="modal fade" id="alertes1"  role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content pc_modal">
+                    <div class="modal-header pc_modal_header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title">Les alertes</h4>
+                    </div>
+                    <div class="modal-body">
+                        {% block alertes %}
+                            <table class='table table-bordered table-condensed'>
+                                <thead>
+                                    <tr>
+                                        <th>Date alerte</th>
+                                        <th>nom</th>
+                                        <th>message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for alerte in alertesA %}
+                                    <tr>
+                                        <td><a href="{{path(alerte.route, { 'id': alerte.ownerId })}}"><span class="label label-warning">{{alerte.dateAlerte|date('d-m-Y')}}</span> </a></td>
+                                        <td><a href="{{path(alerte.route, { 'id': alerte.ownerId })}}">{{alerte.intitule}}</a></td>
+                                        <td><a href="{{path(alerte.route, { 'id': alerte.ownerId })}}">{{alerte.objet}}</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endblock alertes %}
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Fermer</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> 
+    {% endif %} 
+    
+    {% if messagesA is defined %}            
+        <div class="modal fade"  id="messages"  role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content pc_modal">
+                    <div class="modal-header pc_modal_header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title">Les messages</h4>
+                    </div>
+                    <div class="modal-body">
+                        {% block messages %}
+                            <table class='table table-bordered table-condensed'>
+                                <thead>
+                                    <tr>
+                                        <th>Date alerte</th>
+                                        <th>nom</th>
+                                        <th>message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for alerte in messagesA%}
+                                    <tr>
+                                        <td><a href="{{path(alerte.route, { 'id': alerte.ownerId })}}"><span class="label label-warning">{{alerte.dateAlerte|date('d-m-Y')}}</span> </a></td>
+                                        <td><a href="{{path(alerte.route, { 'id': alerte.ownerId })}}">{{alerte.intitule}}</a></td>
+                                        <td><a href="{{path(alerte.route, { 'id': alerte.ownerId })}}">{{alerte.objet}}</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endblock messages %}
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    {% endif %} 
+    
+    {% if alertesExp is defined %}            
+        <div class="modal fade" id="expirations"  role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content pc_modal">
+                    <div class="modal-header pc_modal_header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title">Les expirations proches</h4>
+                    </div>
+                    <div class="modal-body">
+                        {% block expirations %}
+                            <table class='table table-bordered table-condensed'>
+                                <thead>
+                                    <tr>
+                                        <th>Date alerte</th>
+                                        <th>nom</th>
+                                        <th>message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for alerte in alertesExp%}
+                                    <tr>
+                                        <td><a href="{{path(alerte.route, { 'id': alerte.ownerId })}}"><span class="label label-warning">{{alerte.dateAlerte|date('d-m-Y')}}</span> </a></td>
+                                        <td><a href="{{path(alerte.route, { 'id': alerte.ownerId })}}">{{alerte.intitule}}</a></td>
+                                        <td><a href="{{path(alerte.route, { 'id': alerte.ownerId })}}">{{alerte.objet}}</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endblock expirations %}
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    {% endif %}
                     
     <script>
         $(document).ready( function () {

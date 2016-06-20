@@ -63,6 +63,66 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array (  '_controller' => 'PC\\FicheBundle\\Controller\\HomeController::backwardAction',  '_route' => 'pc_precedent',);
         }
 
+        if (0 === strpos($pathinfo, '/mapping')) {
+            // mapping
+            if (rtrim($pathinfo, '/') === '/mapping') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'mapping');
+                }
+
+                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::indexAction',  '_route' => 'mapping',);
+            }
+
+            // mapping_show
+            if (preg_match('#^/mapping/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mapping_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::showAction',));
+            }
+
+            // mapping_new
+            if ($pathinfo === '/mapping/new') {
+                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::newAction',  '_route' => 'mapping_new',);
+            }
+
+            // mapping_create
+            if ($pathinfo === '/mapping/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_mapping_create;
+                }
+
+                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::createAction',  '_route' => 'mapping_create',);
+            }
+            not_mapping_create:
+
+            // mapping_edit
+            if (preg_match('#^/mapping/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mapping_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::editAction',));
+            }
+
+            // mapping_update
+            if (preg_match('#^/mapping/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_mapping_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mapping_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::updateAction',));
+            }
+            not_mapping_update:
+
+            // mapping_delete
+            if (preg_match('#^/mapping/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_mapping_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mapping_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::deleteAction',));
+            }
+            not_mapping_delete:
+
+        }
+
         if (0 === strpos($pathinfo, '/loca')) {
             if (0 === strpos($pathinfo, '/location')) {
                 // location
@@ -77,11 +137,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 // location_show
                 if (preg_match('#^/location/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::showAction',));
-                }
-
-                // location_new
-                if ($pathinfo === '/location/new') {
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::newAction',  '_route' => 'location_new',);
                 }
 
                 // location_create
