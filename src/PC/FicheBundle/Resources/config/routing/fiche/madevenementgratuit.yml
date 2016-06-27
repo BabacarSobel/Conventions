@@ -1,0 +1,89 @@
+madevenementgratuit:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:index" }
+
+madevenementgratuit_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:show" }
+    
+madevenementgratuit_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:export" }
+    
+madevenementgratuit_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:pdf" }
+    
+madevenementgratuit_new_fichier:
+    path:     /{id}/new_fichier
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:addFichier" }
+    
+madevenementgratuit_new_avenant:
+    path:     /{id}/new_avenant
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:addAvenant" }
+     
+madevenementgratuit_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:addFichierToRequest" }
+    
+madevenementgratuit_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:addAvenantToRequest" }
+    
+    
+madevenementgratuit_new_alert:
+    path:     /{id}/new_alert
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:addAlert" }
+
+madevenementgratuit_new:
+    path:     /{id}/new
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:new" }
+    
+madevenementgratuit_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:request" }
+
+madevenementgratuit_create:
+    path:     /{id}/create
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:create" }
+    methods:  POST
+
+madevenementgratuit_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:edit" }
+
+madevenementgratuit_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:update" }
+    methods:  [POST, PUT]
+
+madevenementgratuit_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:delete" }
+    methods:  [POST, DELETE]
+    
+madevenementgratuit_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:showRequest" }
+    
+madevenementgratuit_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:createRequest" }
+    methods:  POST
+    
+madevenementgratuit_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:sendFicheMessage" }
+    
+madevenementgratuit_action:
+    path:     /{id}/new_action
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:createAction" }
+
+madevenementgratuit_add_local:
+    path : /{id}/addLocal
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:addLocal"}
+    methods : [POST,GET]
+    
+madevenementgratuit_word:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:MADEvenementGratuit:word" }

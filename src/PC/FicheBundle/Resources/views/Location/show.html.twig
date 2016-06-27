@@ -1,0 +1,15 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <p>Le local {{ entity.local.nom }} (id:{{ entity.id }}) est alloué du {{ entity.dateDebut|date('d-m-Y à H:i:s') }} au {{ entity.dateEcheance|date('d-m-Y à H:i:s') }}. 
+    </p>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('location_edit', { 'id': entity.id }) }}">
+                Editer
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,265 @@
+{% extends 'PCFicheBundle::showrequestLayout.html.twig' %}
+{% block barre %}
+    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('demande') }}"> Retour à la liste</a></a></li>
+{% endblock %}
+{% block tabs %}
+    {{parent()}}
+    <li>
+        <a href="#tab_default_6" data-toggle="tab"> Locaux </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+   
+    <div class ="pc_info_group form-horizontal">
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Id</label>
+                <div class='col-sm-4'>
+                    <input disabled="disabled" class="form-control" value='{{ entity.id }}'/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Type</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.type.nom }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Sous type</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.sousType.nom }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Etat de la demande</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.etatDemande }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Intitulé de la demande</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.intitule }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Objet de la demande</label>
+                <div class='col-sm-4'><textarea disabled="disabled" class="form-control">{{ entity.objet }}</textarea></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Etat de la convention</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.etatConvention }}'/></div>
+            </div>
+    </div>        
+    <div class ="pc_info_group form-horizontal">      
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Co-contractant</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.cocontractant }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Forme juridique du co-contractant</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.formeJuridiqueCocontractant }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Adresse siege</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.adresseSiege }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Numéro Siret</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.numeroSiret }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Code APE</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.codeApe }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Titre représentant</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.titreRepresentant }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Nom représentant</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.nomRepresentant }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Prénom représentant</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.prenomRepresentant }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Fonction représentant</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.fonctionRepresentant }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Demandeur Polytech</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.demandeurPolytech }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Date d'effet</label>
+                <div class='col-sm-4'>
+                    {%if entity.dateEffet is null%}
+                        <input disabled="disabled" class="form-control" value=''/>
+                    {%else%}
+                        <input disabled="disabled" class="form-control" value='{{ entity.dateEffet|date('d/m/Y') }}'/>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Date d'écheance</label>
+                <div class='col-sm-4'>
+                    {%if entity.dateEcheance is null%}
+                        <input disabled="disabled" class="form-control" value=''/>
+                    {%else%}
+                        <input disabled="disabled" class="form-control" value='{{ entity.dateEcheance|date('d/m/Y') }}'/>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Reconduction tacite</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.reconductionTacite }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Validation juridique</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.validationJuridique }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Date de validation juridique</label>
+                <div class='col-sm-4'>
+                    {%if entity.dateValidationJuridique is null%}
+                        <input disabled="disabled" class="form-control" value=''/>
+                    {%else%}
+                        <input disabled="disabled" class="form-control" value='{{ entity.dateValidationJuridique|date('d/m/Y') }}'/>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Validation par la direction</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.validationDirection }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Date de validation par la direction</label>
+                <div class='col-sm-4'>
+                    {%if entity.dateValidationDirection is null%}
+                        <input disabled="disabled" class="form-control" value=''/>
+                    {%else%}
+                        <input disabled="disabled" class="form-control" value='{{ entity.dateValidationDirection|date('d/m/Y') }}'/>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Signature Polytech</label>
+                <div class='col-sm-4'>
+                    {%if entity.signaturePolytech is null%}
+                        <input disabled="disabled" class="form-control" value=''/>
+                    {%else%}
+                        <input disabled="disabled" class="form-control" value='{{ entity.signaturePolytech|date('d/m/Y') }}'/>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Date signature Polytech</label>
+                <div class='col-sm-4'>
+                    {%if entity.dateSignaturePolytech is null%}
+                        <input disabled="disabled" class="form-control" value=''/>
+                    {%else%}
+                        <input disabled="disabled" class="form-control" value='{{ entity.dateSignaturePolytech|date('d/m/Y') }}'/>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Action demandée</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.actionDemandee }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Suivi d'action</label>
+                <div class='col-sm-4'><textarea disabled="disabled" class="form-control">{{ entity.suiviActionTexte }}</textarea></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Date de Suivi d'action</label>
+                <div class='col-sm-4'>
+                    {%if entity.suiviActionDate is null%}
+                        <input disabled="disabled" class="form-control" value=''/>
+                    {%else%}
+                        <input disabled="disabled" class="form-control" value='{{ entity.suiviActionDate|date('d/m/Y') }}'/>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Observations</label>
+                <div class='col-sm-4'><textarea disabled="disabled" class="form-control">{{ entity.observations }}</textarea></div>
+                
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Flux financier</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.fluxFinancier }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Réservation de fonds</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.reservationFonds }}'/></div>
+            </div>
+    </div>       
+    <div class ="pc_info_group form-horizontal">
+
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Durée totale</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.dureeTotale }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Activité</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.activite }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Titre référent</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.titreReferent }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Nom du référent</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.nomReferent }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Prénom du référent</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.prenomReferent }}'/></div>
+            </div>
+            <div class="form-group">
+                <label class='col-sm-3 pc_label control-label'>Planification événement</label>
+                <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.planificationEvenement }}'/></div>
+            </div>
+    </div>
+{% endblock %}
+{% block tabcontent %}
+    {{ parent()}}
+    <div class="tab-pane" id="tab_default_6">
+        <a data-placement="top" data-toggle="modal" data-target="#locaux" class="btn pc_btn">ajouter un local</a>
+        <table class="records_list table table-bordred table-striped">
+            <thead>
+                <tr>
+                     <th><input type="checkbox" id="checkall" /></th>
+                    <th>Id</th>
+                    <th>Intitule</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for local in locaux %}
+                <tr>
+                    <td><input type="checkbox" class="checkthis" /></td>
+                    <td><a href="{{ path('location_show', { 'id': local.id }) }}">{{ local.id }}</a></td>
+                    <td><a href="{{ path('location_show', { 'id': local.id }) }}">{{ local.local.nom }}</a></td>
+                    <td>
+                        <a  href='{{ path('location_show', { 'id': local.id }) }}' data-placement="top" data-toggle="tooltip" title="Voir local" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    </td>    
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+                                
+{% endblock %}
+                            
+                      
+{% block modals %}
+   {{ parent()}}                    
+    <div class="modal fade" style="top:25%;outline: none;" id="locaux"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Choisir vos locaux</h4>
+                </div>
+                <div class="modal-body">
+                    {{form(locauxDisponibles)}}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock%}

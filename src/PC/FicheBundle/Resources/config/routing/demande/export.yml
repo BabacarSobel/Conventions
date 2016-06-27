@@ -1,0 +1,22 @@
+export:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Export:index" }
+
+export_chooseColumns:
+    path:     /{parentId}/{id}/exportStep3
+    defaults: { _controller: "PCFicheBundle:Export:chooseColumnToExport" }
+    methods: [GET, POST]
+    
+export_all:
+    path:     /exportAll
+    defaults: { _controller: "PCFicheBundle:Export:exportAll" }
+
+export_choices:
+    path:     /exportChoices
+    defaults: { _controller: "PCFicheBundle:Export:exportChoices" }       
+
+    
+export_chooseSubType:
+    path:     /{id}/exportStep2
+    defaults: { _controller: "PCFicheBundle:Export:chooseSubType" }
+    methods: GET

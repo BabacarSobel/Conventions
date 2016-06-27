@@ -1,0 +1,30 @@
+alerte:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Alerte:index" }
+
+alerte_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Alerte:show" }
+
+alerte_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:Alerte:new" }
+
+alerte_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:Alerte:create" }
+    methods:  POST
+
+alerte_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "PCFicheBundle:Alerte:edit" }
+
+alerte_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Alerte:update" }
+    methods:  [POST, PUT]
+
+alerte_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Alerte:delete" }
+    methods:  [POST, DELETE]

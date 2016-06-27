@@ -1,0 +1,15 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <h2>Créer un nouveau département</h2>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('departement') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

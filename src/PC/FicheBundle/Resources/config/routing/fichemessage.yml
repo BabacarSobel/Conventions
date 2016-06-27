@@ -1,0 +1,30 @@
+fichemessage:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:FicheMessage:index" }
+
+fichemessage_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:FicheMessage:show" }
+
+fichemessage_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:FicheMessage:new" }
+
+fichemessage_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:FicheMessage:create" }
+    methods:  POST
+
+fichemessage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PCFicheBundle:FicheMessage:edit" }
+
+fichemessage_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:FicheMessage:update" }
+    methods:  [POST, PUT]
+
+fichemessage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:FicheMessage:delete" }
+    methods:  [POST, DELETE]

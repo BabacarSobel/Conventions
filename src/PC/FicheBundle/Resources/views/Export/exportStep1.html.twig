@@ -1,0 +1,25 @@
+{% extends "PCFicheBundle::exportLayout.html.twig" %}
+
+
+{% block export %}
+
+            
+            <div class="row">
+                <div class="col-lg-12 page-header">
+                    <h3>Quel type de fiche souhaitez-vous exporter ?<h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 imagecarre2">
+                    <a  role="button" href="{{path("export_all")}}">TOUTES</a>
+                </div>
+                {% for type in types %}
+                <div class="col-md-3 imagecarre2">
+                            <a  role="button" href="{{path('export_chooseSubType',{id: type.id})}}">{{type.nom}}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+{% endblock %}

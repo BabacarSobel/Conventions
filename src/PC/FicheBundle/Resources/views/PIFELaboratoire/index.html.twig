@@ -1,0 +1,95 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <h1>PIFELaboratoire list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ficheavenant</th>
+                <th>Fichetype</th>
+                <th>Ficheintitule</th>
+                <th>Ficheobjet</th>
+                <th>Ficheetat</th>
+                <th>Fichecocontractant</th>
+                <th>Ficheformejuridiquecocontractant</th>
+                <th>Ficheadressesiege</th>
+                <th>Fichenumerosiret</th>
+                <th>Fichecodeape</th>
+                <th>Fichetitrerepresentant</th>
+                <th>Fichenomrepresentant</th>
+                <th>Ficheprenomrepresentant</th>
+                <th>Fichefonctionrepresentant</th>
+                <th>Fichedemandeurpolytech</th>
+                <th>Fichedateeffet</th>
+                <th>Fichedatefin</th>
+                <th>Fichetacitereconduction</th>
+                <th>Fichevalidationjuridique</th>
+                <th>Fichevalidationdirection</th>
+                <th>Fichesignaturepolytech</th>
+                <th>Fichedatesignaturepolytech</th>
+                <th>Ficheactiondemandee</th>
+                <th>Fichesuiviactiontexte</th>
+                <th>Fichesuiviactiondate</th>
+                <th>Ficheobservations</th>
+                <th>Fichefluxfinancier</th>
+                <th>Ficheresafonds</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('pifelaboratoire_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.ficheAvenant }}</td>
+                <td>{{ entity.ficheType }}</td>
+                <td>{{ entity.ficheIntitule }}</td>
+                <td>{{ entity.ficheObjet }}</td>
+                <td>{{ entity.ficheEtat }}</td>
+                <td>{{ entity.ficheCocontractant }}</td>
+                <td>{{ entity.ficheFormeJuridiqueCocontractant }}</td>
+                <td>{{ entity.ficheAdresseSiege }}</td>
+                <td>{{ entity.ficheNumeroSiret }}</td>
+                <td>{{ entity.ficheCodeApe }}</td>
+                <td>{{ entity.ficheTitreRepresentant }}</td>
+                <td>{{ entity.ficheNomRepresentant }}</td>
+                <td>{{ entity.fichePrenomRepresentant }}</td>
+                <td>{{ entity.ficheFonctionRepresentant }}</td>
+                <td>{{ entity.ficheDemandeurPolytech }}</td>
+                <td>{% if entity.ficheDateEffet %}{{ entity.ficheDateEffet|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.ficheDateFin %}{{ entity.ficheDateFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.ficheTaciteReconduction }}</td>
+                <td>{% if entity.ficheValidationJuridique %}{{ entity.ficheValidationJuridique|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.ficheValidationDirection %}{{ entity.ficheValidationDirection|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.ficheSignaturePolytech }}</td>
+                <td>{% if entity.ficheDateSignaturePolytech %}{{ entity.ficheDateSignaturePolytech|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.ficheActionDemandee }}</td>
+                <td>{{ entity.ficheSuiviActionTexte }}</td>
+                <td>{% if entity.ficheSuiviActionDate %}{{ entity.ficheSuiviActionDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.ficheObservations }}</td>
+                <td>{{ entity.ficheFluxFinancier }}</td>
+                <td>{{ entity.ficheResaFonds }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('pifelaboratoire_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('pifelaboratoire_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('pifelaboratoire_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -1,0 +1,81 @@
+autre:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Autre:index" }
+
+autre_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Autre:show" }
+
+autre_new:
+    path:     /{id}/new
+    defaults: { _controller: "PCFicheBundle:Autre:new" }
+    
+    
+autre_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:Autre:export" }
+    
+autre_download:
+    pattern:  /download/{filename}
+    defaults: { _controller: "PCFicheBundle:Autre:download" }
+    
+autre_new_fichier:
+    path:     /{id}/new_fichier
+    defaults: { _controller: "PCFicheBundle:Autre:addFichier" }
+    
+autre_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:Autre:addFichierToRequest" }
+    
+autre_new_avenant:
+    path:     /{id}/new_avenant
+    defaults: { _controller: "PCFicheBundle:Autre:addAvenant" }
+    
+    
+autre_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:Autre:addAvenantToRequest" }
+    
+    
+autre_new_alert:
+    path:     /{id}/new_alert
+    defaults: { _controller: "PCFicheBundle:Autre:addAlert" }
+
+autre_create:
+    path:     /{id}/create
+    defaults: { _controller: "PCFicheBundle:Autre:create" }
+    methods:  POST
+
+autre_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "PCFicheBundle:Autre:edit" }
+
+autre_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Autre:update" }
+    methods:  [POST, PUT]
+
+autre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Autre:delete" }
+
+autre_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:Autre:showrequest" }
+    
+autre_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:Autre:request" }
+    
+autre_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:Autre:createRequest" }
+    methods:  POST
+    
+autre_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:Autre:sendFicheMessage" }
+    
+autre_action:
+    path:     /{id}/new_action
+    defaults: { _controller: "PCFicheBundle:Autre:createAction" }

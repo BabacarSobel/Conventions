@@ -1,0 +1,85 @@
+pifelaboratoire:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:index" }
+
+pifelaboratoire_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:show" }
+
+pifelaboratoire_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:export" }    
+
+pifelaboratoire_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:pdf" }
+
+pifelaboratoire_new_fichier:
+    path:     /{id}/new_fichier
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:addFichier" }
+    
+pifelaboratoire_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:addFichierToRequest" }
+    
+pifelaboratoire_new_avenant:
+    path:     /{id}/new_avenant
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:addAvenant" }
+    
+    
+pifelaboratoire_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:addAvenantToRequest" }
+    
+    
+pifelaboratoire_new_alert:
+    path:     /{id}/new_alert
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:addAlert" }
+
+pifelaboratoire_new:
+    path:     /{id}/new
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:new" }
+    
+pifelaboratoire_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:request" }
+
+pifelaboratoire_create:
+    path:     /{id}/create
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:create" }
+    methods:  POST
+
+pifelaboratoire_edit:
+    path:    /edit/{id}
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:edit" }
+
+pifelaboratoire_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:update" }
+    methods:  [POST, PUT]
+
+pifelaboratoire_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:delete" }
+    methods:  [POST, DELETE]
+    
+pifelaboratoire_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:showrequest" }
+
+pifelaboratoire_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:createRequest" }
+    methods:  POST
+    
+pifelaboratoire_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:sendFicheMessage" } 
+    
+pifelaboratoire_action:
+    path:     /{id}/new_action
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:createAction" }
+    
+pifelaboratoire_word:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:word" }

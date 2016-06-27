@@ -1,0 +1,124 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Mapping</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Typeprincipal</th>
+                <td>{{ entity.typeprincipal }}</td>
+            </tr>
+            <tr>
+                <th>Typesecondaire1</th>
+                <td>{{ entity.typesecondaire1 }}</td>
+            </tr>
+            <tr>
+                <th>Typesecondaire2</th>
+                <td>{{ entity.typesecondaire2 }}</td>
+            </tr>
+            <tr>
+                <th>Typesecondaire3</th>
+                <td>{{ entity.typesecondaire3 }}</td>
+            </tr>
+            <tr>
+                <th>M1</th>
+                <td>{{ entity.m1 }}</td>
+            </tr>
+            <tr>
+                <th>M2</th>
+                <td>{{ entity.m2 }}</td>
+            </tr>
+            <tr>
+                <th>M3</th>
+                <td>{{ entity.m3 }}</td>
+            </tr>
+            <tr>
+                <th>M4</th>
+                <td>{{ entity.m4 }}</td>
+            </tr>
+            <tr>
+                <th>M5</th>
+                <td>{{ entity.m5 }}</td>
+            </tr>
+            <tr>
+                <th>M6</th>
+                <td>{{ entity.m6 }}</td>
+            </tr>
+            <tr>
+                <th>M7</th>
+                <td>{{ entity.m7 }}</td>
+            </tr>
+            <tr>
+                <th>M8</th>
+                <td>{{ entity.m8 }}</td>
+            </tr>
+            <tr>
+                <th>M9</th>
+                <td>{{ entity.m9 }}</td>
+            </tr>
+            <tr>
+                <th>M10</th>
+                <td>{{ entity.m10 }}</td>
+            </tr>
+            <tr>
+                <th>M11</th>
+                <td>{{ entity.m11 }}</td>
+            </tr>
+            <tr>
+                <th>M12</th>
+                <td>{{ entity.m12 }}</td>
+            </tr>
+            <tr>
+                <th>M13</th>
+                <td>{{ entity.m13 }}</td>
+            </tr>
+            <tr>
+                <th>M14</th>
+                <td>{{ entity.m14 }}</td>
+            </tr>
+            <tr>
+                <th>M15</th>
+                <td>{{ entity.m15 }}</td>
+            </tr>
+            <tr>
+                <th>M16</th>
+                <td>{{ entity.m16 }}</td>
+            </tr>
+            <tr>
+                <th>M17</th>
+                <td>{{ entity.m17 }}</td>
+            </tr>
+            <tr>
+                <th>M18</th>
+                <td>{{ entity.m18 }}</td>
+            </tr>
+            <tr>
+                <th>M19</th>
+                <td>{{ entity.m19 }}</td>
+            </tr>
+            <tr>
+                <th>M20</th>
+                <td>{{ entity.m20 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('mapping') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('mapping_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

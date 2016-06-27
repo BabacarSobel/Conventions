@@ -1,0 +1,47 @@
+
+    
+madsalles_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:MADSalles:export" }
+    
+madsalles_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:MADSalles:pdf" }
+    
+    
+    
+madsalles_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:MADSalles:addFichierToRequest" }
+    
+madsalles_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:MADSalles:addAvenantToRequest" }
+    
+    
+madsalles_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:MADSalles:request" }
+    
+madsalles_create:
+    path:     /{id}/create
+    defaults: { _controller: "PCFicheBundle:MADSalles:create" }
+    methods:  POST
+    
+madsalles_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:MADSalles:showrequest" }
+
+madsalles_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:MADSalles:createRequest" }
+    methods:  POST
+    
+madsalles_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:MADSalles:sendFicheMessage" }
+    
+madsalles_add_local:
+    path : /{id}/addLocal
+    defaults: { _controller: "PCFicheBundle:MADSalles:addLocal"}
+    methods : [POST,GET]

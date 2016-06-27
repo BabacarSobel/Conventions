@@ -1,0 +1,65 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div id="menu" class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('template_show', { 'id': entity.id }) }}"> Retour à la vue</a> </li>
+                    <li><a class="pc_sidebar_element" data-placement="top" data-toggle="modal" data-target='#delete'>Supprimer</a></li>
+                    <li><a id="" name="" class="pc_sidebar_element" href="{{ path('template') }}"> Retour à la liste</a></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9  col-md-10  main">
+                <h3>Edition du template {{ entity.id }}</h3>
+                <div class="row">
+                    {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
+                    {# Les erreurs g�n�rales du formulaire. #}
+                    {{ form_errors(edit_form) }}
+                    <div class ="pc_info_group">
+                        <div class="form-group">
+                            {{ form_label(edit_form.nom, "Intitulé", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                            {{ form_errors(edit_form.nom) }}
+                            <div class="col-sm-4">
+                            {{ form_widget(edit_form.nom, {'attr': {'class': ''}})}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class='col-sm-3 control-label'>Type</label>
+                            <div class="col-sm-4">
+                                {{entity.type.nom}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(edit_form.template, "Template", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                            {{ form_errors(edit_form.template) }}
+                            <div class="col-sm-12">
+                            {{ form_widget(edit_form.template, {'attr': {'class': 'tinymce'}})}}
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_rest(edit_form) }}
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+	</div>
+    </div>
+    
+
+
+    <div class="modal fade" style="top:25%;outline: none;" id="delete" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Suppression</h4>
+                </div>
+                <div class="modal-body">
+                    {{form(delete_form)}}
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+  
+{% endblock %}

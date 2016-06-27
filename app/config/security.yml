@@ -1,0 +1,110 @@
+## To get started with security, check out the documentation:
+## http://symfony.com/doc/current/book/security.html
+#security:
+#
+#    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+#    providers:
+#        in_memory:
+#            memory: ~
+#
+#    firewalls:
+#        # disables authentication for assets and the profiler, adapt it according to your needs
+#        dev:
+#            pattern: ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+#
+#        main:
+#            anonymous: ~
+#            # activate different ways to authenticate
+#
+#            # http_basic: ~
+#            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+#
+#            # form_login: ~
+#            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    access_denied_url: error_403
+
+    role_hierarchy:
+        ROLE_DIRECTION:   ROLE_USER
+        ROLE_RELINTER:    ROLE_USER
+        ROLE_RELINDUS:    ROLE_USER
+        ROLE_DEPARTEMENT: ROLE_USER
+        ROLE_DDRS:        ROLE_USER
+        ROLE_ADMIN:       ROLE_DIRECTION
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+#         disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+            
+        # -> custom firewall for the admin area of the URL
+        admin:
+            pattern:      /admin/
+            form_login:
+                provider:       fos_userbundle
+                login_path:     sonata_user_admin_security_login
+                use_forward:    true
+                use_referer: true
+                check_path:     sonata_user_admin_security_check
+                #failure_path:   null
+            logout:
+                path:           sonata_user_admin_security_logout
+                target:         pc_home
+            anonymous:    true
+        # -> end custom configuration
+
+        # defaut login area for standard users
+        main:
+            pattern:            ^/
+            form_login:
+                provider:       fos_userbundle
+                login_path:     fos_user_security_login
+                use_forward:    true
+                use_referer:    true
+                check_path:     fos_user_security_check
+                #failure_path:   null
+                default_target_path: pc_home
+                failure_path: null
+            logout:
+                path: fos_user_security_logout
+                target: pc_home
+            anonymous:    true
+            
+            remember_me:
+                key: %secret%
+                lifetime: 100000
+                path: /
+                domain: ~
+            
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/ajouter/, role: ROLE_ADMIN }
+        - { path: ^/fiche, role: ROLE_DIRECTION}
+        - { path: ^/fiche/edit, role: ROLE_ADMIN}
+        - { path: ^/pifeclassique , role: ROLE_USER }
+        
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, roles: ROLE_ADMIN }
+        - { path: ^/connexion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/inscription, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/mot-de-passe-oublie, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/deconnexion$, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/fiche, role: ROLE_DIRECTION }

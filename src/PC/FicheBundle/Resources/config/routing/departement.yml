@@ -1,0 +1,30 @@
+departement:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Departement:index" }
+
+departement_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Departement:show" }
+
+departement_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:Departement:new" }
+
+departement_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:Departement:create" }
+    methods:  POST
+
+departement_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PCFicheBundle:Departement:edit" }
+
+departement_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Departement:update" }
+    methods:  [POST, PUT]
+
+departement_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Departement:delete" }
+    methods:  [POST, DELETE]

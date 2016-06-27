@@ -1,0 +1,98 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{# ce block est utilisé quand l'utilisateur est connecté #}
+{% block body %}
+        <div class="container">
+            <div class="row">
+                    <h1 class="page-header">Bienvenue !</h1>
+            </div>          
+            <div class="row">
+                <div class="col-lg-8 col-md-6 col-sm-6">
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                        <div id='fiches' class="col-sm-6 col-md-6" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                            <a class="btn btn-primary pc_btn_carre btn-block" href="{{path("fiche")}}">
+                                LES FICHES
+                            </a>
+                        </div>
+                    {% endif %}   
+                    <div id='demandes' class="col-sm-6 col-md-6" onmouseover='displayInfo(this)' onmouseout='hideInfo()' >
+                        <a class="btn btn-primary pc_btn_carre btn-block" href="{{path("demande")}}">
+                            LES DEMANDES
+                        </a>
+                    </div>
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                        <div id='templates' class="col-sm-6 col-md-6" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                            <a class="btn btn-primary pc_btn_carre btn-block" href="{{path("template")}}">
+                                LES TEMPLATES
+                            </a>
+                        </div>
+                        <div id='administration' class="col-sm-6 col-md-6" onmouseover='displayInfo(this)' onmouseout='hideInfo()'>
+                            <a class="btn btn-primary pc_btn_carre btn-block" href="./admin">
+                                ADMINISTRATION
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+                <div id='info' class="col-lg-4 col-md-6 col-sm-6  hidden">
+                        {# les informations sur chaque menu ici #}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Information</div>
+                            <div class="panel-body" id='info_message'></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <script type='text/javascript'>
+            function displayInfo(id){
+                if(id.id == 'fiches'){
+                    $('#info').removeClass('hidden');
+                    
+                    document.getElementById('info_message').innerHTML  =  "Contient la liste de toutes les fiches avec toutes les informations. Dans ce repertoire on peut avoir une vue complète sur toutes les fiches.";
+                    $('#info').show();
+                }
+                if(id.id == 'demandes'){
+                    
+                    $("#info").removeClass('hidden');
+                    document.getElementById('info_message').innerHTML = 'Contient la liste de toutes les demandes que vous avez réalisées avec toutes les informations. Dans ce repertoire on peut avoir une vue complète sur toutes les fiches.';
+                    $("#info").show();
+                }
+                if(id.id == 'templates'){
+                    $("#info").show();
+                    $('#info').removeClass('hidden');
+                    document.getElementById('info_message').innerHTML ='Définir les templates de convention pour la génération automatique.';
+                    $("#info").show();
+
+                }
+                if(id.id == 'administration'){
+                    $("#info").removeClass('hidden');;
+                   document.getElementById('info_message').innerHTML = 'Contient l\'interface d\'administration du site.';
+                   $("#info").show();
+                }
+                
+            }
+
+            function hideInfo(){
+                $('#info').addClass('hidden');
+                $('#info').hide();
+            }
+
+        </script>
+{% endblock %}
+
+{# ce block est utilisé quand l'utilisateur n'est pas connecté #}
+{% block body2 %}
+        <div class="container">
+            <div class="jumbotron">
+                <h1 style="color: #004874;">POLYTECH conventions</h1><br>
+                <h1><small>Bienvenue !</small></h1><br>
+                <div class="row col-md-6">
+                    <a class="btn pc_skyblue_btn" href="{{path("fos_user_security_login")}}">se connecter</a>
+                    <a class="btn pc_skyblue_btn" href="{{path("fos_user_registration_register")}}">s'inscrire</a>
+                </div>
+            </div>
+        </div>              
+{% endblock %}
+

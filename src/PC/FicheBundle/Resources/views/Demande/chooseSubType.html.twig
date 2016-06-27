@@ -1,0 +1,18 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}   
+        <div class="container container-fluid">
+            <div class="row">
+                <div class="col-lg-12 page-header">
+                    <h3>Choisissez un sous-modèle de convention.</h3>
+                </div>
+            </div>
+            <div class="row">
+                {% for entity in entities%}
+                <div class="col-md-3 imagecarre2">
+                            <a  data-placement="top" data-toggle="tooltip" title="{{entity.description}}" role="button" href="{{ path([entity.route ,'_request']|join, { 'id': entity.id }) }}">{{entity.nom}}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}

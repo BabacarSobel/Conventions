@@ -1,0 +1,31 @@
+avenant:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Avenant:index" }
+
+avenant_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Avenant:show" }
+    
+avenant_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:Avenant:pdf" }
+    methods : GET
+    
+avenant_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:Avenant:create" }
+    methods:  POST
+
+avenant_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "PCFicheBundle:Avenant:edit" }
+
+avenant_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Avenant:update" }
+    methods:  [POST, PUT]
+
+avenant_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Avenant:delete" }
+    methods:  [POST, DELETE]

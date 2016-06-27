@@ -1,0 +1,13 @@
+{
+    "name": "babacar/gestionconvention",
+    "license": "proprietary",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require": {
+        	"twig/extensions": "~1.0"
+        }
+}

@@ -1,0 +1,38 @@
+
+    
+pifeclassique_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:export" }
+    
+pifeclassique_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:pdf" }
+
+    
+pifeclassique_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addFichierToRequest" }
+    
+    
+pifeclassique_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addAvenantToRequest" }
+
+pifeclassique_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:request" }
+
+    
+pifeclassique_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:showrequest" }
+
+pifeclassique_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:createRequest" }
+    methods:  POST
+    
+    
+pifeclassique_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:sendFicheMessage" } 

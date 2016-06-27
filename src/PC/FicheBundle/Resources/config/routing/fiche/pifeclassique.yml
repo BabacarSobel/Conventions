@@ -1,0 +1,90 @@
+pifeclassique:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:index" }
+
+pifeclassique_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:show" }
+    
+pifeclassique_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:export" }
+    
+pifeclassique_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:pdf" }
+    
+pifeclassique_word:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:word" }
+
+pifeclassique_new_fichier:
+    path:     /{id}/new_fichier
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addFichier" }
+    
+pifeclassique_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addFichierToRequest" }
+    
+pifeclassique_new_alert:
+    path:     /{id}/new_alert
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addAlert" }
+    
+pifeclassique_new_avenant:
+    path:     /{id}/new_avenant
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addAvenant" }
+    
+    
+pifeclassique_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addAvenantToRequest" }
+    
+
+pifeclassique_new:
+    path:     /{id}/new
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:new" }
+
+pifeclassique_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:request" }
+
+pifeclassique_create:
+    path:     /{id}/create
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:create" }
+    methods:  POST
+
+pifeclassique_editconvention:
+    path:     /editionconvention/{id}
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:editConvention" }
+    
+pifeclassique_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:edit" }
+
+pifeclassique_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:update" }
+    methods:  [POST, PUT]
+
+pifeclassique_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:delete" }
+    methods:  [POST, DELETE]
+    
+pifeclassique_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:showrequest" }
+
+pifeclassique_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:createRequest" }
+    methods:  POST
+    
+    
+pifeclassique_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:sendFicheMessage" } 
+    
+pifeclassique_action:
+    path:     /{id}/new_action
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:createAction" }

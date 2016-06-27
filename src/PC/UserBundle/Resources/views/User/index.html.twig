@@ -1,0 +1,49 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <div class="container container-fluid">
+        <div class="row">
+            <div class="col-lg-12 page-header">
+                <h1>Liste des utilisateurs</h1>
+            </div>
+        </div>
+        <div class="row">    
+            <table class="records_list table table-bordred table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Validation</th>
+                        <th>Departement</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.prenom }}</td>
+                        <td>{{ entity.nom }}</td>
+                        <td>{{ entity.validation }}</td>
+                        <td>{{ entity.departement }}</td>
+                        <td>
+                            <a  data-placement="top" data-toggle="tooltip" title="Voir fiche" class="btn btn-primary btn-xs" href="{{ path('user_show', { 'id': entity.id }) }}" ><span class="glyphicon glyphicon-eye-open"></span></a>
+                            <a data-placement="top" data-toggle="tooltip" title="Editer fiche" class="btn btn-primary btn-xs" href="{{ path('user_edit', { 'id': entity.id }) }}" ><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a data-placement="top" data-toggle="tooltip" title="Supprimer fiche" class="btn btn-danger btn-xs" href="{{ path('user_delete', { 'id': entity.id }) }}" ><span class="glyphicon glyphicon-trash"></span></a>
+                        </td>    
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('user_new') }}">
+                        Ajouter un utilisateur
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,34 @@
+pifelaboratoire_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:export" }    
+
+pifelaboratoire_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:pdf" }
+    
+pifelaboratoire_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:addFichierToRequest" }
+    
+    
+pifelaboratoire_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:addAvenantToRequest" }
+    
+    
+pifelaboratoire_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:request" }
+    
+pifelaboratoire_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:showrequest" }
+
+pifelaboratoire_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:createRequest" }
+    methods:  POST
+    
+pifelaboratoire_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:PIFELaboratoire:sendFicheMessage" } 

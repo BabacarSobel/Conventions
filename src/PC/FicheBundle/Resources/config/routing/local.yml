@@ -1,0 +1,32 @@
+local:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Local:index" }
+
+local_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Local:show" }
+
+local_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:Local:new" }
+
+local_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:Local:create" }
+    methods:  POST
+
+local_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PCFicheBundle:Local:edit" }
+
+local_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Local:update" }
+    methods:  [POST, PUT]
+
+local_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Local:delete" }
+    methods:  [POST, DELETE]
+
+

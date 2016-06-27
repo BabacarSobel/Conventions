@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Conventions{% endblock %}</title>
+        <link rel="icon"  href="{{asset("assets/images/favicon.ico")}}">
+        {% block stylesheets %}   
+            <link rel="stylesheet" href="{{asset("assets/css/bootstrap.min.css")}}">
+            <link href="{{asset("assets/css/font-awesome.min.css")}}" rel="stylesheet">
+            <link href="{{asset("assets/css/main.css")}}" rel="stylesheet">
+            <link href="{{asset("assets/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css")}}" rel="stylesheet">
+            <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css" type="text/css" />	
+            <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+            <!--[if IE]>
+                    <script src="{{asset("http://html5shiv.googlecode.com/svn/trunk/html5.js")}}"></script>
+                    <![endif]-->
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{asset("assets/js/jquery-2.1.0.min.js")}}"></script>
+            <script src="{{asset("assets/js/jquery-ui-1.11.4/jquery-ui.js")}}"></script>
+            <script src="{{asset("assets/bootstrap-datepicker/dist/js/bootstrap-datepicker.js")}}"></script>
+            <script src="{{asset("assets/js/bootstrap.min.js")}}"></script>
+            <script type="text/javascript" charset="utf-8" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.js"></script>
+            <script type="text/javascript" src="{{asset("assets/js/jquery.validate.min.js")}}"></script>
+            <script type="text/javascript" src="{{asset("assets/js/messages_fr.js")}}"></script>
+            <script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+            <script>
+                tinymce.init({ 
+                    selector:'textarea.tinymce',
+                    min_height :800
+                });
+            </script>
+
+        {% endblock %}
+    </head>        
+    <body>
+        <header>    
+        <!-- Le logo + le menu-->
+            <nav class="navbar pc_top_bar">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a href="{{path('pc_home')}}"><img src="{{asset("assets/images/logo/logo.png")}}" alt="Site Logo"></a>
+                  </div>
+                  <ul class="nav navbar-nav navbar-right pc_menu">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{path("pc_home")}}">Accueil <span class="fa fa-home"></span></a></li>
+                        {% if ('ROLE_ADMIN' in app.user.roles or 'ROLE_DIRECTION' in app.user.roles) %}
+                        <li><a href="{{path("fiche")}}"  role="button" aria-haspopup="true" aria-expanded="false">Les fiches <span class="fa fa-archive"></span></a></li>
+                        {% endif %}
+                        <li><a href="{{path("demande")}}"  role="button" aria-haspopup="true" aria-expanded="false">Les demandes <span class="fa fa-bars"></span></a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Session <span class="fa fa-user"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('sonata_user_profile_show') }}">Profil</a></li>
+                                <li><a href="{{ path('fos_user_change_password') }}">Changer mot de passe</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li> <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                            </ul>
+                        </li> 
+                    {% else %}
+                        <li><a href="{{path('fos_user_security_login')}}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }} <span class='fa fa-sign-in'></span></a></li>
+                        <li><a href="{{path('fos_user_registration_register')}}">S'inscrire <span class='fa  fa-check'></span></a></li>
+                    {% endif %}
+                  </ul>
+                </div>
+            </nav>      
+        </header>
+        
+        <!-- les messages de notifications-->
+        <div id='message' class="row">
+            {% if app.session.flashBag.has('error') %}
+                <div class="alert alert-warning">
+                    {% for msg in app.session.flashBag.get('error') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Corps de la page-->
+        <div id="main">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {%if  app.user.enabled == true %}                     
+                        {% block body %}
+                            {# ce block est utilisé quand l'utilisateur est connecté #}
+                        {% endblock %}
+                    {%else %}
+                        <p>Votre compte n'a pas été validé. Veillez contacter l'adminisatrateur pour la validation de votre compte.</p>
+                    {% endif %}
+               {% else %}
+                    
+                    {% block body2 %}
+                        {# ce block est utilisé quand l'utilisateur n'est pas connecté #}
+                    {% endblock %} 
+               {% endif %} 
+        </div>
+           
+        <!--Le pied de page--> 
+        <footer>
+            <nav class="navbar navbar-default footer">
+                <div class="container">
+                    <div class="pull-left copyright">
+                        <p> Copyright &copy; Polytech Montpellier {{ 'now'|date('Y') }}.</p>
+                    </div>
+                    <div class="pull-right">
+                        <a href="mailto:relindus@polytech.univ-montp2.fr" class="btn btn-default">contactez-nous</a>
+                    </div>
+                </div>
+            </nav>
+        </footer>
+    </body>                    
+</html>

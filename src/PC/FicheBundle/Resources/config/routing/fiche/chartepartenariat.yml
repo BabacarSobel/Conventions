@@ -1,0 +1,90 @@
+chartepartenariat:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:index" }
+
+chartepartenariat_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:show" }
+    
+chartepartenariat_export:
+    path:     /export
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:export" }
+    
+chartepartenariat_download:
+    pattern:  /download/{filename}
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:download" }
+
+chartepartenariat_new:
+    path:     /{id}/new
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:new" }
+    
+chartepartenariat_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:pdf" }
+    
+chartepartenariat_request:
+    path:     /{id}/demande
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:request" }
+    
+chartepartenariat_new_fichier:
+    path:     /{id}/new_fichier
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:addFichier" }
+    
+chartepartenariat_new_fichierrequest:
+    path:     /{id}/new_fichierrequest
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:addFichierToRequest" }
+    
+chartepartenariat_new_avenant:
+    path:     /{id}/new_avenant
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:addAvenant" }
+    
+    
+chartepartenariat_new_avenantrequest:
+    path:     /{id}/new_avenantrequest
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:addAvenantToRequest" }
+    
+    
+chartepartenariat_new_alert:
+    path:     /{id}/new_alert
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:addAlert" }
+
+chartepartenariat_create:
+    path:     /{id}/create
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:create" }
+    methods:  POST
+
+chartepartenariat_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:edit" }
+
+chartepartenariat_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:update" }
+    methods:  [POST, PUT]
+
+chartepartenariat_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:delete" }
+    methods:  [POST, DELETE]
+    
+chartepartenariat_showrequest:
+    path:     /{id}/showrequest
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:showrequest" }
+
+chartepartenariat_createrequest:
+    path:     /{id}/createrequest
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:createRequest" }
+    methods:  POST
+    
+chartepartenariat_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:sendFicheMessage" }
+    
+chartepartenariat_action:
+    path:     /{id}/new_action
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:createAction" }
+    
+    
+chartepartenariat_word:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:ChartePartenariat:word" }

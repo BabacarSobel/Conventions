@@ -1,0 +1,30 @@
+fichier:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Fichier:index" }
+
+fichier_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Fichier:show" }
+
+fichier_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:Fichier:new" }
+
+fichier_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:Fichier:create" }
+    methods:  POST
+
+fichier_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PCFicheBundle:Fichier:edit" }
+
+fichier_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Fichier:update" }
+    methods:  [POST, PUT]
+
+fichier_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Fichier:delete" }
+    methods:  [POST, DELETE]

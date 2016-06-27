@@ -1,0 +1,29 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+    security.user_checker.class: PC\UserBundle\Security\Core\User\UserChecker 
+    
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+
+    user.form.profile.type:
+        class: PC\UserBundle\Form\Type\ProfileType
+        parent: fos_user.profile.form.type
+        tags:
+            - { name: form.type, alias: pc_sonata_user_profile }
+
+    user.form.register.type:
+        class: PC\UserBundle\Form\Type\RegisterType
+        parent: fos_user.registration.form.type
+        tags:
+            - { name: form.type, alias: pc_sonata_user_register }
+            
+#    user.form.register.handler:
+#        class: PC\UserBundle\Form\Handler\RegistrationFormHandler
+#        parent: fos_user.registration.form.handler
+#        tags:
+#            - { name: form.handler, alias: pc_sonata_user_register }

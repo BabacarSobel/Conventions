@@ -1,0 +1,30 @@
+mapping:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Mapping:index" }
+
+mapping_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Mapping:show" }
+
+mapping_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:Mapping:new" }
+
+mapping_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:Mapping:create" }
+    methods:  POST
+
+mapping_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PCFicheBundle:Mapping:edit" }
+
+mapping_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Mapping:update" }
+    methods:  [POST, PUT]
+
+mapping_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Mapping:delete" }
+    methods:  [POST, DELETE]

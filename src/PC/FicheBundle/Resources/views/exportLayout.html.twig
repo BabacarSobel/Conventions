@@ -1,0 +1,25 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{{ parent() }} - Exporter{% endblock %}
+{% block stylesheets %}{{parent()}}{% endblock %}
+
+{% block javascripts %}{{parent()}}{% endblock %}
+
+{# ce block est utilisé quand l'utilisateur est connecté #}
+{% block body %}
+
+            <div class='panel panel-info'>
+                <div class='panel-heading'>Export manager</div>
+                <div class=' panel-body'>
+                    Vous pouvez exporter les fiches au format CSV. Pour cela vous devez:
+                    <ol>
+                        <li>Choisir le type de des fiches</li>
+                        <li>Choisir les colonnes à exporter</li>
+                        <li>Filtrer les données</li>
+                        <li>Exporter</li>
+                    </ol>
+                </div>
+            </div>
+			{% block export %}
+			{% endblock %}
+
+{% endblock %}

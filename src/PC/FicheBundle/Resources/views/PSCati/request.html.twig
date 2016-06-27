@@ -1,0 +1,254 @@
+{% extends "PCFicheBundle::requestLayout.html.twig" %}
+
+{% block content %}
+    <div class="form-group">
+
+        {{ form_label(form.domaineFormation, "Domaine de formation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.domaineFormation) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.domaineFormation, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.domaineSpecialiteSociete, "Domaine de spécialité de la société", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.domaineSpecialiteSociete) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.domaineSpecialiteSociete, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.departementPolytech, "Département Polytech", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.departementPolytech) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.departementPolytech, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.titreProjet, "Titre du projet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.titreProjet) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.titreProjet, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.anneeProjetPIFE, "Année du projet PIFE", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.anneeProjetPIFE) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.anneeProjetPIFE, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.titreEncadrant, "titre de l'encadrant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.titreEncadrant) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.titreEncadrant, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.nomEncadrant, "Nom de de l'encadrant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.nomEncadrant) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.nomEncadrant, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.prenomEncadrant, "Prénom de de l'encadrant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.prenomEncadrant) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.prenomEncadrant, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.titreReferent, "Titre du référent", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.titreReferent) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.titreReferent, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.nomReferent, "Nom du référent", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.nomReferent) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.nomReferent, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.prenomReferent, "Prénom du référent", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.prenomReferent) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.prenomReferent, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.montantTVA, "Montant TVA", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.montantTVA) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.montantTVA, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.montantTTC, "Montant TTC", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.montantTTC) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.montantTTC, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.premiereEcheance, "Première écheance", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.premiereEcheance) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.premiereEcheance, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.solde, "Solde", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.solde) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.solde, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.adresseEnvoiFacture, "Adresse d'envoi de la facture", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.adresseEnvoiFacture) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.adresseEnvoiFacture, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.annexeTechnique, "Annexe technique", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.annexeTechnique) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.annexeTechnique, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.annexeFinanciere, "Annexe financière", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.annexeFinanciere) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.annexeFinanciere, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.titreEtudiant, "Titre étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.titreEtudiant) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.titreEtudiant, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.nomEtudiant, "Nom de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.nomEtudiant) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.nomEtudiant, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.prenomEtudiant, "Prénom de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.prenomEtudiant) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.prenomEtudiant, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.adresseEtudiant, "Adresse de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.adresseEtudiant) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.adresseEtudiant, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.dateNaissanceEtudiant, "Date de naissance de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.dateNaissanceEtudiant) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.dateNaissanceEtudiant, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.emailEtudiant, "Email de l'étudiant", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.emailEtudiant) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.emailEtudiant, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+        {{ form_label(form.numeroConventionPIFE, "Numéro de convention PIFE", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {{ form_errors(form.numeroConventionPIFE) }}
+        <div class="col-sm-4">
+
+            {{ form_widget(form.numeroConventionPIFE, {'attr': {'class': ''}}) }}
+        </div>
+    </div>
+{% endblock %}
