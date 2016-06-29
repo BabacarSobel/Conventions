@@ -208,20 +208,6 @@ abstract class Commun
     /**
      * @var string
      *
-     * @ORM\Column(name="suivi_action_texte", type="string", length=255, nullable=TRUE)
-     */
-    private $suiviActionTexte;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="suivi_action_date", type="date", nullable=TRUE)
-     */
-    private $suiviActionDate;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="observations", type="text", nullable=TRUE)
      */
     private $observations;
@@ -859,54 +845,6 @@ abstract class Commun
     public function getActionDemandee()
     {
         return $this->actionDemandee;
-    }
-
-    /**
-     * Set suiviActionTexte
-     *
-     * @param string $suiviActionTexte
-     *
-     * @return Commun
-     */
-    public function setSuiviActionTexte($suiviActionTexte)
-    {
-        $this->suiviActionTexte = $suiviActionTexte;
-
-        return $this;
-    }
-
-    /**
-     * Get suiviActionTexte
-     *
-     * @return string
-     */
-    public function getSuiviActionTexte()
-    {
-        return $this->suiviActionTexte;
-    }
-
-    /**
-     * Set suiviActionDate
-     *
-     * @param \DateTime $suiviActionDate
-     *
-     * @return Commun
-     */
-    public function setSuiviActionDate($suiviActionDate)
-    {
-        $this->suiviActionDate = $suiviActionDate;
-
-        return $this;
-    }
-
-    /**
-     * Get suiviActionDate
-     *
-     * @return \DateTime
-     */
-    public function getSuiviActionDate()
-    {
-        return $this->suiviActionDate;
     }
 
     /**

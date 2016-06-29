@@ -1,0 +1,30 @@
+action:
+    path:     /
+    defaults: { _controller: "PCFicheBundle:Action:index" }
+
+action_show:
+    path:     /{id}/show
+    defaults: { _controller: "PCFicheBundle:Action:show" }
+
+action_new:
+    path:     /new
+    defaults: { _controller: "PCFicheBundle:Action:new" }
+
+action_create:
+    path:     /create
+    defaults: { _controller: "PCFicheBundle:Action:create" }
+    methods:  POST
+
+action_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PCFicheBundle:Action:edit" }
+
+action_update:
+    path:     /{id}/update
+    defaults: { _controller: "PCFicheBundle:Action:update" }
+    methods:  [POST, PUT]
+
+action_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PCFicheBundle:Action:delete" }
+    methods:  [POST, DELETE]

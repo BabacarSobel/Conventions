@@ -65,7 +65,7 @@ class MADEvenementGratuitType extends AbstractType
                                                     'class' => 'input-inline datepicker',
                                                     'data-provide' => 'datepicker',
                                                     'data-date-format' => 'dd-mm-yyyy'
-                                                ],'required' => false
+                                                ],'required' => true
                                             ])
             ->add('dateEcheance','genemu_jquerydate', [
                                                 'widget' => 'single_text',
@@ -74,7 +74,7 @@ class MADEvenementGratuitType extends AbstractType
                                                     'class' => 'input-inline datepicker',
                                                     'data-provide' => 'datepicker',
                                                     'data-date-format' => 'dd-mm-yyyy'
-                                                ],'required' => false
+                                                ],'required' => true
                                             ])
             ->add('reconductionTacite','genemu_jqueryselect2_choice',array(
                                                         'choices' => array(

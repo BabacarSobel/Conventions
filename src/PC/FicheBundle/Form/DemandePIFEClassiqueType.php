@@ -45,7 +45,7 @@ class DemandePIFEClassiqueType extends AbstractType
                                                     'class' => 'input-inline datepicker',
                                                     'data-provide' => 'datepicker',
                                                     'data-date-format' => 'dd-mm-yyyy'
-                                                ],'required' => false
+                                                ],'required' => true
                                             ])
             ->add('dateEcheance','genemu_jquerydate', [
                                                 'widget' => 'single_text',
@@ -54,7 +54,7 @@ class DemandePIFEClassiqueType extends AbstractType
                                                     'class' => 'input-inline datepicker',
                                                     'data-provide' => 'datepicker',
                                                     'data-date-format' => 'dd-mm-yyyy'
-                                                ],'required' => false
+                                                ],'required' => true
                                             ])
             ->add('actionDemandee','genemu_jqueryselect2_choice', array(
                                                                     'choices' => array(

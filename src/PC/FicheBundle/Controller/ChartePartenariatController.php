@@ -56,9 +56,8 @@ class ChartePartenariatController extends DefaultController
         $content = $twig->render(
           $template[0]->getTemplate(),
           array('entity'=>$entity)
-        );
-            
-        $snappy->generateFromHtml($content, $this->get('kernel')->getRootDir().'/../files/'.$name.'pdf');
+        );  
+        $snappy->generateFromHtml($content, $this->get('kernel')->getRootDir().'/../files/'.$name.'.pdf');
         return $this->render('PCFicheBundle:Fiche:pdf.html.twig'
                     ,array('pdf' => $snappy,
                         'filename' => $name.'.pdf')

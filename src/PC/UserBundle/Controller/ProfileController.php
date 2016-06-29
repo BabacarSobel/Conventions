@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
  *   - only twig is supported
  *   - separation of the user authentication form with the profile form
  */
-class ProfileFOSUser1Controller extends ProfileFOSUser1Controller
+class ProfileController extends ProfileFOSUser1Controller
 {
 
     /**
