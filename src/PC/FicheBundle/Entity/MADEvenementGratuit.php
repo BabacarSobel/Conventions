@@ -544,4 +544,14 @@ class MADEvenementGratuit extends Commun
     {
         return $this->actions;
     }
+
+    /**
+     * Get fichiers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFichiers()
+    {
+        return $this->fichiers;
+    }
 }

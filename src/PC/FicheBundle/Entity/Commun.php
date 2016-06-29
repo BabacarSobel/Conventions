@@ -254,12 +254,50 @@ abstract class Commun
      */
     private $nombreNouveauxFichier = 0;
     
+        /**
+     * @ORM\OneToMany(targetEntity="Alerte", mappedBy="madSalles", cascade={"remove"})
+     */
+    protected $alertes;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Avenant", mappedBy="madSalles", cascade={"remove"})
+     */
+    protected $avenants;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Fichier", mappedBy="madSalles", cascade={"remove"})
+     */
+    protected $fichiers;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="FicheMessage", mappedBy="madSalles", cascade={"remove"})
+     */
+    protected $messages;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Location", mappedBy="madSalles", cascade={"remove"})
+     */
+    protected $locations;
+   
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="PC\UserBundle\Entity\User", inversedBy="madSalless")
+    */
+    protected $demandeur;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Action", mappedBy="madSalles", cascade={"remove"})
+     */
+    protected $actions;
+    
+    
     /**
      * @var string
      *
      */
     
     private $route;
+    
     
     public function getRoute() {
         return $this->route;
@@ -1033,5 +1071,245 @@ abstract class Commun
     
     public function incrementerNombreNouveauxAvenants(){
         $this->nombreNouveauxAvenants += 1;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->alertes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->avenants = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fichiers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->locations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->actions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add alerte
+     *
+     * @param \PC\FicheBundle\Entity\Alerte $alerte
+     *
+     * @return Commun
+     */
+    public function addAlerte(\PC\FicheBundle\Entity\Alerte $alerte)
+    {
+        $this->alertes[] = $alerte;
+
+        return $this;
+    }
+
+    /**
+     * Remove alerte
+     *
+     * @param \PC\FicheBundle\Entity\Alerte $alerte
+     */
+    public function removeAlerte(\PC\FicheBundle\Entity\Alerte $alerte)
+    {
+        $this->alertes->removeElement($alerte);
+    }
+
+    /**
+     * Get alertes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAlertes()
+    {
+        return $this->alertes;
+    }
+
+    /**
+     * Add avenant
+     *
+     * @param \PC\FicheBundle\Entity\Avenant $avenant
+     *
+     * @return Commun
+     */
+    public function addAvenant(\PC\FicheBundle\Entity\Avenant $avenant)
+    {
+        $this->avenants[] = $avenant;
+
+        return $this;
+    }
+
+    /**
+     * Remove avenant
+     *
+     * @param \PC\FicheBundle\Entity\Avenant $avenant
+     */
+    public function removeAvenant(\PC\FicheBundle\Entity\Avenant $avenant)
+    {
+        $this->avenants->removeElement($avenant);
+    }
+
+    /**
+     * Get avenants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAvenants()
+    {
+        return $this->avenants;
+    }
+
+    /**
+     * Add fichier
+     *
+     * @param \PC\FicheBundle\Entity\Fichier $fichier
+     *
+     * @return Commun
+     */
+    public function addFichier(\PC\FicheBundle\Entity\Fichier $fichier)
+    {
+        $this->fichiers[] = $fichier;
+
+        return $this;
+    }
+
+    /**
+     * Remove fichier
+     *
+     * @param \PC\FicheBundle\Entity\Fichier $fichier
+     */
+    public function removeFichier(\PC\FicheBundle\Entity\Fichier $fichier)
+    {
+        $this->fichiers->removeElement($fichier);
+    }
+
+    /**
+     * Get fichiers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFichiers()
+    {
+        return $this->fichiers;
+    }
+
+    /**
+     * Add message
+     *
+     * @param \PC\FicheBundle\Entity\FicheMessage $message
+     *
+     * @return Commun
+     */
+    public function addMessage(\PC\FicheBundle\Entity\FicheMessage $message)
+    {
+        $this->messages[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param \PC\FicheBundle\Entity\FicheMessage $message
+     */
+    public function removeMessage(\PC\FicheBundle\Entity\FicheMessage $message)
+    {
+        $this->messages->removeElement($message);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    /**
+     * Add location
+     *
+     * @param \PC\FicheBundle\Entity\Location $location
+     *
+     * @return Commun
+     */
+    public function addLocation(\PC\FicheBundle\Entity\Location $location)
+    {
+        $this->locations[] = $location;
+
+        return $this;
+    }
+
+    /**
+     * Remove location
+     *
+     * @param \PC\FicheBundle\Entity\Location $location
+     */
+    public function removeLocation(\PC\FicheBundle\Entity\Location $location)
+    {
+        $this->locations->removeElement($location);
+    }
+
+    /**
+     * Get locations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLocations()
+    {
+        return $this->locations;
+    }
+
+    /**
+     * Set demandeur
+     *
+     * @param \PC\UserBundle\Entity\User $demandeur
+     *
+     * @return Commun
+     */
+    public function setDemandeur(\PC\UserBundle\Entity\User $demandeur = null)
+    {
+        $this->demandeur = $demandeur;
+
+        return $this;
+    }
+
+    /**
+     * Get demandeur
+     *
+     * @return \PC\UserBundle\Entity\User
+     */
+    public function getDemandeur()
+    {
+        return $this->demandeur;
+    }
+
+    /**
+     * Add action
+     *
+     * @param \PC\FicheBundle\Entity\Action $action
+     *
+     * @return Commun
+     */
+    public function addAction(\PC\FicheBundle\Entity\Action $action)
+    {
+        $this->actions[] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Remove action
+     *
+     * @param \PC\FicheBundle\Entity\Action $action
+     */
+    public function removeAction(\PC\FicheBundle\Entity\Action $action)
+    {
+        $this->actions->removeElement($action);
+    }
+
+    /**
+     * Get actions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActions()
+    {
+        return $this->actions;
     }
 }

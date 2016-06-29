@@ -80,6 +80,11 @@ class Fichier
     * @ORM\ManyToOne(targetEntity="Autre", inversedBy="fichiers", cascade={"remove"})
     */
     protected $autre;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="Commun", inversedBy="fichiers")
+    */
+    protected $commun;
 
 
     /**
@@ -335,5 +340,29 @@ class Fichier
     public function getAutre()
     {
         return $this->autre;
+    }
+
+    /**
+     * Set commun
+     *
+     * @param \PC\FicheBundle\Entity\Commun $commun
+     *
+     * @return Fichier
+     */
+    public function setCommun(\PC\FicheBundle\Entity\Commun $commun = null)
+    {
+        $this->commun = $commun;
+
+        return $this;
+    }
+
+    /**
+     * Get commun
+     *
+     * @return \PC\FicheBundle\Entity\Commun
+     */
+    public function getCommun()
+    {
+        return $this->commun;
     }
 }

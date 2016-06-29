@@ -163,11 +163,17 @@ class Avenant
     */
     protected $autre;
     
+    /**
+    * @ORM\ManyToOne(targetEntity="Commun", inversedBy="avenants")
+    */
+    protected $commun;
     
     /**
      * @ORM\OneToMany(targetEntity="Alerte", mappedBy="avenant", cascade={"remove"})
      */
     protected $alertes;
+    
+    
 
 
     /**
@@ -747,5 +753,29 @@ class Avenant
     public function getAlertes()
     {
         return $this->alertes;
+    }
+
+    /**
+     * Set commun
+     *
+     * @param \PC\FicheBundle\Entity\Commun $commun
+     *
+     * @return Avenant
+     */
+    public function setCommun(\PC\FicheBundle\Entity\Commun $commun = null)
+    {
+        $this->commun = $commun;
+
+        return $this;
+    }
+
+    /**
+     * Get commun
+     *
+     * @return \PC\FicheBundle\Entity\Commun
+     */
+    public function getCommun()
+    {
+        return $this->commun;
     }
 }

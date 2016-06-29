@@ -12,7 +12,7 @@ use PC\FicheBundle\Entity\Alerte;
  * Fiche controller.
  *
  */
-class FicheController extends DefaultController
+class FicheController extends Default2Controller
 {
 
     /**

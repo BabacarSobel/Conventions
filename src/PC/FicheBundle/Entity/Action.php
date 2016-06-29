@@ -84,6 +84,10 @@ class Action
     */
     protected $autre;
 
+    /**
+    * @ORM\ManyToOne(targetEntity="Commun", inversedBy="actions")
+    */
+    protected $commun;
 
 
     /**
@@ -358,5 +362,29 @@ class Action
     public function getAutre()
     {
         return $this->autre;
+    }
+
+    /**
+     * Set commun
+     *
+     * @param \PC\FicheBundle\Entity\Commun $commun
+     *
+     * @return Action
+     */
+    public function setCommun(\PC\FicheBundle\Entity\Commun $commun = null)
+    {
+        $this->commun = $commun;
+
+        return $this;
+    }
+
+    /**
+     * Get commun
+     *
+     * @return \PC\FicheBundle\Entity\Commun
+     */
+    public function getCommun()
+    {
+        return $this->commun;
     }
 }

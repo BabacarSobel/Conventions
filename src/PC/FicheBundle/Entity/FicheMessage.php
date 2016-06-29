@@ -72,10 +72,15 @@ class FicheMessage
     */
     protected $psCati;
     
-    	/**
+    /**
     * @ORM\ManyToOne(targetEntity="Autre", inversedBy="messages")
     */
     protected $autre;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="Commun", inversedBy="messages")
+    */
+    protected $commun;
 
 
     /**
@@ -326,5 +331,29 @@ class FicheMessage
     public function getAuteur()
     {
         return $this->auteur;
+    }
+
+    /**
+     * Set commun
+     *
+     * @param \PC\FicheBundle\Entity\Commun $commun
+     *
+     * @return FicheMessage
+     */
+    public function setCommun(\PC\FicheBundle\Entity\Commun $commun = null)
+    {
+        $this->commun = $commun;
+
+        return $this;
+    }
+
+    /**
+     * Get commun
+     *
+     * @return \PC\FicheBundle\Entity\Commun
+     */
+    public function getCommun()
+    {
+        return $this->commun;
     }
 }

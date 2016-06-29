@@ -17,7 +17,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 namespace PC\FicheBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+//use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+//use Symfony\Component\HttpFoundation\Request;
+//use Knp\Snappy\Pdf;
+//use PC\FicheBundle\Entity\PIFEClassique;
+//use PC\FicheBundle\Form\PIFEClassiqueType;
+//use PC\FicheBundle\Form\DemandePIFEClassiqueType;
+//use PC\FicheBundle\Entity\Alerte;
+//use PC\FicheBundle\Form\AlerteType;
+//use PC\FicheBundle\Entity\Avenant;
+//use PC\FicheBundle\Entity\Fichier;
+//use PC\FicheBundle\Form\FichierType;
+//use DateTime;
+//use PC\FicheBundle\Form\AvenantType;
+//use PC\FicheBundle\Form\FicheMessageType;
+//use PC\FicheBundle\Entity\FicheMessage;
+//use PC\FicheBundle\Form\ActionType;
+//use PC\FicheBundle\Form\EditConventionType;
+// reprendre le routage
+
 
 /**
  * Default controller.
@@ -148,7 +166,7 @@ class DefaultController extends Controller{
 //        if ($form->isValid()) {
 //            $emCP = $this->getDoctrine()->getManager();
 //            $entityCP = $emCP->getRepository('PCFicheBundle:Commun')->find($id);
-//            $entity->setPIFEClassique($entityCP);
+//            $entity->setCommun($entityCP);
 //            $entity->setDate(new DateTime);
 //            $user = $this->container->get('security.context')->getToken()->getUser();
 //            $entity->setAuteur($user->getFullname());
@@ -173,10 +191,11 @@ class DefaultController extends Controller{
 //        return $form;
 //    }
 //    
+//    // revoir le nom du sous type
 //    public function pdfAction($id)
 //    {
 //        $em = $this->getDoctrine()->getManager();
-//        $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//        $entity = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //        $type = $em->getRepository('PCFicheBundle:SousType')->findBy(array('nom' => 'PROPOSITION ENTREPRISES'));
 //        $template = $em->getRepository('PCFicheBundle:Template')->findBy(array('type'=> $type[0]->getId()));
 //        // on cree le contenu
@@ -196,10 +215,11 @@ class DefaultController extends Controller{
 //                    );
 //    }
 //    
+//    // tout revoir
 //    public function wordAction($id)
 //    {
 //        $em = $this->getDoctrine()->getManager();
-//        $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//        $entity = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //        $content = $this->renderView('PCFicheBundle:Template:pc.html.twig',array('entity'=>$entity)); 
 //        $filename="convention".$id.Date("YmdHis").".doc";
 //        $file =$this->get('kernel')->getRootDir()."/../files/convention".$id.Date("YmdHis").".doc";
@@ -257,15 +277,15 @@ class DefaultController extends Controller{
 //
 //        if ($form->isValid()) {
 //            $emCP = $this->getDoctrine()->getManager();
-//            $entityCP = $emCP->getRepository('PCFicheBundle:PIFEClassique')->find($id);
-//            $entity->setPifeClassique($entityCP);
+//            $entityCP = $emCP->getRepository('PCFicheBundle:Commun')->find($id);
+//            $entity->setCommun($entityCP);
 //            $em = $this->getDoctrine()->getManager();
 //            $em->persist($entity);
 //            $em->flush();
 //            return $this->redirect($this->generateUrl('pifeclassique_show', array('id' => $entityCP->getId())));
 //        }
 //
-//        return $this->render('PCFicheBundle:Alerte:new.html.twig', array(
+//        return $this->render('PCFicheBundle:Fichier:new.html.twig', array(
 //            'entity' => $entity,
 //            'form'   => $form->createView(),
 //        ));
@@ -299,9 +319,9 @@ class DefaultController extends Controller{
 //
 //        if ($form->isValid()) {
 //            $emPC = $this->getDoctrine()->getManager();
-//            $entityPC = $emPC->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//            $entityPC = $emPC->getRepository('PCFicheBundle:Commun')->find($id);
 //            $entityPC->incrementerNombreNouveauxAvenants();
-//            $entity->setPifeClassique($entityPC);
+//            $entity->setCommun($entityPC);
 //            $entity->setNumeroFiche($id);
 //            $entity->setDateContratInitial($entityPC->getDateSignaturePolytech());
 //            $entity->setDateEffetCI($entityPC->getDateEffet());
@@ -373,8 +393,8 @@ class DefaultController extends Controller{
 //
 //        if ($form->isValid()) {
 //            $emCP = $this->getDoctrine()->getManager();
-//            $entityCP = $emCP->getRepository('PCFicheBundle:PIFEClassique')->find($id);
-//            $entity->setPifeClassique($entityCP);
+//            $entityCP = $emCP->getRepository('PCFicheBundle:Commun')->find($id);
+//            $entity->setCommun($entityCP);
 //            $em = $this->getDoctrine()->getManager();
 //            $em->persist($entity);
 //            $em->flush();
@@ -416,9 +436,9 @@ class DefaultController extends Controller{
 //
 //        if ($form->isValid()) {
 //            $emPC = $this->getDoctrine()->getManager();
-//            $entityPC = $emPC->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//            $entityPC = $emPC->getRepository('PCFicheBundle:Commun')->find($id);
 //            $entityPC->incrementerNombreNouveauxAvenants();
-//            $entity->setPifeClassique($entityPC);
+//            $entity->setCommun($entityPC);
 //            $entity->setNumeroFiche($id);
 //            $entity->setDateContratInitial($entityPC->getDateSignaturePolytech());
 //            $entity->setDateEffetCI($entityPC->getDateEffet());
@@ -476,8 +496,8 @@ class DefaultController extends Controller{
 //
 //        if ($form->isValid()) {
 //            $emPC = $this->getDoctrine()->getManager();
-//            $entityPC = $emPC->getRepository('PCFicheBundle:PIFEClassique')->find($id);
-//            $entity->setPifeClassique($entityPC);
+//            $entityPC = $emPC->getRepository('PCFicheBundle:Commun')->find($id);
+//            $entity->setCommun($entityPC);
 //            $em = $this->getDoctrine()->getManager();
 //            $em->persist($entity);
 //            $em->flush();
@@ -516,7 +536,7 @@ class DefaultController extends Controller{
 //            return $this->redirect($this->generateUrl('pifeclassique_show', array('id' => $entity->getId())));
 //        }
 //
-//        return $this->render('PCFicheBundle:PIFEClassique:new.html.twig', array(
+//        return $this->render('PCFicheBundle:Commun:new.html.twig', array(
 //            'entity' => $entity,
 //            'form'   => $form->createView(),
 //        ));
@@ -593,7 +613,7 @@ class DefaultController extends Controller{
 //            return $this->redirect($this->generateUrl('pifeclassique_showrequest', array('id' => $entity->getId())));
 //        }
 //
-//        return $this->render('PCFicheBundle:PIFEClassique:request.html.twig', array(
+//        return $this->render('PCFicheBundle:Commun:request.html.twig', array(
 //            'entity' => $entity,
 //            'form'   => $form->createView(),
 //        ));
@@ -607,7 +627,7 @@ class DefaultController extends Controller{
 //    {
 //        $entity = new PIFEClassique();
 //        $form = $this->createRequestForm($entity,$id);
-//        return $this->render('PCFicheBundle:PIFEClassique:request.html.twig', array(
+//        return $this->render('PCFicheBundle:Commun:request.html.twig', array(
 //            'entity' => $entity,
 //            'form'   => $form->createView(),
 //        ));
@@ -641,7 +661,7 @@ class DefaultController extends Controller{
 //        $entity = new PIFEClassique();
 //        $form   = $this->createCreateForm($entity,$id);
 //
-//        return $this->render('PCFicheBundle:PIFEClassique:new.html.twig', array(
+//        return $this->render('PCFicheBundle:Commun:new.html.twig', array(
 //            'entity' => $entity,
 //            'form'   => $form->createView(),
 //        ));
@@ -661,7 +681,7 @@ class DefaultController extends Controller{
 //        if ($form->isValid()) {
 //            // on recupere la fiche concerné par le message
 //            $em = $this->getDoctrine()->getManager();
-//            $entityOwner = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//            $entityOwner = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //            
 //            // on paramètre le message en rajoutant sa fiche et son auteur
 //            $entity->setPIFEClassique($entityOwner);
@@ -721,7 +741,7 @@ class DefaultController extends Controller{
 //        $em = $this->getDoctrine()->getManager();
 //        
 //        $role = $this->getIdentity();
-//        $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//        $entity = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //        if (!$entity) {
 //            throw $this->createNotFoundException('Impossible de trouver l\'entité PIFEClassique.');
 //        }
@@ -750,7 +770,7 @@ class DefaultController extends Controller{
 //        $messageForm = $this->sendFicheMessageForm($message,$id);
 //
 //
-//        return $this->render('PCFicheBundle:PIFEClassique:show.html.twig', array(
+//        return $this->render('PCFicheBundle:Commun:show.html.twig', array(
 //            'role' => $role,
 //            'entity'      => $entity,
 //            'delete_form' => $deleteForm->createView(),
@@ -776,7 +796,7 @@ class DefaultController extends Controller{
 //    {
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//        $entity = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //        $avenants = $em->getRepository('PCFicheBundle:Avenant')->findBy(array('pifeClassique' => $id));
 //        $fichiers = $em->getRepository('PCFicheBundle:Fichier')->findBy(array('pifeClassique' => $id));
 //        $messages = $em->getRepository('PCFicheBundle:FicheMessage')->findBy(array('pifeClassique' => $id));
@@ -795,7 +815,7 @@ class DefaultController extends Controller{
 //        $action = new \PC\FicheBundle\Entity\Action();
 //        $actionForm = $this->createActionForm($action,$id);   
 //
-//        return $this->render('PCFicheBundle:PIFEClassique:showrequest.html.twig', array(
+//        return $this->render('PCFicheBundle:Commun:showrequest.html.twig', array(
 //            'entity'      => $entity,
 //            'avenants' => $avenants,
 //            'fichiers' => $fichiers,
@@ -816,7 +836,7 @@ class DefaultController extends Controller{
 //    {
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//        $entity = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //
 //        if (!$entity) {
 //            throw $this->createNotFoundException('Unable to find PIFEClassique entity.');
@@ -825,7 +845,7 @@ class DefaultController extends Controller{
 //        $editForm = $this->createEditForm($entity);
 //        $deleteForm = $this->createDeleteForm($id);
 //
-//        return $this->render('PCFicheBundle:PIFEClassique:edit.html.twig', array(
+//        return $this->render('PCFicheBundle:Commun:edit.html.twig', array(
 //            'entity'      => $entity,
 //            'edit_form'   => $editForm->createView(),
 //            'delete_form' => $deleteForm->createView(),
@@ -858,7 +878,7 @@ class DefaultController extends Controller{
 //    {
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//        $entity = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //
 //        if (!$entity) {
 //            throw $this->createNotFoundException('Unable to find PIFEClassique entity.');
@@ -874,7 +894,7 @@ class DefaultController extends Controller{
 //            return $this->redirect($this->generateUrl('pifeclassique_edit', array('id' => $id)));
 //        }
 //
-//        return $this->render('PCFicheBundle:PIFEClassique:edit.html.twig', array(
+//        return $this->render('PCFicheBundle:Commun:edit.html.twig', array(
 //            'entity'      => $entity,
 //            'edit_form'   => $editForm->createView(),
 //            'delete_form' => $deleteForm->createView(),
@@ -891,7 +911,7 @@ class DefaultController extends Controller{
 //
 //        if ($form->isValid()) {
 //            $em = $this->getDoctrine()->getManager();
-//            $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//            $entity = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //
 //            if (!$entity) {
 //                throw $this->createNotFoundException('Unable to find PIFEClassique entity.');
@@ -923,14 +943,14 @@ class DefaultController extends Controller{
 //    
 //    public function editConventionAction(Request $request,$id){
 //        $em = $this->getDoctrine()->getManager();
-//        $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//        $entity = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //        $form = $this->createEditConventionForm($entity,$id);
 //        
 //        $form->handleRequest($request);
 //
 //        if ($form->isValid()) {
 //            $em = $this->getDoctrine()->getManager();
-//            $entity = $em->getRepository('PCFicheBundle:PIFEClassique')->find($id);
+//            $entity = $em->getRepository('PCFicheBundle:Commun')->find($id);
 //
 //            if (!$entity) {
 //                throw $this->createNotFoundException('Unable to find PIFEClassique entity.');
@@ -940,7 +960,7 @@ class DefaultController extends Controller{
 //            $em->flush();
 //        }
 //        
-//        return $this->render('PCFicheBundle:PIFEClassique:editconvention.html.twig', array(
+//        return $this->render('PCFicheBundle:Commun:editconvention.html.twig', array(
 //            'entity'      => $entity,
 //            'form'   => $form->createView(),
 //        ));
@@ -955,5 +975,5 @@ class DefaultController extends Controller{
 //        $form->add('submit', 'submit', array('label' => 'Modifier'));
 //        return $form;
 //    }
-//    
+    
 }

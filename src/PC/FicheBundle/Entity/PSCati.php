@@ -1126,4 +1126,38 @@ class PSCati extends Commun
     {
         return $this->actions;
     }
+
+    /**
+     * Add location
+     *
+     * @param \PC\FicheBundle\Entity\Location $location
+     *
+     * @return PSCati
+     */
+    public function addLocation(\PC\FicheBundle\Entity\Location $location)
+    {
+        $this->locations[] = $location;
+
+        return $this;
+    }
+
+    /**
+     * Remove location
+     *
+     * @param \PC\FicheBundle\Entity\Location $location
+     */
+    public function removeLocation(\PC\FicheBundle\Entity\Location $location)
+    {
+        $this->locations->removeElement($location);
+    }
+
+    /**
+     * Get locations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLocations()
+    {
+        return $this->locations;
+    }
 }

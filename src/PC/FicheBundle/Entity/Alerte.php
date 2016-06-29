@@ -90,6 +90,11 @@ class Alerte
     protected $avenant;
     
     /**
+    * @ORM\ManyToOne(targetEntity="Commun", inversedBy="alertes")
+    */
+    protected $commun;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="route", type="string", length=255,nullable=TRUE)
@@ -457,5 +462,29 @@ class Alerte
     public function getRoute()
     {
         return $this->route;
+    }
+
+    /**
+     * Set commun
+     *
+     * @param \PC\FicheBundle\Entity\Commun $commun
+     *
+     * @return Alerte
+     */
+    public function setCommun(\PC\FicheBundle\Entity\Commun $commun = null)
+    {
+        $this->commun = $commun;
+
+        return $this;
+    }
+
+    /**
+     * Get commun
+     *
+     * @return \PC\FicheBundle\Entity\Commun
+     */
+    public function getCommun()
+    {
+        return $this->commun;
     }
 }

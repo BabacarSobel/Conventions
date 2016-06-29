@@ -70,6 +70,11 @@ class Location
     * @ORM\ManyToOne(targetEntity="MADEvenementGratuit", inversedBy="locaux")
     */
     protected $madEvenementGratuit;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="Commun", inversedBy="locaux")
+    */
+    protected $commun;
 
 
     /**
@@ -272,5 +277,29 @@ class Location
     public function getNombreDemiJournees()
     {
         return $this->nombreDemiJournees;
+    }
+
+    /**
+     * Set commun
+     *
+     * @param \PC\FicheBundle\Entity\Commun $commun
+     *
+     * @return Location
+     */
+    public function setCommun(\PC\FicheBundle\Entity\Commun $commun = null)
+    {
+        $this->commun = $commun;
+
+        return $this;
+    }
+
+    /**
+     * Get commun
+     *
+     * @return \PC\FicheBundle\Entity\Commun
+     */
+    public function getCommun()
+    {
+        return $this->commun;
     }
 }
