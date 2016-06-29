@@ -153,20 +153,6 @@
                 <div class='col-sm-4'><input disabled="disabled" class="form-control" value='{{ entity.actionDemandee }}'/></div>
             </div>
             <div class="form-group">
-                <label class='col-sm-3 pc_label control-label'>Suivi d'action</label>
-                <div class='col-sm-4'><textarea disabled="disabled" class="form-control">{{ entity.suiviActionTexte }}</textarea></div>
-            </div>
-            <div class="form-group">
-                <label class='col-sm-3 pc_label control-label'>Date de Suivi d'action</label>
-                <div class='col-sm-4'>
-                    {%if entity.suiviActionDate is null%}
-                        <input disabled="disabled" class="form-control" value=''/>
-                    {%else%}
-                        <input disabled="disabled" class="form-control" value='{{ entity.suiviActionDate|date('d/m/Y') }}'/>
-                    {%endif%}
-                </div>
-            </div>
-            <div class="form-group">
                 <label class='col-sm-3 pc_label control-label'>Observations</label>
                 <div class='col-sm-4'><textarea disabled="disabled" class="form-control">{{ entity.observations }}</textarea></div>
                 

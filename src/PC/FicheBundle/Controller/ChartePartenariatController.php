@@ -652,10 +652,6 @@ class ChartePartenariatController extends DefaultController
         ));
     }
     
-        /**
-     * Displays a form to create a new ChartePartenariat entity.
-     *
-     */
     public function uploadAction($id)
     {
         $entity = new Fichier();
