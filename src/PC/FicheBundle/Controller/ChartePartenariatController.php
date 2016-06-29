@@ -3,7 +3,6 @@
 namespace PC\FicheBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Knp\Snappy\Pdf;
 use PC\FicheBundle\Entity\ChartePartenariat;
 use PC\FicheBundle\Form\ChartePartenariatType;
@@ -735,18 +734,6 @@ class ChartePartenariatController extends DefaultController
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ChartePartenariat entity.');
         }
-        
-        $avenant = new Avenant();
-        $avenantForm = $this->addAvenantToRequestForm($avenant,$id);
-        $fichier = new Fichier();
-        $fichierForm = $this->addFichierToRequestForm($fichier,$id);
-        
-        
-        $message = new FicheMessage();
-        $messageForm = $this->sendFicheMessageForm($message,$id);
-        
-        $action = new \PC\FicheBundle\Entity\Action();
-        $actionForm = $this->createActionForm($action,$id);
 
         return $this->render('PCFicheBundle:ChartePartenariat:showrequest.html.twig', array(
             'entity'      => $entity,

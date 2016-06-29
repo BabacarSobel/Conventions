@@ -41,9 +41,10 @@ class FichierController extends DefaultController
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $fiche = $em->getRepository('PCFicheBundle:Commun')->find($id);
+            $entity->setCommun($fiche);
             $em->persist($entity);
             $em->flush();
-
             return $this->redirect($this->generateUrl('fichier_show', array('id' => $entity->getId())));
         }
 

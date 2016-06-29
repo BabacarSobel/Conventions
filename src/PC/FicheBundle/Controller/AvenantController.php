@@ -84,7 +84,7 @@ class AvenantController extends DefaultController
      * Creates a new Avenant entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $id)
     {
         $entity = new Avenant();
         $form = $this->createCreateForm($entity);
@@ -92,7 +92,36 @@ class AvenantController extends DefaultController
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $fiche = $em->getRepository('PCFicheBundle:Commun')->find($id);
+            $fiche->incrementerNombreNouveauxAvenants();
+            $entity->setCommun($fiche);
+            $entity->setNumeroFiche($id);
+            $entity->setDateContratInitial($fiche->getDateSignaturePolytech());
+            $entity->setDateEffetCI($fiche->getDateEffet());
+            $entity->setDateFinCI($fiche->getDateEcheance());
+            $ajout = " + ".$entity->getNbMoisProrogation()." month";
+            if ($entity->getObjet() === 'proroger'){
+                $date = $fiche->getDateEcheance();
+
+                if ($date != null){
+                    echo 'je rentre ';
+                    $date=  $date->format('Y-m-d');
+                    $expirationDate = date("Y-m-d", strtotime($date.$ajout));
+                    $expirationDate = new DateTime($expirationDate);
+                    $entity->setDateExpiration($expirationDate);
+                }else{
+                    $request->getSession()
+                    ->getFlashBag()
+                    ->add('error', "Pas de date d'écheance trouvé. Votre avenant n'a pas été enregistré");
+                    return $this->redirect($this->generateUrl('fiche_show', array('id' => $fiche->getId())));
+                }
+            
+            }
+            $alerte = new Alerte();
+            $this->notifierCreationAvenant($alerte,$entity);
             $em->persist($entity);
+            $em->flush();
+            $em->persist($alerte);
             $em->flush();
 
             return $this->redirect($this->generateUrl('avenant_show', array('id' => $entity->getId())));
@@ -121,6 +150,16 @@ class AvenantController extends DefaultController
         $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
+    }
+    
+        public function notifierCreationAvenant($alerte,$entity)
+    {
+        $alerte->setIntitule('Nouvel avenant');
+        $alerte->setObjet('Un nouvel avenant a été créé');
+        $alerte->setAvenant($entity);
+        $alerte->setRoute('autre_show');
+        $alerte->setDateAlerte(new DateTime());
+        $alerte->setOwnerId($entity->getId());
     }
 
     /**

@@ -3,7 +3,10 @@
 {% block body -%}
     <h1>Fichier creation</h1>
 
-    {{ form(form) }}
+    {{ form_start(fichier_form, {'attr': {'class': 'form-horizontal'}}) }}
+    {{ form_errors(fichier_form) }}
+    {{ form_rest(fichier_form) }}
+    {{ form_end(fichier_form) }}
 
         <ul class="record_actions">
     <li>

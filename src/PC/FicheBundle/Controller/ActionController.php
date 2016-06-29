@@ -40,11 +40,24 @@ class ActionController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            // on recupere la fiche concerné par le message
             $em = $this->getDoctrine()->getManager();
+            $entityOwner = $em->getRepository('PCFicheBundle:Commun')->find($id);
+            
+            // on paramètre le message en rajoutant sa fiche et son auteur
+            $entity->setCommun($entityOwner);
+            $entity->setDateDeCreation(new DateTime);
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $entity->setAuteur($user->getFullname());
+            
+            //on crée une alerte nouveau message
+            $alerte = new Alerte();
+            $this->newActionNotification($alerte,$entityOwner);
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('action_show', array('id' => $entity->getId())));
+            $em->persist($alerte);
+            $em->flush();
+            return $this->redirect($this->getRequest()->headers->get('referer'));
         }
 
         return $this->render('PCFicheBundle:Action:new.html.twig', array(

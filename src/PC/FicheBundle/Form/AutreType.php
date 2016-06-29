@@ -134,16 +134,6 @@ class AutreType extends AbstractType
                                                                         'AUTRE' => 'AUTRE',
                                                                     ),'required' => false
                                                                 ))
-            ->add('suiviActionTexte','text',array('required' => false))
-            ->add('suiviActionDate','genemu_jquerydate', [
-                                                'widget' => 'single_text',
-                                                'format' => 'dd-MM-yyyy',
-                                                'attr' => [
-                                                    'class' => 'input-inline datepicker',
-                                                    'data-provide' => 'datepicker',
-                                                    'data-date-format' => 'dd-mm-yyyy'
-                                                ],'required' => false
-                                            ])
             ->add('observations','textarea',array('required' => false))
             ->add('fluxFinancier','number')
             ->add('reservationFonds','text',array('required' => false))

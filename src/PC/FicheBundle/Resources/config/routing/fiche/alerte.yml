@@ -7,7 +7,7 @@ alerte_show:
     defaults: { _controller: "PCFicheBundle:Alerte:show" }
 
 alerte_new:
-    path:     /new
+    path:     /{id}/new
     defaults: { _controller: "PCFicheBundle:Alerte:new" }
 
 alerte_create:

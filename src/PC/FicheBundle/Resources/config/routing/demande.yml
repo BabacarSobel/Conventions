@@ -1,3 +1,11 @@
+pc_fiche_location:
+    resource: "@PCFicheBundle/Resources/config/routing/demande/location.yml"
+    prefix:   /location
+
+pc_fiche_local:
+    resource: "@PCFicheBundle/Resources/config/routing/demande/local.yml"
+    prefix:   /local
+    
 pc_fiche_autre:
     resource: "@PCFicheBundle/Resources/config/routing/demande/autre.yml"
     prefix:   /autre
@@ -6,8 +14,6 @@ pc_fiche_avenant:
     resource: "@PCFicheBundle/Resources/config/routing/demande/avenant.yml"
     prefix:   /avenant
 
-
-
 pc_fiche_pscati:
     resource: "@PCFicheBundle/Resources/config/routing/demande/pscati.yml"
     prefix:   /pscati
@@ -15,10 +21,6 @@ pc_fiche_pscati:
 pc_fiche_pifelaboratoire:
     resource: "@PCFicheBundle/Resources/config/routing/demande/pifelaboratoire.yml"
     prefix:   /pifelaboratoire
-
-pc_fiche_pifeclassique:
-    resource: "@PCFicheBundle/Resources/config/routing/demande/pifeclassique.yml"
-    prefix:   /pifeclassique
 
 pc_fiche_madsalles:
     resource: "@PCFicheBundle/Resources/config/routing/demande/madsalles.yml"
@@ -32,38 +34,47 @@ pc_fiche_madevenementgratuit:
 pc_fiche_chartepartenariat:
     resource: "@PCFicheBundle/Resources/config/routing/demande/chartepartenariat.yml"
     prefix:   /chartepartenariat
+    
+pc_fiche_message:
+    resource: "@PCFicheBundle/Resources/config/routing/demande/fichemessage.yml"
+    prefix:   /message
 
 demande:
     path:     /
     defaults: { _controller: "PCFicheBundle:Demande:index" }
 
-demande_show:
-    path:     /{id}/show
-    defaults: { _controller: "PCFicheBundle:Demande:show" }
-
-demande_new:
-    path:     /new
-    defaults: { _controller: "PCFicheBundle:Demande:new" }
-
-demande_create:
-    path:     /create
-    defaults: { _controller: "PCFicheBundle:Demande:create" }
-    methods:  POST
-
-demande_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "PCFicheBundle:Demande:edit" }
-
-demande_update:
-    path:     /{id}/update
-    defaults: { _controller: "PCFicheBundle:Demande:update" }
-    methods:  [POST, PUT]
-
-demande_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "PCFicheBundle:Demande:delete" }
-    methods:  [POST, DELETE]
+demande_choisir_type:
+    path:     /choisir
+    defaults: { _controller: "PCFicheBundle:Demande:choisirType" }
     
-demande_choosesubype:
-    path:     /{id}/choose
-    defaults: { _controller: "PCFicheBundle:Demande:chooseSubType" }
+demande_choisir_soustype:
+    path:     /{id}/choisir
+    defaults: { _controller: "PCFicheBundle:Demande:choisirSousType" }
+
+# a supprimer
+#demande_show:
+#    path:     /{id}/show
+#    defaults: { _controller: "PCFicheBundle:Demande:show" }
+#
+#demande_new:
+#    path:     /new
+#    defaults: { _controller: "PCFicheBundle:Demande:new" }
+#
+#demande_create:
+#    path:     /create
+#    defaults: { _controller: "PCFicheBundle:Demande:create" }
+#    methods:  POST
+#
+#demande_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "PCFicheBundle:Demande:edit" }
+#
+#demande_update:
+#    path:     /{id}/update
+#    defaults: { _controller: "PCFicheBundle:Demande:update" }
+#    methods:  [POST, PUT]
+#
+#demande_delete:
+#    path:     /{id}/delete
+#    defaults: { _controller: "PCFicheBundle:Demande:delete" }
+#    methods:  [POST, DELETE]

@@ -63,184 +63,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array (  '_controller' => 'PC\\FicheBundle\\Controller\\HomeController::backwardAction',  '_route' => 'pc_precedent',);
         }
 
-        if (0 === strpos($pathinfo, '/mapping')) {
-            // mapping
-            if (rtrim($pathinfo, '/') === '/mapping') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'mapping');
-                }
-
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::indexAction',  '_route' => 'mapping',);
-            }
-
-            // mapping_show
-            if (preg_match('#^/mapping/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mapping_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::showAction',));
-            }
-
-            // mapping_new
-            if ($pathinfo === '/mapping/new') {
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::newAction',  '_route' => 'mapping_new',);
-            }
-
-            // mapping_create
-            if ($pathinfo === '/mapping/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_mapping_create;
-                }
-
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::createAction',  '_route' => 'mapping_create',);
-            }
-            not_mapping_create:
-
-            // mapping_edit
-            if (preg_match('#^/mapping/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mapping_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::editAction',));
-            }
-
-            // mapping_update
-            if (preg_match('#^/mapping/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_mapping_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mapping_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::updateAction',));
-            }
-            not_mapping_update:
-
-            // mapping_delete
-            if (preg_match('#^/mapping/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_mapping_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mapping_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\MappingController::deleteAction',));
-            }
-            not_mapping_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/loca')) {
-            if (0 === strpos($pathinfo, '/location')) {
-                // location
-                if (rtrim($pathinfo, '/') === '/location') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'location');
-                    }
-
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::indexAction',  '_route' => 'location',);
-                }
-
-                // location_show
-                if (preg_match('#^/location/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::showAction',));
-                }
-
-                // location_create
-                if ($pathinfo === '/location/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_location_create;
-                    }
-
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::createAction',  '_route' => 'location_create',);
-                }
-                not_location_create:
-
-                // location_edit
-                if (preg_match('#^/location/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::editAction',));
-                }
-
-                // location_update
-                if (preg_match('#^/location/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_location_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::updateAction',));
-                }
-                not_location_update:
-
-                // location_delete
-                if (preg_match('#^/location/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_location_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::deleteAction',));
-                }
-                not_location_delete:
-
-            }
-
-            if (0 === strpos($pathinfo, '/local')) {
-                // local
-                if (rtrim($pathinfo, '/') === '/local') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'local');
-                    }
-
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::indexAction',  '_route' => 'local',);
-                }
-
-                // local_show
-                if (preg_match('#^/local/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'local_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::showAction',));
-                }
-
-                // local_new
-                if ($pathinfo === '/local/new') {
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::newAction',  '_route' => 'local_new',);
-                }
-
-                // local_create
-                if ($pathinfo === '/local/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_local_create;
-                    }
-
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::createAction',  '_route' => 'local_create',);
-                }
-                not_local_create:
-
-                // local_edit
-                if (preg_match('#^/local/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'local_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::editAction',));
-                }
-
-                // local_update
-                if (preg_match('#^/local/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_local_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'local_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::updateAction',));
-                }
-                not_local_update:
-
-                // local_delete
-                if (preg_match('#^/local/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_local_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'local_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::deleteAction',));
-                }
-                not_local_delete:
-
-            }
-
-        }
-
         if (0 === strpos($pathinfo, '/fiche')) {
             if (0 === strpos($pathinfo, '/fiche/departement')) {
                 // departement
@@ -576,6 +398,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 }
                 not_avenant_pdf:
 
+                // avenant_new
+                if (preg_match('#^/fiche/avenant/(?P<id>[^/]++)/new$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'avenant_new')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\AvenantController::newAction',));
+                }
+
                 // avenant_create
                 if ($pathinfo === '/fiche/avenant/create') {
                     if ($this->context->getMethod() != 'POST') {
@@ -697,8 +524,8 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 }
 
                 // alerte_new
-                if ($pathinfo === '/fiche/alerte/new') {
-                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\AlerteController::newAction',  '_route' => 'alerte_new',);
+                if (preg_match('#^/fiche/alerte/(?P<id>[^/]++)/new$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'alerte_new')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\AlerteController::newAction',));
                 }
 
                 // alerte_create
@@ -918,29 +745,19 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                             return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::showAction',));
                         }
 
-                        // pifeclassique_word
-                        if (preg_match('#^/fiche/pifeclassique/(?P<id>[^/]++)/pdf$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_word')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::wordAction',));
-                        }
-
-                        // pifeclassique_new_fichier
-                        if (preg_match('#^/fiche/pifeclassique/(?P<id>[^/]++)/new_fichier$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_new_fichier')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::addFichierAction',));
-                        }
-
-                        // pifeclassique_new_alert
-                        if (preg_match('#^/fiche/pifeclassique/(?P<id>[^/]++)/new_alert$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_new_alert')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::addAlertAction',));
-                        }
-
-                        // pifeclassique_new_avenant
-                        if (preg_match('#^/fiche/pifeclassique/(?P<id>[^/]++)/new_avenant$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_new_avenant')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::addAvenantAction',));
+                        // pifeclassique_export
+                        if ($pathinfo === '/fiche/pifeclassique/export') {
+                            return array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::exportAction',  '_route' => 'pifeclassique_export',);
                         }
 
                         // pifeclassique_new
                         if (preg_match('#^/fiche/pifeclassique/(?P<id>[^/]++)/new$#s', $pathinfo, $matches)) {
                             return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_new')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::newAction',));
+                        }
+
+                        // pifeclassique_request
+                        if (preg_match('#^/fiche/pifeclassique/(?P<id>[^/]++)/demande$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_request')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::requestAction',));
                         }
 
                         // pifeclassique_create
@@ -954,17 +771,9 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                         }
                         not_pifeclassique_create:
 
-                        if (0 === strpos($pathinfo, '/fiche/pifeclassique/edit')) {
-                            // pifeclassique_editconvention
-                            if (0 === strpos($pathinfo, '/fiche/pifeclassique/editionconvention') && preg_match('#^/fiche/pifeclassique/editionconvention/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_editconvention')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::editConventionAction',));
-                            }
-
-                            // pifeclassique_edit
-                            if (preg_match('#^/fiche/pifeclassique/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::editAction',));
-                            }
-
+                        // pifeclassique_edit
+                        if (0 === strpos($pathinfo, '/fiche/pifeclassique/edit') && preg_match('#^/fiche/pifeclassique/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::editAction',));
                         }
 
                         // pifeclassique_update
@@ -989,10 +798,21 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                         }
                         not_pifeclassique_delete:
 
-                        // pifeclassique_action
-                        if (preg_match('#^/fiche/pifeclassique/(?P<id>[^/]++)/new_action$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_action')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::createActionAction',));
+                        // pifeclassique_showrequest
+                        if (preg_match('#^/fiche/pifeclassique/(?P<id>[^/]++)/showrequest$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_showrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::showrequestAction',));
                         }
+
+                        // pifeclassique_createrequest
+                        if (preg_match('#^/fiche/pifeclassique/(?P<id>[^/]++)/createrequest$#s', $pathinfo, $matches)) {
+                            if ($this->context->getMethod() != 'POST') {
+                                $allow[] = 'POST';
+                                goto not_pifeclassique_createrequest;
+                            }
+
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_createrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::createRequestAction',));
+                        }
+                        not_pifeclassique_createrequest:
 
                     }
 
@@ -1299,6 +1119,66 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
             }
 
+            if (0 === strpos($pathinfo, '/fiche/action')) {
+                // action
+                if (rtrim($pathinfo, '/') === '/fiche/action') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'action');
+                    }
+
+                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::indexAction',  '_route' => 'action',);
+                }
+
+                // action_show
+                if (preg_match('#^/fiche/action/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'action_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::showAction',));
+                }
+
+                // action_new
+                if (preg_match('#^/fiche/action/(?P<id>[^/]++)/new$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'action_new')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::newAction',));
+                }
+
+                // action_create
+                if ($pathinfo === '/fiche/action/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_action_create;
+                    }
+
+                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::createAction',  '_route' => 'action_create',);
+                }
+                not_action_create:
+
+                // action_edit
+                if (preg_match('#^/fiche/action/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'action_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::editAction',));
+                }
+
+                // action_update
+                if (preg_match('#^/fiche/action/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_action_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'action_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::updateAction',));
+                }
+                not_action_update:
+
+                // action_delete
+                if (preg_match('#^/fiche/action/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_action_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'action_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\ActionController::deleteAction',));
+                }
+                not_action_delete:
+
+            }
+
             // fiche
             if (rtrim($pathinfo, '/') === '/fiche') {
                 if (substr($pathinfo, -1) !== '/') {
@@ -1306,11 +1186,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 }
 
                 return array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::indexAction',  '_route' => 'fiche',);
-            }
-
-            // fiche_show
-            if (preg_match('#^/fiche/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fiche_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::showAction',));
             }
 
             // fiche_pdf
@@ -1336,57 +1211,177 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'fiche_download')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::downloadAction',));
             }
 
-            // fiche_new
-            if ($pathinfo === '/fiche/new') {
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::newAction',  '_route' => 'fiche_new',);
-            }
-
-            // fiche_create
-            if ($pathinfo === '/fiche/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_fiche_create;
-                }
-
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::createAction',  '_route' => 'fiche_create',);
-            }
-            not_fiche_create:
-
-            // fiche_edit
-            if (preg_match('#^/fiche/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fiche_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::editAction',));
-            }
-
-            // fiche_update
-            if (preg_match('#^/fiche/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_fiche_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fiche_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::updateAction',));
-            }
-            not_fiche_update:
-
-            // fiche_delete
-            if (preg_match('#^/fiche/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_fiche_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fiche_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::deleteAction',));
-            }
-            not_fiche_delete:
-
             // fiche_choosesubype
             if (preg_match('#^/fiche/(?P<id>[^/]++)/choose$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'fiche_choosesubype')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::chooseSubTypeAction',));
             }
 
+            // fiche_choosetype
+            if ($pathinfo === '/fiche/choose') {
+                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheController::chooseTypeAction',  '_route' => 'fiche_choosetype',);
+            }
+
+            // pifeclassique_pdf
+            if (preg_match('#^/fiche/(?P<id>[^/]++)/pdf$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_pdf')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::pdfAction',));
+            }
+
+            // pifeclassique_word
+            if (preg_match('#^/fiche/(?P<id>[^/]++)/pdf$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_word')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::wordAction',));
+            }
+
+            // pifeclassique_new_fichier
+            if (preg_match('#^/fiche/(?P<id>[^/]++)/new_fichier$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_new_fichier')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::addFichierAction',));
+            }
+
+            // pifeclassique_new_alert
+            if (preg_match('#^/fiche/(?P<id>[^/]++)/new_alert$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_new_alert')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::addAlertAction',));
+            }
+
+            // pifeclassique_new_avenant
+            if (preg_match('#^/fiche/(?P<id>[^/]++)/new_avenant$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_new_avenant')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::addAvenantAction',));
+            }
+
+            // pifeclassique_editconvention
+            if (0 === strpos($pathinfo, '/fiche/editionconvention') && preg_match('#^/fiche/editionconvention/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_editconvention')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::editConventionAction',));
+            }
+
+            // pifeclassique_sendfichemessage
+            if (preg_match('#^/fiche/(?P<id>[^/]++)/new_message$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_sendfichemessage')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::sendFicheMessageAction',));
+            }
+
+            // pifeclassique_action
+            if (preg_match('#^/fiche/(?P<id>[^/]++)/new_action$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_action')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::createActionAction',));
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/demande')) {
+            if (0 === strpos($pathinfo, '/demande/loca')) {
+                if (0 === strpos($pathinfo, '/demande/location')) {
+                    // location
+                    if (rtrim($pathinfo, '/') === '/demande/location') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'location');
+                        }
+
+                        return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::indexAction',  '_route' => 'location',);
+                    }
+
+                    // location_show
+                    if (preg_match('#^/demande/location/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::showAction',));
+                    }
+
+                    // location_create
+                    if ($pathinfo === '/demande/location/create') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_location_create;
+                        }
+
+                        return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::createAction',  '_route' => 'location_create',);
+                    }
+                    not_location_create:
+
+                    // location_edit
+                    if (preg_match('#^/demande/location/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::editAction',));
+                    }
+
+                    // location_update
+                    if (preg_match('#^/demande/location/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                            $allow = array_merge($allow, array('POST', 'PUT'));
+                            goto not_location_update;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::updateAction',));
+                    }
+                    not_location_update:
+
+                    // location_delete
+                    if (preg_match('#^/demande/location/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                            $allow = array_merge($allow, array('POST', 'DELETE'));
+                            goto not_location_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocationController::deleteAction',));
+                    }
+                    not_location_delete:
+
+                }
+
+                if (0 === strpos($pathinfo, '/demande/local')) {
+                    // local
+                    if (rtrim($pathinfo, '/') === '/demande/local') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'local');
+                        }
+
+                        return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::indexAction',  '_route' => 'local',);
+                    }
+
+                    // local_show
+                    if (preg_match('#^/demande/local/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'local_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::showAction',));
+                    }
+
+                    // local_new
+                    if ($pathinfo === '/demande/local/new') {
+                        return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::newAction',  '_route' => 'local_new',);
+                    }
+
+                    // local_create
+                    if ($pathinfo === '/demande/local/create') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_local_create;
+                        }
+
+                        return array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::createAction',  '_route' => 'local_create',);
+                    }
+                    not_local_create:
+
+                    // local_edit
+                    if (preg_match('#^/demande/local/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'local_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::editAction',));
+                    }
+
+                    // local_update
+                    if (preg_match('#^/demande/local/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                            $allow = array_merge($allow, array('POST', 'PUT'));
+                            goto not_local_update;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'local_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::updateAction',));
+                    }
+                    not_local_update:
+
+                    // local_delete
+                    if (preg_match('#^/demande/local/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                            $allow = array_merge($allow, array('POST', 'DELETE'));
+                            goto not_local_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'local_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\LocalController::deleteAction',));
+                    }
+                    not_local_delete:
+
+                }
+
+            }
+
             if (0 === strpos($pathinfo, '/demande/a')) {
                 if (0 === strpos($pathinfo, '/demande/autre')) {
                     // autre_download
@@ -1510,103 +1505,51 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 }
 
-                if (0 === strpos($pathinfo, '/demande/pife')) {
-                    if (0 === strpos($pathinfo, '/demande/pifelaboratoire')) {
-                        // pifelaboratoire_export
-                        if ($pathinfo === '/demande/pifelaboratoire/export') {
-                            return array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::exportAction',  '_route' => 'pifelaboratoire_export',);
-                        }
-
-                        // pifelaboratoire_pdf
-                        if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/pdf$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_pdf')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::pdfAction',));
-                        }
-
-                        // pifelaboratoire_new_fichierrequest
-                        if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/new_fichierrequest$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_new_fichierrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::addFichierToRequestAction',));
-                        }
-
-                        // pifelaboratoire_new_avenantrequest
-                        if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/new_avenantrequest$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_new_avenantrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::addAvenantToRequestAction',));
-                        }
-
-                        // pifelaboratoire_request
-                        if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/demande$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_request')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::requestAction',));
-                        }
-
-                        // pifelaboratoire_showrequest
-                        if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/showrequest$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_showrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::showrequestAction',));
-                        }
-
-                        // pifelaboratoire_createrequest
-                        if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/createrequest$#s', $pathinfo, $matches)) {
-                            if ($this->context->getMethod() != 'POST') {
-                                $allow[] = 'POST';
-                                goto not_pifelaboratoire_createrequest;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_createrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::createRequestAction',));
-                        }
-                        not_pifelaboratoire_createrequest:
-
-                        // pifelaboratoire_sendfichemessage
-                        if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/new_message$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_sendfichemessage')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::sendFicheMessageAction',));
-                        }
-
+                if (0 === strpos($pathinfo, '/demande/pifelaboratoire')) {
+                    // pifelaboratoire_export
+                    if ($pathinfo === '/demande/pifelaboratoire/export') {
+                        return array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::exportAction',  '_route' => 'pifelaboratoire_export',);
                     }
 
-                    if (0 === strpos($pathinfo, '/demande/pifeclassique')) {
-                        // pifeclassique_export
-                        if ($pathinfo === '/demande/pifeclassique/export') {
-                            return array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::exportAction',  '_route' => 'pifeclassique_export',);
+                    // pifelaboratoire_pdf
+                    if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/pdf$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_pdf')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::pdfAction',));
+                    }
+
+                    // pifelaboratoire_new_fichierrequest
+                    if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/new_fichierrequest$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_new_fichierrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::addFichierToRequestAction',));
+                    }
+
+                    // pifelaboratoire_new_avenantrequest
+                    if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/new_avenantrequest$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_new_avenantrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::addAvenantToRequestAction',));
+                    }
+
+                    // pifelaboratoire_request
+                    if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/demande$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_request')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::requestAction',));
+                    }
+
+                    // pifelaboratoire_showrequest
+                    if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/showrequest$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_showrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::showrequestAction',));
+                    }
+
+                    // pifelaboratoire_createrequest
+                    if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/createrequest$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_pifelaboratoire_createrequest;
                         }
 
-                        // pifeclassique_pdf
-                        if (preg_match('#^/demande/pifeclassique/(?P<id>[^/]++)/pdf$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_pdf')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::pdfAction',));
-                        }
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_createrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::createRequestAction',));
+                    }
+                    not_pifelaboratoire_createrequest:
 
-                        // pifeclassique_new_fichierrequest
-                        if (preg_match('#^/demande/pifeclassique/(?P<id>[^/]++)/new_fichierrequest$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_new_fichierrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::addFichierToRequestAction',));
-                        }
-
-                        // pifeclassique_new_avenantrequest
-                        if (preg_match('#^/demande/pifeclassique/(?P<id>[^/]++)/new_avenantrequest$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_new_avenantrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::addAvenantToRequestAction',));
-                        }
-
-                        // pifeclassique_request
-                        if (preg_match('#^/demande/pifeclassique/(?P<id>[^/]++)/demande$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_request')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::requestAction',));
-                        }
-
-                        // pifeclassique_showrequest
-                        if (preg_match('#^/demande/pifeclassique/(?P<id>[^/]++)/showrequest$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_showrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::showrequestAction',));
-                        }
-
-                        // pifeclassique_createrequest
-                        if (preg_match('#^/demande/pifeclassique/(?P<id>[^/]++)/createrequest$#s', $pathinfo, $matches)) {
-                            if ($this->context->getMethod() != 'POST') {
-                                $allow[] = 'POST';
-                                goto not_pifeclassique_createrequest;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_createrequest')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::createRequestAction',));
-                        }
-                        not_pifeclassique_createrequest:
-
-                        // pifeclassique_sendfichemessage
-                        if (preg_match('#^/demande/pifeclassique/(?P<id>[^/]++)/new_message$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifeclassique_sendfichemessage')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFEClassiqueController::sendFicheMessageAction',));
-                        }
-
+                    // pifelaboratoire_sendfichemessage
+                    if (preg_match('#^/demande/pifelaboratoire/(?P<id>[^/]++)/new_message$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'pifelaboratoire_sendfichemessage')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\PIFELaboratoireController::sendFicheMessageAction',));
                     }
 
                 }
@@ -1796,6 +1739,66 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
             }
 
+            if (0 === strpos($pathinfo, '/demande/message')) {
+                // fichemessage
+                if (rtrim($pathinfo, '/') === '/demande/message') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'fichemessage');
+                    }
+
+                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::indexAction',  '_route' => 'fichemessage',);
+                }
+
+                // fichemessage_show
+                if (preg_match('#^/demande/message/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fichemessage_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::showAction',));
+                }
+
+                // fichemessage_new
+                if (preg_match('#^/demande/message/(?P<id>[^/]++)/new$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fichemessage_new')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::newAction',));
+                }
+
+                // fichemessage_create
+                if ($pathinfo === '/demande/message/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_fichemessage_create;
+                    }
+
+                    return array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::createAction',  '_route' => 'fichemessage_create',);
+                }
+                not_fichemessage_create:
+
+                // fichemessage_edit
+                if (preg_match('#^/demande/message/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fichemessage_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::editAction',));
+                }
+
+                // fichemessage_update
+                if (preg_match('#^/demande/message/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_fichemessage_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fichemessage_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::updateAction',));
+                }
+                not_fichemessage_update:
+
+                // fichemessage_delete
+                if (preg_match('#^/demande/message/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_fichemessage_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fichemessage_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\FicheMessageController::deleteAction',));
+                }
+                not_fichemessage_delete:
+
+            }
+
             // demande
             if (rtrim($pathinfo, '/') === '/demande') {
                 if (substr($pathinfo, -1) !== '/') {
@@ -1805,57 +1808,14 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::indexAction',  '_route' => 'demande',);
             }
 
-            // demande_show
-            if (preg_match('#^/demande/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'demande_show')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::showAction',));
+            // demande_choisir_type
+            if ($pathinfo === '/demande/choisir') {
+                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::choisirTypeAction',  '_route' => 'demande_choisir_type',);
             }
 
-            // demande_new
-            if ($pathinfo === '/demande/new') {
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::newAction',  '_route' => 'demande_new',);
-            }
-
-            // demande_create
-            if ($pathinfo === '/demande/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_demande_create;
-                }
-
-                return array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::createAction',  '_route' => 'demande_create',);
-            }
-            not_demande_create:
-
-            // demande_edit
-            if (preg_match('#^/demande/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'demande_edit')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::editAction',));
-            }
-
-            // demande_update
-            if (preg_match('#^/demande/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_demande_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'demande_update')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::updateAction',));
-            }
-            not_demande_update:
-
-            // demande_delete
-            if (preg_match('#^/demande/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_demande_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'demande_delete')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::deleteAction',));
-            }
-            not_demande_delete:
-
-            // demande_choosesubype
-            if (preg_match('#^/demande/(?P<id>[^/]++)/choose$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'demande_choosesubype')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::chooseSubTypeAction',));
+            // demande_choisir_soustype
+            if (preg_match('#^/demande/(?P<id>[^/]++)/choisir$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'demande_choisir_soustype')), array (  '_controller' => 'PC\\FicheBundle\\Controller\\DemandeController::choisirSousTypeAction',));
             }
 
         }
@@ -2011,17 +1971,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     return $this->redirect($pathinfo.'/', 'user');
                 }
 
-                return array (  '_controller' => 'PCUserBundle:User:index',  '_route' => 'user',);
+                return array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::indexAction',  '_route' => 'user',);
             }
 
             // user_show
             if (preg_match('#^/user/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_show')), array (  '_controller' => 'PCUserBundle:User:show',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_show')), array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::showAction',));
             }
 
             // user_new
             if ($pathinfo === '/user/new') {
-                return array (  '_controller' => 'PCUserBundle:User:new',  '_route' => 'user_new',);
+                return array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::newAction',  '_route' => 'user_new',);
             }
 
             // user_create
@@ -2031,13 +1991,13 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     goto not_user_create;
                 }
 
-                return array (  '_controller' => 'PCUserBundle:User:create',  '_route' => 'user_create',);
+                return array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::createAction',  '_route' => 'user_create',);
             }
             not_user_create:
 
             // user_edit
             if (preg_match('#^/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_edit')), array (  '_controller' => 'PCUserBundle:User:edit',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_edit')), array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::editAction',));
             }
 
             // user_update
@@ -2047,7 +2007,7 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     goto not_user_update;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_update')), array (  '_controller' => 'PCUserBundle:User:update',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_update')), array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::updateAction',));
             }
             not_user_update:
 
@@ -2058,7 +2018,7 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     goto not_user_delete;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_delete')), array (  '_controller' => 'PCUserBundle:User:delete',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_delete')), array (  '_controller' => 'PC\\UserBundle\\Controller\\UserController::deleteAction',));
             }
             not_user_delete:
 

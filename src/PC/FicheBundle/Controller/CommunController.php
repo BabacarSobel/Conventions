@@ -27,7 +27,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  * Controller par défaut duquel hérite tous les autres controllers
  *
  */
-class Default2Controller extends Controller{
+class CommunController extends Controller{
     
     
     /**
@@ -140,5 +140,5 @@ class Default2Controller extends Controller{
             return ( $a->getDateAlerte() < $b->getDateAlerte() ) ? +1 : -1;
         }
     }
-  
+    
 }

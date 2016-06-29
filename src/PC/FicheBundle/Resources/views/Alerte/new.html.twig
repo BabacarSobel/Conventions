@@ -1,9 +1,31 @@
 {% extends '::layout.html.twig' %}
 
 {% block body -%}
-    <h1>Alerte creation</h1>
-
-    {{ form(form) }}
+    {{ form_start(alert_form, {'attr': {'class': 'form-horizontal'}}) }}
+                    {{ form_errors(alert_form) }}
+                   <div class="form-group">
+                        {{ form_label(alert_form.intitule, "Intitulé", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(alert_form.intitule) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(alert_form.intitule, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(alert_form.objet, "Objet de l'alerte", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(alert_form.objet) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(alert_form.objet, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(alert_form.dateAlerte, "Date d'écheance", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(alert_form.dateAlerte) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(alert_form.dateAlerte, {'attr': {'class': ''}})}}
+                        </div>
+                    </div>
+                    {{ form_rest(alert_form) }}
+                    {{ form_end(alert_form) }}
 
         <ul class="record_actions">
     <li>

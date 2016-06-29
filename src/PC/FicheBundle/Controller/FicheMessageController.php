@@ -33,18 +33,23 @@ class FicheMessageController extends Controller
      * Creates a new FicheMessage entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request,$ownerId)
     {
         $entity = new FicheMessage();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $emCP = $this->getDoctrine()->getManager();
+            $entityCP = $emCP->getRepository('PCFicheBundle:Commun')->find($ownerId);
+            $entity->setCommun($entityCP);
+            $entity->setDate(new DateTime);
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $entity->setAuteur($user->getFullname());
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('fichemessage_show', array('id' => $entity->getId())));
+            return $this->redirect($this->getRequest()->headers->get('referer'));
         }
 
         return $this->render('PCFicheBundle:FicheMessage:new.html.twig', array(
@@ -60,10 +65,10 @@ class FicheMessageController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(FicheMessage $entity)
+    private function createCreateForm(FicheMessage $entity, $id)
     {
         $form = $this->createForm(new FicheMessageType(), $entity, array(
-            'action' => $this->generateUrl('fichemessage_create'),
+            'action' => $this->generateUrl('fichemessage_create',$id),
             'method' => 'POST',
         ));
 
@@ -76,7 +81,7 @@ class FicheMessageController extends Controller
      * Displays a form to create a new FicheMessage entity.
      *
      */
-    public function newAction()
+    public function newAction($id)
     {
         $entity = new FicheMessage();
         $form   = $this->createCreateForm($entity);
@@ -84,6 +89,7 @@ class FicheMessageController extends Controller
         return $this->render('PCFicheBundle:FicheMessage:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'id'     => $id
         ));
     }
 

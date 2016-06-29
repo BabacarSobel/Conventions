@@ -35,7 +35,7 @@ class AlerteController extends Controller
     /**
      * Créer une nouvelle alerte
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $id)
     {
         $entity = new Alerte();
         // ajout du formulaire de création
@@ -46,6 +46,8 @@ class AlerteController extends Controller
         if ($form->isValid()) {
             // on appelle le manager et on sauvegarde l'entité
             $em = $this->getDoctrine()->getManager();
+            $fiche = $em->getRepository('PCFicheBundle:Commun')->find($id);
+            $entity->setCommun($fiche);
             $em->persist($entity);
             $em->flush();
             // on affiche l'alerte créée

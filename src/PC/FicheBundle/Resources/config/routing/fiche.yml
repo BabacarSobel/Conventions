@@ -1,3 +1,11 @@
+pc_fiche_location:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/location.yml"
+    prefix:   /location
+
+pc_fiche_local:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/local.yml"
+    prefix:   /local
+    
 pc_fiche_departement:
     resource: "@PCFicheBundle/Resources/config/routing/fiche/departement.yml"
     prefix:   /departement
@@ -59,14 +67,22 @@ pc_fiche_export:
 pc_fiche_chartepartenariat:
     resource: "@PCFicheBundle/Resources/config/routing/fiche/chartepartenariat.yml"
     prefix:   /chartepartenariat
+    
+pc_fiche_message:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/fichemessage.yml"
+    prefix:   /message
 
+pc_fiche_action:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/action.yml"
+    prefix:   /action
+    
+pc_fiche_avenant:
+    resource: "@PCFicheBundle/Resources/config/routing/fiche/avenant.yml"
+    prefix:   /avenant
+    
 fiche:
     path:     /
     defaults: { _controller: "PCFicheBundle:Fiche:index" }
-
-fiche_show:
-    path:     /{id}/show
-    defaults: { _controller: "PCFicheBundle:Fiche:show" }
 
 fiche_pdf:
     path:     /pdf
@@ -85,30 +101,69 @@ fiche_download:
     pattern:  /download/{filename}
     defaults: { _controller: "PCFicheBundle:Fiche:download" }
     
-fiche_new:
-    path:     /new
-    defaults: { _controller: "PCFicheBundle:Fiche:new" }
-
-fiche_create:
-    path:     /create
-    defaults: { _controller: "PCFicheBundle:Fiche:create" }
-    methods:  POST
-
-fiche_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "PCFicheBundle:Fiche:edit" }
-
-fiche_update:
-    path:     /{id}/update
-    defaults: { _controller: "PCFicheBundle:Fiche:update" }
-    methods:  [POST, PUT]
-
-fiche_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "PCFicheBundle:Fiche:delete" }
-    methods:  [POST, DELETE]
-
 fiche_choosesubype:
     path:     /{id}/choose
     defaults: { _controller: "PCFicheBundle:Fiche:chooseSubType" }
+
+fiche_choosetype:
+    path:     /choose
+    defaults: { _controller: "PCFicheBundle:Fiche:chooseType" }
     
+pifeclassique_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:pdf" }
+    
+pifeclassique_word:
+    path:     /{id}/pdf
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:word" }
+
+pifeclassique_new_fichier:
+    path:     /{id}/new_fichier
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addFichier" }
+    
+pifeclassique_new_alert:
+    path:     /{id}/new_alert
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addAlert" }
+    
+pifeclassique_new_avenant:
+    path:     /{id}/new_avenant
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:addAvenant" }
+    
+pifeclassique_editconvention:
+    path:     /editionconvention/{id}
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:editConvention" }
+    
+pifeclassique_sendfichemessage:
+    path:     /{id}/new_message
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:sendFicheMessage" } 
+    
+pifeclassique_action:
+    path:     /{id}/new_action
+    defaults: { _controller: "PCFicheBundle:PIFEClassique:createAction" }
+    
+
+    
+#a supprimer
+#
+#fiche_create:
+#    path:     /create
+#    defaults: { _controller: "PCFicheBundle:Fiche:create" }
+#    methods:  POST
+#
+#fiche_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "PCFicheBundle:Fiche:edit" }
+#
+#fiche_update:
+#    path:     /{id}/update
+#    defaults: { _controller: "PCFicheBundle:Fiche:update" }
+#    methods:  [POST, PUT]
+#
+#fiche_delete:
+#    path:     /{id}/delete
+#    defaults: { _controller: "PCFicheBundle:Fiche:delete" }
+#    methods:  [POST, DELETE]
+#
+#fiche_show:
+#    path:     /{id}/show
+#    defaults: { _controller: "PCFicheBundle:Fiche:show" }
